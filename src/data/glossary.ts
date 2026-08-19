@@ -54,6 +54,17 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'avalanche-method',
+    term: 'Avalanche method',
+    short:
+      'A scanning method that flags unusually large increases, decreases, appearances, and disappearances across comparable budget years for further investigation.',
+  },
+  {
+    id: 'increment',
+    term: 'Increment',
+    short:
+      'A smaller change in a budget line that may be modest in one year but meaningful when it persists or accumulates over time.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
