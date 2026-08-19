@@ -28,6 +28,12 @@ export const glossary: GlossaryEntry[] = [
       'Legal authority, usually in an appropriations law, to spend public money for a stated purpose. No public money may be spent without it.',
   },
   {
+    id: 'allotment',
+    term: 'Allotment',
+    short:
+      'Authority issued to an agency to incur obligations, within a specified amount, against an appropriation.',
+  },
+  {
     id: 'obligation',
     term: 'Obligation',
     short:
@@ -38,6 +44,13 @@ export const glossary: GlossaryEntry[] = [
     term: 'Disbursement',
     short:
       'The actual payment of public money. A budget line can be appropriated and obligated long before it is disbursed.',
+  },
+  {
+    id: 'notice-of-cash-allocation',
+    term: 'Notice of Cash Allocation',
+    acronym: 'NCA',
+    short:
+      'Cash authority issued by DBM to cover an agency’s cash requirements through authorized government servicing banks.',
   },
   {
     id: 'gaa',
