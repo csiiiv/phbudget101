@@ -54,6 +54,30 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'nominal-value',
+    term: 'Nominal value',
+    short:
+      'An amount stated in the prices of the period when it was recorded, without adjustment for changes in the price level.',
+  },
+  {
+    id: 'real-value',
+    term: 'Real value',
+    short:
+      'An amount adjusted to a common price basis so purchasing power can be compared across periods.',
+  },
+  {
+    id: 'consumer-price-index',
+    term: 'Consumer Price Index',
+    acronym: 'CPI',
+    short:
+      'An index measuring changes in the average retail prices of a fixed basket of goods and services relative to a base period.',
+  },
+  {
+    id: 'allotment',
+    term: 'Allotment',
+    short:
+      'Budget authority made available to an agency as its limit and basis for incurring obligations for a stated purpose and period.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
