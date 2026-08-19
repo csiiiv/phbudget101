@@ -209,34 +209,58 @@ export function LessonPage() {
         </>
       )}
 
-      <div className="flex flex-wrap items-center gap-2 border-t pt-4 no-print">
-        {prev && (
+      <footer className="mt-10 space-y-4 border-t pt-6 no-print">
+        <div className="flex justify-center">
           <Button
-            variant="outline"
-            onClick={() =>
-              navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(prev.id)}`)
-            }
+            variant={isCompleted ? 'secondary' : 'default'}
+            onClick={() => markCompleted(mod.id, lesson.id)}
+            disabled={isCompleted}
           >
-            ← {prev.id} {prev.title}
+            {isCompleted ? '✓ Lesson completed' : 'Mark lesson complete'}
           </Button>
-        )}
-        <Button
-          variant={isCompleted ? 'secondary' : 'default'}
-          onClick={() => markCompleted(mod.id, lesson.id)}
-          disabled={isCompleted}
+        </div>
+        <nav
+          aria-label="Lesson navigation"
+          className="grid gap-3 sm:grid-cols-2"
         >
-          {isCompleted ? '✓ Completed' : 'Mark lesson complete'}
-        </Button>
-        {next && (
-          <Button
-            onClick={() =>
-              navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(next.id)}`)
-            }
-          >
-            {next.id} {next.title} →
-          </Button>
-        )}
-      </div>
+          {prev ? (
+            <button
+              type="button"
+              onClick={() =>
+                navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(prev.id)}`)
+              }
+              className="group rounded-lg border bg-card p-4 text-left transition-colors hover:bg-secondary/60"
+            >
+              <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                ← Previous
+              </span>
+              <span className="mt-1 block text-sm font-medium leading-snug">
+                {prev.id} {prev.title}
+              </span>
+            </button>
+          ) : (
+            <span aria-hidden className="hidden sm:block" />
+          )}
+          {next ? (
+            <button
+              type="button"
+              onClick={() =>
+                navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(next.id)}`)
+              }
+              className="group rounded-lg border bg-card p-4 text-right transition-colors hover:bg-secondary/60 sm:col-start-2"
+            >
+              <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Next →
+              </span>
+              <span className="mt-1 block text-sm font-medium leading-snug">
+                {next.id} {next.title}
+              </span>
+            </button>
+          ) : (
+            <span aria-hidden className="hidden sm:block" />
+          )}
+        </nav>
+      </footer>
     </article>
   );
 }
@@ -263,16 +287,21 @@ function GuidedBody({
         <h2 className="mb-0">{s.title}</h2>
         <div className="mt-4">{s.content}</div>
       </section>
-      <div className="not-prose my-8 flex items-center justify-between border-t pt-4 no-print">
+      <div className="not-prose my-8 space-y-3 border-t pt-4 no-print sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:space-y-0">
+        <span className="block text-center text-xs text-muted-foreground tabular-nums sm:hidden">
+          Section {index + 1} of {total}
+        </span>
         <Button variant="outline" onClick={onPrev} disabled={index === 0}>
           ← Previous
         </Button>
-        <span className="text-xs text-muted-foreground tabular-nums">
+        <span className="hidden text-xs text-muted-foreground tabular-nums sm:block">
           Section {index + 1} of {total}
         </span>
-        <Button onClick={onNext} disabled={isLast}>
-          Continue →
-        </Button>
+        <div className="flex sm:justify-end">
+          <Button className="w-full sm:w-auto" onClick={onNext} disabled={isLast}>
+            Continue →
+          </Button>
+        </div>
       </div>
     </>
   );
