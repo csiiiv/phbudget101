@@ -12,7 +12,7 @@ Related: [`notes/self_paced_lesson_format.md`](notes/self_paced_lesson_format.md
 * **Second person, plain English.** Adult general audience; no economics background assumed.
 * **No named advocacy organizations, campaigns, or personalities** in learner-facing lessons. Name government institutions, laws, documents, and public programs. Attribution belongs on the sources reference page.
 * **Label illustrative content** at first use: “Illustrative example. Details are simplified for clarity.”
-* Expand acronyms at first use per module (NEP, GAA, BESF, …), then the acronym alone.
+* **Terms and acronyms:** add the entry to `src/data/glossary.ts` first, then wrap in `<Term />`. Expand on first use (`<Term id="nep" expand />` → “National Expenditure Program (NEP)”); later mentions use `<Term id="nep" />` (acronym, or the full term if there is no acronym). Inflected forms pass children: `<Term id="obligation">obligated</Term>`. Hover or keyboard focus shows the short definition; click or tap opens `/reference/glossary#id`. Do not wrap every occurrence — mark the first use and later uses that would otherwise leave a learner stranded. Knowledge-check option strings stay plain text.
 
 ### Numbers and dates
 
@@ -67,7 +67,7 @@ Any interactive, card, quiz, or subway map nested in a lesson **must** set `not-
 
 ## Components
 
-**Use shadcn/ui** from `src/components/ui/` (`Button`, `Card`, `Badge`, `Tabs`, `Input`, `Dialog`, `Separator`). Do not restyle variants ad hoc; compose with `className` for layout only (`w-full sm:w-auto`, flex wrappers).
+**Use shadcn/ui** from `src/components/ui/` (`Button`, `Card`, `Badge`, `Tabs`, `Input`, `Dialog`, `Separator`, `Tooltip`). Do not restyle variants ad hoc; compose with `className` for layout only (`w-full sm:w-auto`, flex wrappers). Wrap the app in `TooltipProvider` (already on `AppLayout`).
 
 **Buttons**
 
@@ -82,6 +82,7 @@ Any interactive, card, quiz, or subway map nested in a lesson **must** set `not-
 | Slot | Component | Notes |
 | --- | --- | --- |
 | Figures | `Figure` | Always shows as-of + source unless `inline` |
+| Terms / acronyms | `Term` | Glossary-backed hover + link; see voice section |
 | Knowledge check | `KnowledgeCheck` | One question at a time; `moduleId` + `lessonId` required |
 | Takeaway | `KeyTakeaway` | Left-border accent card; the one thing to remember |
 | Step-through | `TraceConcern` (int-01) | Label illustrative; `not-prose` |

@@ -1,4 +1,5 @@
 import { Figure } from '@/components/content/Figure';
+import { Term } from '@/components/content/Term';
 import { defineLesson } from '@/lib/sections';
 
 export default defineLesson({
@@ -17,12 +18,13 @@ export default defineLesson({
       type: 'concept',
       content: (
         <p>
-          Budget preparation starts more than a year before the fiscal year it
+          Budget preparation starts more than a year before the{' '}
+          <Term id="fiscal-year">fiscal year</Term> it
           funds. The executive branch sets fiscal targets and priorities, then
-          issues the <strong>budget call</strong> that tells agencies to submit
+          issues the <Term id="budget-call" /> that tells agencies to submit
           proposals. Technical budget hearings test those proposals, executive
           review consolidates them, and the result is the{' '}
-          <strong>National Expenditure Program (NEP)</strong> — the
+          <Term id="nep" expand /> — the
           President&apos;s budget proposal to Congress.
         </p>
       ),

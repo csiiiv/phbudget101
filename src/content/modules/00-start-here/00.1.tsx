@@ -9,7 +9,7 @@ export default defineLesson({
       type: 'introduction',
       content: (
         <p>
-          Welcome to <strong>Budget 101</strong> — a self-paced course on how the
+          Welcome to <strong>PH Budget 101</strong> — a self-paced course on how the
           Philippine public budget works: where the money comes from, how it is
           planned and legislated, how it turns into services, and where you can
           participate.

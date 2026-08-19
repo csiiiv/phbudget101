@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Budget 101: Understanding Philippine Public Financial Management — a self-paced course built from the Budget Natin guidebook.",
+  "description": "PH Budget 101: Understanding Philippine Public Financial Management — a self-paced course built from the Budget Natin guidebook.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/copy-404.mjs",

@@ -88,13 +88,13 @@ All components are specced in [`reference-section.md`](reference-section.md). Ap
 
 | ID | Component | Phase | Status |
 | --- | --- | --- | --- |
-| ref-01 | Glossary | 1 | not started |
+| ref-01 | Glossary | 1 | seed (terms used in authored lessons; grows with modules) |
 | ref-02 | Document library | 1 | not started |
 | ref-03 | Institutional map | 1 | not started |
 | ref-04 | Budget calendar | 1 | not started |
 | ref-05 | Classification reference | 1 | not started |
 | ref-05b | Local budget structures | 1 | not started |
-| ref-06 | Acronyms | 1 | not started |
+| ref-06 | Acronyms | 1 | seed (generated from glossary) |
 | ref-07 | Legal and policy references | 1 | not started |
 | ref-07b | Sources and attribution | 1 | not started |
 | ref-08 | Data-source directory | 1 | not started |

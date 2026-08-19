@@ -1,5 +1,6 @@
 import { KeyTakeaway } from '@/components/content/KeyTakeaway';
 import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
+import { Term } from '@/components/content/Term';
 import { defineLesson } from '@/lib/sections';
 
 export default defineLesson({
@@ -24,12 +25,12 @@ export default defineLesson({
       content: (
         <>
           <p>
-            <strong>Public Financial Management (PFM)</strong> is the system by
+            <Term id="pfm" expand /> is the system by
             which government plans, directs, and controls public money to deliver
             public services.
           </p>
           <p>
-            That definition is deliberately wide. PFM covers how government
+            That definition is deliberately wide. <Term id="pfm" /> covers how government
             forecasts what it will earn, how it decides what to spend on, how it
             turns those decisions into law, how the money actually moves, and how
             everyone checks the results. The budget sits at the center of that
@@ -154,7 +155,7 @@ export default defineLesson({
       type: 'takeaway',
       content: (
         <KeyTakeaway>
-          PFM is the whole system that turns public money into public services.
+          <Term id="pfm" /> is the whole system that turns public money into public services.
           Every service has a chain of budget decisions behind it — and the
           budget is the most complete inventory of what government actually
           intends to do.

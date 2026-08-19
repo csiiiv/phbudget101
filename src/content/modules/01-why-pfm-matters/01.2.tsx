@@ -1,5 +1,6 @@
 import { KeyTakeaway } from '@/components/content/KeyTakeaway';
 import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
+import { Term } from '@/components/content/Term';
 import { defineLesson } from '@/lib/sections';
 
 const LENSES = [
@@ -18,8 +19,15 @@ const LENSES = [
   {
     lens: 'Legal authorization',
     question: 'What may we do?',
-    body: 'No public money may be spent without an appropriation. Read this way, the budget is a law: it grants agencies the authority — and sets the limits — to obligate and disburse funds.',
-    realWorld: 'The General Appropriations Act',
+    body: (
+      <>
+        No public money may be spent without an <Term id="appropriation" />. Read
+        this way, the budget is a law: it grants agencies the authority — and sets
+        the limits — to <Term id="obligation">obligate</Term> and{' '}
+        <Term id="disbursement">disburse</Term> funds.
+      </>
+    ),
+    realWorld: <Term id="gaa" expand />,
   },
   {
     lens: 'Accountability mechanism',
@@ -110,7 +118,9 @@ export default defineLesson({
         <p>
           Anyone can read a budget as a plan or as priorities. The harder — and
           more consequential — reading treats it as an accountability document.
-          Because every peso must be authorized, obligated, disbursed, and
+          Because every peso must be authorized,{' '}
+          <Term id="obligation">obligated</Term>,{' '}
+          <Term id="disbursement">disbursed</Term>, and
           accounted for, the budget leaves a trail. That trail is what turns
           public money into public trust: it makes it possible to ask, years
           later, whether the classroom promised in the plan was the classroom

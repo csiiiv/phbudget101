@@ -1,5 +1,6 @@
 import { KeyTakeaway } from '@/components/content/KeyTakeaway';
 import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
+import { Term } from '@/components/content/Term';
 import { TraceConcern } from '@/components/interactives/TraceConcern';
 import { defineLesson } from '@/lib/sections';
 
@@ -43,7 +44,7 @@ export default defineLesson({
             </li>
             <li>
               <strong>Implementation</strong> — funds are released, goods and works
-              are procured, staff are hired.
+              are <Term id="procurement">procured</Term>, staff are hired.
             </li>
             <li>
               <strong>Service</strong> — the output operates and people are served.
