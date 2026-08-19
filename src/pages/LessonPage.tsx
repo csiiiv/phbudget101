@@ -114,6 +114,11 @@ export function LessonPage() {
 
   const isCompleted = progress?.modules[mod.id]?.lessons[lesson.id] === 'completed';
   const hasContent = hasLessonContent(mod.slug, lesson.id);
+  const isLastSection =
+    mode === 'full' ||
+    sections.length === 0 ||
+    guidedIndex === sections.length - 1;
+  const showCourseHome = !next && isCompleted && isLastSection;
 
   const stationStates: StationState[] = sections.map((_, i) => {
     if (i < guidedIndex) return 'visited';
@@ -262,7 +267,7 @@ export function LessonPage() {
                 {next.id} {next.title}
               </span>
             </button>
-          ) : isCompleted && mod.slug !== '00-start-here' ? (
+          ) : showCourseHome ? (
             <Link
               to="/"
               className="group rounded-lg border border-primary/40 bg-accent/40 p-4 text-right transition-colors hover:bg-accent/70 sm:col-start-2"
