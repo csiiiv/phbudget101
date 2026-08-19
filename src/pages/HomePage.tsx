@@ -1,65 +1,81 @@
 import { Link } from 'react-router-dom';
 import { courseModules } from '@/data/course';
+import { useProgress } from '@/lib/useProgress';
 
 export function HomePage() {
+  const { progress } = useProgress();
+  const completedTotal = Object.values(progress?.modules ?? {}).reduce(
+    (sum, m) =>
+      sum + Object.values(m.lessons).filter((s) => s === 'completed').length,
+    0
+  );
+
   return (
-    <div className="space-y-8">
-      <section className="space-y-3">
-        <h1 className="text-3xl font-bold tracking-tight">
+    <div className="space-y-10">
+      <section className="space-y-4 pt-6">
+        <p className="text-sm font-medium uppercase tracking-widest text-primary">
+          A self-paced course
+        </p>
+        <h1 className="text-4xl font-bold tracking-tight leading-tight">
           Understanding Philippine Public Financial Management
         </h1>
-        <p className="text-muted-foreground">
-          A self-paced course on how the Philippine public budget works — where
-          the money comes from, how it is planned and legislated, how it turns
-          into services, and where you can participate.
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          Where the money comes from, how it is planned and legislated, how it
+          turns into services — and where you can participate.
         </p>
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Start</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="flex flex-wrap items-center gap-3 pt-2">
           <Link
             to="/modules/00-start-here"
-            className="rounded-lg border bg-card p-4 hover:bg-secondary block"
+            className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
-            <div className="font-medium">Start Here</div>
-            <div className="text-sm text-muted-foreground">
-              Orientation, diagnostic, and choosing your learning path.
-            </div>
+            {completedTotal > 0 ? 'Continue the course' : 'Start the course'}
           </Link>
           <Link
             to="/reference"
-            className="rounded-lg border bg-card p-4 hover:bg-secondary block"
+            className="rounded-md border px-5 py-2.5 text-sm font-medium hover:bg-secondary"
           >
-            <div className="font-medium">Reference</div>
-            <div className="text-sm text-muted-foreground">
-              Glossary, documents, institutions, calendar, FAQ.
-            </div>
+            Browse the reference
           </Link>
         </div>
+        {completedTotal > 0 && (
+          <p className="text-sm text-muted-foreground">
+            {completedTotal} lesson{completedTotal === 1 ? '' : 's'} completed
+            so far.
+          </p>
+        )}
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Course modules</h2>
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold">The course</h2>
         <ol className="space-y-2">
-          {courseModules.map((mod, index) => (
-            <li key={mod.id}>
-              <Link
-                to={`/modules/${mod.slug}`}
-                className="flex items-baseline gap-3 rounded-lg border bg-card p-4 hover:bg-secondary"
-              >
-                <span className="text-sm text-muted-foreground tabular-nums">
-                  {String(index).padStart(2, '0')}
-                </span>
-                <span>
-                  <span className="font-medium">{mod.title}</span>
-                  <span className="block text-sm text-muted-foreground">
-                    {mod.purpose}
+          {courseModules.map((mod) => {
+            const lessons = progress?.modules[mod.id]?.lessons ?? {};
+            const done = Object.values(lessons).filter((s) => s === 'completed').length;
+            const total = mod.lessons.length;
+            return (
+              <li key={mod.id}>
+                <Link
+                  to={`/modules/${mod.slug}`}
+                  className="flex items-center gap-4 rounded-lg border bg-card p-4 hover:bg-secondary/60 transition-colors"
+                >
+                  <span className="grid size-9 shrink-0 place-items-center rounded-md bg-secondary text-sm font-semibold tabular-nums text-muted-foreground">
+                    {mod.id.replace('mod-', '')}
                   </span>
-                </span>
-              </Link>
-            </li>
-          ))}
+                  <span className="flex-1 min-w-0">
+                    <span className="block font-medium leading-snug">{mod.title}</span>
+                    <span className="block text-sm text-muted-foreground truncate">
+                      {mod.purpose}
+                    </span>
+                  </span>
+                  {done > 0 && (
+                    <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
+                      {done}/{total}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ol>
       </section>
     </div>

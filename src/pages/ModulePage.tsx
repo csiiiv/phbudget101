@@ -18,33 +18,69 @@ export function ModulePage() {
     );
   }
 
+  const lessons = progress?.modules[mod.id]?.lessons ?? {};
+  const done = Object.values(lessons).filter((s) => s === 'completed').length;
+  const total = mod.lessons.length;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
   return (
-    <article className="space-y-6">
-      <header className="space-y-2">
-        <div className="text-sm text-muted-foreground">{mod.id}</div>
-        <h1 className="text-3xl font-bold tracking-tight">{mod.title}</h1>
+    <article className="space-y-8">
+      <header className="space-y-3">
+        <div className="text-sm text-muted-foreground">
+          Module {mod.id.replace('mod-', '')}
+        </div>
+        <h1 className="text-3xl font-bold tracking-tight leading-tight">
+          {mod.title}
+        </h1>
         <p className="text-muted-foreground">{mod.purpose}</p>
+        {done > 0 && (
+          <div className="space-y-1.5">
+            <div className="text-xs text-muted-foreground tabular-nums">
+              {done} of {total} lessons complete
+            </div>
+            <div
+              className="h-1.5 w-full max-w-xs rounded-full bg-secondary overflow-hidden"
+              role="progressbar"
+              aria-valuenow={pct}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
+              <div
+                className="h-full bg-primary rounded-full transition-all"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+        )}
       </header>
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Lessons</h2>
         <ol className="space-y-2">
           {mod.lessons.map((lesson) => {
-            const status = progress?.modules[mod.id]?.lessons[lesson.id];
+            const status = lessons[lesson.id];
             return (
               <li key={lesson.id}>
                 <Link
                   to={`/modules/${mod.slug}/lessons/${encodeURIComponent(lesson.id)}`}
-                  className="flex items-baseline gap-3 rounded-lg border bg-card p-4 hover:bg-secondary"
+                  className="flex items-center gap-4 rounded-lg border bg-card p-4 hover:bg-secondary/60 transition-colors"
                 >
-                  <span className="text-sm text-muted-foreground tabular-nums">
-                    {lesson.id}
+                  <span
+                    className={`grid size-8 shrink-0 place-items-center rounded-full border text-xs font-medium tabular-nums ${
+                      status === 'completed'
+                        ? 'border-primary bg-primary text-primary-foreground'
+                        : 'text-muted-foreground'
+                    }`}
+                    aria-hidden
+                  >
+                    {status === 'completed' ? '✓' : lesson.id.split('.')[1]}
                   </span>
-                  <span className="font-medium flex-1">{lesson.title}</span>
-                  {status === 'completed' && (
-                    <span className="text-xs text-muted-foreground">✓</span>
-                  )}
+                  <span className="flex-1 font-medium leading-snug">
+                    {lesson.title}
+                  </span>
                   {status === 'visited' && (
-                    <span className="text-xs text-muted-foreground">·</span>
+                    <span className="shrink-0 text-xs text-muted-foreground">
+                      In progress
+                    </span>
                   )}
                 </Link>
               </li>

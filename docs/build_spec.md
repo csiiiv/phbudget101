@@ -139,7 +139,7 @@ Phase definitions and rationale live in the outline (`Interactive elements: buil
 | ID | Title | File | Content phase | Status |
 | --- | --- | --- | --- | --- |
 | mod-00 | Start Here | `modules/00-start-here.md` | 1 (welcome lesson); 2 (diagnostic and concept map) | outline |
-| mod-01 | Why Public Financial Management Matters | `modules/01-why-pfm-matters.md` | 1 | outline |
+| mod-01 | Why Public Financial Management Matters | `modules/01-why-pfm-matters.md` | 1 | content-draft |
 | mod-02 | The Government's Money | `modules/02-the-governments-money.md` | 1 | outline |
 | mod-03 | Anatomy of the Philippine Budget | `modules/03-anatomy-of-the-budget.md` | 1 | outline |
 | mod-04 | The Philippine Budget Cycle | `modules/04-the-budget-cycle.md` | 1 | outline |

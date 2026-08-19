@@ -4,7 +4,7 @@
 | --- | --- |
 | ID | mod-01 |
 | Slug | why-pfm-matters |
-| Status | outline |
+| Status | content-draft |
 | Build phase | 1 |
 | Prerequisites | none |
 | Sourcing | partial |

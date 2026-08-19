@@ -1,6 +1,8 @@
 import { useEffect, useState, type ComponentType } from 'react';
 import { findLessonContent } from '@/content/registry';
 import { Figure } from './Figure';
+import { KeyTakeaway } from './KeyTakeaway';
+import { KnowledgeCheck } from './KnowledgeCheck';
 import { TraceConcern } from '@/components/interactives/TraceConcern';
 
 interface LessonContentProps {
@@ -9,7 +11,7 @@ interface LessonContentProps {
 }
 
 /** Components injected into .mdx lessons (no import needed in the MDX file). */
-const mdxComponents = { Figure, TraceConcern };
+const mdxComponents = { Figure, KeyTakeaway, KnowledgeCheck, TraceConcern };
 
 /**
  * Lazily loads and renders a lesson body (.tsx default, .mdx supported) with
