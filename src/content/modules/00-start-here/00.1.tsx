@@ -1,81 +1,162 @@
-import { defineLesson } from '@/lib/sections';
+import { Link } from "react-router-dom";
+
+import { KeyTakeaway } from "@/components/content/KeyTakeaway";
+import { Term } from "@/components/content/Term";
+import { defineLesson } from "@/lib/sections";
 
 export default defineLesson({
   sections: [
     {
-      id: 'start',
-      title: 'Welcome',
-      shortTitle: 'Start',
-      type: 'introduction',
-      content: (
-        <p>
-          Welcome to <strong>PH Budget 101</strong> — a self-paced course on how the
-          Philippine public budget works: where the money comes from, how it is
-          planned and legislated, how it turns into services, and where you can
-          participate.
-        </p>
-      ),
-    },
-    {
-      id: 'coverage',
-      title: 'What this course covers',
-      shortTitle: 'Coverage',
-      type: 'concept',
+      id: "start",
+      title: "What will you be able to do?",
+      shortTitle: "Start",
+      type: "introduction",
       content: (
         <>
-          <p>Eleven modules, from orientation through a capstone investigation:</p>
-          <ol>
-            <li>Why budgets matter</li>
-            <li>Where the money comes from</li>
-            <li>How the budget is organized</li>
-            <li>The budget cycle</li>
-            <li>From appropriation to public service</li>
-            <li>Local government budgets</li>
-            <li>Reading budget documents</li>
-            <li>Evaluating budget decisions</li>
-            <li>Participating in the process</li>
-            <li>Capstone: follow the money</li>
-          </ol>
+          <p className="text-lg text-muted-foreground">
+            How does public money become a classroom, a health service, or a
+            road — and how can you check what happened along the way?
+          </p>
+          <p>
+            PH Budget 101 gives you a practical map of the Philippine public
+            budget. By the end, you should be better able to find the right
+            budget information, follow money from a government decision to a
+            public service, and ask more precise questions about results.
+          </p>
         </>
       ),
     },
     {
-      id: 'paths',
-      title: 'Choose a learning path',
-      shortTitle: 'Paths',
-      type: 'concept',
+      id: "pfm-first",
+      title: "Learn the system before applying it",
+      shortTitle: "PFM first",
+      type: "concept",
       content: (
         <>
+          <p>
+            This course begins with <Term id="pfm" expand />: the system
+            government uses to plan, direct, and control public money so it can
+            deliver public services. That system includes raising revenue,
+            choosing priorities, authorizing spending, releasing and using
+            funds, and checking results.
+          </p>
+          <p>
+            The aim is budget literacy first. Once you understand how the system
+            works, you can apply that knowledge in many roles: managing a
+            program, reviewing a proposal, reporting on public spending,
+            participating in a consultation, or asking government a
+            well-targeted question.
+          </p>
+          <p>
+            Throughout the course, keep two orienting questions in view:{" "}
+            <strong>
+              Where does government money come from, and where does it go?
+            </strong>
+          </p>
+        </>
+      ),
+    },
+    {
+      id: "who-it-is-for",
+      title: "Who this course is for",
+      shortTitle: "For you",
+      type: "concept",
+      content: (
+        <>
+          <p>
+            You do not need a background in economics, accounting, law, or
+            public administration. The course is designed for anyone who needs a
+            clear introduction to public budgets, including:
+          </p>
           <ul>
+            <li>citizens trying to understand a public service or project;</li>
             <li>
-              <strong>Quick overview</strong> — the core: modules 1, 3, 4, and 5
-              (about 2–3 hours).
+              students, teachers, and journalists building budget literacy;
             </li>
             <li>
-              <strong>Full course</strong> — all modules in order (about 10–12
-              hours).
+              public servants connecting their work to the wider budget system;
+              and
             </li>
-            <li>
-              <strong>Reference</strong> — jump straight to the glossary, documents,
-              and other lookup pages.
-            </li>
+            <li>people preparing to participate in a budget decision.</li>
           </ul>
-          <p>You can switch paths anytime from Settings.</p>
+          <p>
+            Lessons use plain English and explain technical terms when they
+            first appear. You can move in order or open the lesson that answers
+            your immediate question.
+          </p>
         </>
       ),
     },
     {
-      id: 'how-to-use',
-      title: 'How to use this course',
-      shortTitle: 'How to use',
-      type: 'takeaway',
+      id: "three-paths",
+      title: "Three ways through the course",
+      shortTitle: "Three paths",
+      type: "concept",
       content: (
-        <p>
-          Each lesson opens with a guiding question, explains the concepts, shows
-          a worked example, and ends with a short knowledge check. Your progress
-          is saved on this device — export it from Settings if you want to
-          continue on another device.
-        </p>
+        <div className="not-prose grid gap-4 sm:grid-cols-3">
+          <section className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-foreground">Quick overview</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Take Modules 1, 3, 4, and 5, then use the reference section when
+              you need a definition or document. Plan for about 2–3 hours.
+            </p>
+          </section>
+          <section className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-foreground">
+              Full PH Budget 101
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Complete Modules 0–10 in order, from orientation through the
+              follow-the-money capstone. Plan for about 10–12 hours.
+            </p>
+          </section>
+          <section className="rounded-lg border bg-card p-4">
+            <h3 className="font-semibold text-foreground">
+              Topic-based reference
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Navigate freely to a lesson or reference page whenever you need an
+              answer. Each lesson is designed to stand on its own.
+            </p>
+          </section>
+        </div>
+      ),
+    },
+    {
+      id: "choose",
+      title: "Choose your path",
+      shortTitle: "Choose",
+      type: "takeaway",
+      content: (
+        <>
+          <KeyTakeaway>
+            Start with the route that matches your goal today. There are no
+            locked lessons, and you can change paths at any time.
+          </KeyTakeaway>
+          <nav
+            aria-label="Choose a learning path"
+            className="not-prose grid gap-3 sm:grid-cols-3"
+          >
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/modules/01-why-pfm-matters/lessons/01.1"
+            >
+              Start the quick overview
+            </Link>
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/modules/00-start-here/lessons/00.2"
+            >
+              Continue the full course
+            </Link>
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/reference"
+            >
+              Browse by topic
+            </Link>
+          </nav>
+        </>
       ),
     },
   ],
