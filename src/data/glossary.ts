@@ -85,6 +85,34 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'local-development-council',
+    term: 'Local development council',
+    acronym: 'LDC',
+    short:
+      'A local body that helps formulate development plans, investment programs, and policy recommendations for the sanggunian.',
+  },
+  {
+    id: 'local-special-body',
+    term: 'Local special body',
+    acronym: 'LSB',
+    short:
+      'A council or board created by law or policy for a defined local governance function, with membership and powers specific to that body.',
+  },
+  {
+    id: 'local-health-board',
+    term: 'Local health board',
+    acronym: 'LHB',
+    short:
+      'A provincial, city, or municipal body that proposes health budget allocations and advises the sanggunian on local health matters.',
+  },
+  {
+    id: 'cso-accreditation',
+    term: 'Civil society organization accreditation',
+    acronym: 'CSO accreditation',
+    short:
+      'The formal LGU process that determines whether a civil society organization is eligible for selection as a representative to local special bodies.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
