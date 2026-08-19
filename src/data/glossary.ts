@@ -79,6 +79,26 @@ export const glossary: GlossaryEntry[] = [
       'The expense class for salaries, wages, and other compensation of government personnel.',
   },
   {
+    id: 'mooe',
+    term: 'Maintenance and Other Operating Expenses',
+    acronym: 'MOOE',
+    short:
+      'The expense class for goods and services used in regular government operations, such as supplies, utilities, travel, and maintenance.',
+  },
+  {
+    id: 'financial-expenses',
+    term: 'Financial expenses',
+    acronym: 'FinEx',
+    short:
+      'The expense class for costs arising from financial transactions, including interest expense and authorized bank or financial charges.',
+  },
+  {
+    id: 'capital-outlays',
+    term: 'Capital outlays',
+    acronym: 'CO',
+    short:
+      'The expense class for assets and improvements whose benefits extend beyond the fiscal year, such as infrastructure and major equipment.',
+  },  {
     id: 'fiscal-year',
     term: 'Fiscal year',
     acronym: 'FY',
