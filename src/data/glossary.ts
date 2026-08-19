@@ -54,6 +54,23 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'baseline',
+    term: 'Baseline',
+    short:
+      'The documented starting value or condition against which later performance or change is compared.',
+  },
+  {
+    id: 'target',
+    term: 'Target',
+    short:
+      'A defined level of performance intended by a stated date, assessed against a specified indicator.',
+  },
+  {
+    id: 'performance-indicator',
+    term: 'Performance indicator',
+    short:
+      'A quantitative or qualitative measure used to track an output, outcome, or other aspect of performance.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
