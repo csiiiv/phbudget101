@@ -112,6 +112,11 @@ export default function Lesson0102() {
             correct: 1,
             explanation:
               'The year-on-year comparison is about choice: the increase signals a rising priority relative to everything else that could have been funded.',
+            wrong: {
+              0: 'Reading it as a plan is about affordability — whether revenues cover the spending. This statement compares allocations over time, which is about choice.',
+              2: 'Nothing here is about legal authority to spend — the statement is a comparison of amounts between years.',
+              3: 'No audit trail is involved; this is a forward-looking allocation comparison.',
+            },
           },
           {
             prompt:
@@ -125,6 +130,11 @@ export default function Lesson0102() {
             correct: 2,
             explanation:
               'This is the budget as law: appropriation comes before obligation. Spending without it is unauthorized.',
+            wrong: {
+              0: 'Affordability is not the issue — the statement is about permission to spend, not whether the money exists.',
+              1: 'The statement is not comparing this program against others; it sets a condition for any spending at all.',
+              3: 'No record of past spending is at issue here; this is a rule about authorization before the fact.',
+            },
           },
           {
             prompt:
@@ -138,6 +148,11 @@ export default function Lesson0102() {
             correct: 3,
             explanation:
               'The audit trail lets reviewers compare what was authorized with what actually moved — and ask why the gap exists.',
+            wrong: {
+              0: 'No forecast or revenue estimate is involved — the statement reports what already happened to money that was authorized.',
+              1: 'The percentages describe execution, not a choice among competing programs.',
+              2: 'The funds were already appropriated; the issue is what happened after authorization.',
+            },
           },
         ]}
       />

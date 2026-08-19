@@ -83,6 +83,10 @@ export default function Lesson0101() {
             correct: 0,
             explanation:
               'The service required an appropriation: an allocation for procurement. Announcements and audit reports neither buy nor deliver vaccines.',
+            wrong: {
+              1: 'An announcement creates no authority to spend — until the program is funded, no one can procure the vaccines.',
+              2: 'An audit observation looks backward at past spending; it neither authorizes nor pays for this year\'s vaccines.',
+            },
           },
           {
             prompt:
@@ -95,6 +99,10 @@ export default function Lesson0101() {
             correct: 1,
             explanation:
               'Salaries are paid from a personnel services allocation. The other items may relate to the budget, but none of them pays a teacher.',
+            wrong: {
+              0: 'A collection target is about money coming in — it funds the budget but pays no individual salary.',
+              2: 'A hearing discusses education policy; it obligates no funds and cuts no paycheck.',
+            },
           },
         ]}
       />

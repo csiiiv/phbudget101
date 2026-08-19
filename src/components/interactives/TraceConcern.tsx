@@ -123,7 +123,7 @@ export function TraceConcern() {
 
   if (!concern) {
     return (
-      <Card>
+      <Card className="not-prose">
         <CardHeader>
           <CardTitle>Trace a public concern</CardTitle>
         </CardHeader>
@@ -147,7 +147,7 @@ export function TraceConcern() {
   const isLast = stepIndex === concern.steps.length - 1;
 
   return (
-    <Card>
+    <Card className="not-prose">
       <CardHeader className="space-y-2">
         <div className="flex items-center justify-between">
           <CardTitle>Trace: {concern.label.toLowerCase()}</CardTitle>

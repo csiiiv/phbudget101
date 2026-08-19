@@ -104,6 +104,11 @@ export default function Lesson0103() {
             correct: 3,
             explanation:
               'The project cleared need, policy, and appropriation. It stalled at implementation: an agency-side procurement failure, not a funding decision.',
+            wrong: {
+              0: 'The road was wanted and asked for — the scenario says it was fully funded, so the need was expressed and answered.',
+              1: 'A program existed: the project had an allocation, which requires a policy vehicle behind it.',
+              2: 'Funding is exactly what did NOT fail — the appropriation exists; what stalled was procurement.',
+            },
           },
           {
             prompt:
@@ -117,6 +122,11 @@ export default function Lesson0103() {
             correct: 0,
             explanation:
               'Announcing is not appropriating. Without a budget line (and guidelines), the program is an intention, not an operating program.',
+            wrong: {
+              1: 'The scenario says no guidelines exist — scholarships were not delivered late, they never started.',
+              2: 'There is nothing to bid out and no contractor to hire: a scholarship program pays benefits, it does not procure works.',
+              3: 'Announcement and funding are different links — and only funding creates the authority to spend.',
+            },
           },
         ]}
       />
