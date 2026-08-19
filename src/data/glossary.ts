@@ -85,6 +85,36 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'tax-revenue',
+    term: 'Tax revenue',
+    short:
+      'Compulsory payments collected under tax law, including income tax, value-added tax, customs duties, and excise taxes.',
+  },
+  {
+    id: 'excise-tax',
+    term: 'Excise tax',
+    short:
+      'A tax imposed on selected goods, products, or activities, such as alcohol and tobacco products.',
+  },
+  {
+    id: 'non-tax-revenue',
+    term: 'Non-tax revenue',
+    short:
+      'Government receipts other than taxes, including fees and charges, Treasury income, and dividends from government-owned or controlled corporations.',
+  },
+  {
+    id: 'grant',
+    term: 'Grant',
+    short:
+      'Funding received for an agreed purpose without an obligation to repay it as debt.',
+  },
+  {
+    id: 'government-borrowing',
+    term: 'Government borrowing',
+    short:
+      'Financing raised through loans or government securities that creates an obligation to repay, generally with interest.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
@@ -94,5 +124,7 @@ export function getTerm(id: string): GlossaryEntry | null {
 }
 
 export function acronyms(): GlossaryEntry[] {
-  return glossary.filter((e) => e.acronym).sort((a, b) => a.acronym!.localeCompare(b.acronym!));
+  return glossary
+    .filter((e) => e.acronym)
+    .sort((a, b) => a.acronym!.localeCompare(b.acronym!));
 }
