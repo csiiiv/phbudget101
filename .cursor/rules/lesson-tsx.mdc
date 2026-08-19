@@ -1,0 +1,21 @@
+---
+description: Lesson TSX authoring conventions
+globs: src/content/modules/**/*.tsx
+alwaysApply: false
+---
+
+# Lesson files
+
+```tsx
+export default defineLesson({
+  sections: [
+    { id: 'start', title: '…', shortTitle: 'Start', type: 'introduction', content: … },
+  ],
+});
+```
+
+- About 4–6 sections; `id` kebab-case; `shortTitle` for the subway map.
+- First jargon use: `<Term id="nep" expand />`; later `<Term id="nep" />`.
+- Add glossary rows before wrapping. Knowledge-check `options` stay plain strings.
+- Widget roots (`TraceConcern`, checks, cards): `not-prose`.
+- Canonical example: `src/content/modules/01-why-pfm-matters/01.1.tsx`.

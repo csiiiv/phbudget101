@@ -1,0 +1,13 @@
+---
+description: Content-first slice protocol for PH Budget 101 agents
+alwaysApply: true
+---
+
+# Slice protocol
+
+Read `AGENTS.md` and `docs/tasklist.md` **Now** before writing code.
+
+- **Prefer module lesson content** (TSX `defineLesson`, knowledge checks, glossary) over new product UI or Phase 2–3 interactives.
+- **One lesson per run.** Stop after `npm run build:check` and a PR to `main` (do not merge unattended).
+- Follow `docs/styleguide.md` and `docs/ADRs.md`. Neutrality in lessons. No invented peso figures.
+- Point learners at existing components: `Term`, `Figure`, `KnowledgeCheck`, `KeyTakeaway`.

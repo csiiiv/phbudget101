@@ -10,9 +10,13 @@ Related docs: [`build_spec.md`](build_spec.md) (conventions, registries), [`tech
 
 ## Now
 
-Nothing actively in flight. The last completed slice was the lesson presentation layer (guided/full modes, subway map, knowledge-check retry and miss persistence, footer navigation).
+**in progress — content first:** Finish Module 00 as **static orientation** (no int-06 / int-07).
 
-**Suggested next slice:** finish Module 00 (lessons 00.2 and 00.3) so the onboarding path is a complete first experience, then Module 02.
+1. Complete [00.1](../src/content/modules/00-start-here/00.1.tsx) to spec (PFM-first framing, who it is for, three paths; path choice at the end).
+2. Author **00.2** as a headline-only flow (revenue → budget decisions → services) with a **static** diagram or linked list of modules (Phase 2 concept map later).
+3. Author **00.3** as a **three-question self-check list** recommending quick vs full path (Phase 2 diagnostic later).
+
+Then the next content slice is **Module 02** (02.1–02.3 prose + `src/data/modules/02.json`; no int-10). Agents: **one lesson per PR**.
 
 ---
 
@@ -116,7 +120,7 @@ All components are specced in [`reference-section.md`](reference-section.md). Ap
 
 ## How to use this file
 
-1. Pick the next slice from **Now** or the highest `next` row in a table.
-2. Set it to `in progress` when work starts; `done` when it is on `main`.
+1. Pick the next slice from **Now** (one **lesson** of module content). Agents: see [`AGENTS.md`](../AGENTS.md).
+2. Set it to `in progress` when work starts; `done` when it is on `main` (or merged from the agent PR).
 3. Scope changes still go through `outline_for_web.md` first, then the module spec — this list only reflects that scope.
 4. After finishing a module's lessons, bump the module spec status (`outline` → `content-draft`) and the row in this file together.

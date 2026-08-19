@@ -6,6 +6,7 @@ The overarching specification for the course build. The content outline (`outlin
 
 | File | Role | Status |
 | --- | --- | --- |
+| `AGENTS.md` | Standing orders for Cloud / local agents (content-first slices, PRs) | Current |
 | `docs/outline_for_web.md` | Course-level content outline; source of truth for scope and sequence | Current |
 | `docs/build_spec.md` | This file: architecture, conventions, registries | Current |
 | `docs/tech_stack.md` | Tech stack, hosting, and content pipeline decision | Decided |
