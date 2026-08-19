@@ -39,3 +39,6 @@ coverage/
 
 # Vite press/cache
 .vite/
+
+# Local PDF extraction scratch
+.tmp_pdf/
