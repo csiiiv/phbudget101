@@ -1,0 +1,21 @@
+{
+  "moduleId": "mod-04",
+  "figures": [
+    {
+      "id": "mao-service-contracting-outcome",
+      "value": 15.58,
+      "unit": "PHP-billion",
+      "asOf": "2022",
+      "source": "Enacted 2022 General Appropriations Act; service contracting program for public transport workers.",
+      "note": "Approximate enacted amount following civil-society advocacy during budget preparation."
+    },
+    {
+      "id": "mao-ask",
+      "value": 33,
+      "unit": "PHP-billion",
+      "asOf": "2022",
+      "source": "Civil society coalition budget proposal for the 2022 budget, as documented in the Budget Natin guidebook (2023).",
+      "note": "Advocacy ask; final enacted amount differed."
+    }
+  ]
+}
