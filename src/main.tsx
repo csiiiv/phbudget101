@@ -7,6 +7,7 @@ import { ModulePage } from '@/pages/ModulePage';
 import { LessonPage } from '@/pages/LessonPage';
 import { ReferenceIndexPage } from '@/pages/ReferenceIndexPage';
 import { ReferencePage } from '@/pages/ReferencePage';
+import { AboutPage } from '@/pages/AboutPage';
 import { SettingsPage } from '@/pages/SettingsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import '@/styles/index.css';
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
         { path: '/modules/:moduleId/lessons/:lessonId', element: <LessonPage /> },
         { path: '/reference', element: <ReferenceIndexPage /> },
         { path: '/reference/:refId', element: <ReferencePage /> },
+        { path: '/about', element: <AboutPage /> },
         { path: '/settings', element: <SettingsPage /> },
         { path: '*', element: <NotFoundPage /> },
       ],

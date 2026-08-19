@@ -36,6 +36,12 @@ export function HomePage() {
           >
             Browse the reference
           </Link>
+          <Link
+            to="/about"
+            className="px-2 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:underline"
+          >
+            About
+          </Link>
         </div>
         {completedTotal > 0 && (
           <p className="text-sm text-muted-foreground">

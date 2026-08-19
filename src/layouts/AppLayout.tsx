@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 const navItems = [
@@ -44,9 +44,14 @@ export function AppLayout() {
           <Outlet />
         </main>
         <footer className="app-footer">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 py-6 text-xs text-muted-foreground">
-            PH Budget 101 — Philippine Public Financial Management. A self-paced
-            course. Progress is stored on this device; export it from Settings.
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+            <p>
+              PH Budget 101 — Philippine Public Financial Management. Progress
+              is stored on this device; export it from Settings.
+            </p>
+            <Link to="/about" className="hover:text-foreground hover:underline">
+              About
+            </Link>
           </div>
         </footer>
       </div>

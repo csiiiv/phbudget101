@@ -28,7 +28,7 @@ Related: [`notes/self_paced_lesson_format.md`](notes/self_paced_lesson_format.md
 * **Reading measure:** `max-w-3xl` for header, main, and footer. One column. Do not widen lesson bodies to “use the desktop.”
 * **Page padding:** `px-4 sm:px-6`, main `py-10`.
 * **Sticky header** (`app-header`) with wordmark (₱ tile + “PH Budget 101”) and Home / Course / Reference / Settings.
-* **Footer** (`app-footer`) is a one-line device-progress reminder; hide with `.no-print` chrome on print.
+* **Footer** (`app-footer`) holds the device-progress reminder and an **About** link (`/about`). Hide chrome with `.no-print`. About is kept out of the header so the four primary nav items still fit on a phone.
 
 ### Hierarchy (do not invent a fourth nav)
 

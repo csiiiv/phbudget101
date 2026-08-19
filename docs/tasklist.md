@@ -31,7 +31,7 @@ Nothing actively in flight. The last completed slice was the lesson presentation
 | Subway-style section map | done | Horizontal desktop; expandable vertical on mobile |
 | Knowledge check: one-at-a-time, retry, per-wrong reasons, persisted misses | done | Advisory, not gating |
 | Lesson footer: complete + prev/next cards; Course Home on last section of last lesson | done | |
-| Home, module, lesson, settings, 404 pages | done | Reference pages are placeholders |
+| Home, module, lesson, settings, about, 404 pages | done | Glossary and acronyms reference pages seeded; other reference pages are placeholders |
 | Custom domain | later | Two config lines when decided |
 | Analytics | later | None by default; cookieless only if added |
 | Playwright / visual regression | later | Add if UI regressions justify it |
