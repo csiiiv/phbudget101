@@ -85,6 +85,38 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'devolution',
+    term: 'Devolution',
+    short:
+      'The transfer or assignment of functions, services, facilities, authority, and responsibility from the national government to local government units.',
+  },
+  {
+    id: 'fiscal-decentralization',
+    term: 'Fiscal decentralization',
+    short:
+      'The assignment of revenue powers, transfers, and spending responsibilities among national and subnational governments.',
+  },
+  {
+    id: 'national-tax-allotment',
+    term: 'National Tax Allotment',
+    acronym: 'NTA',
+    short:
+      'The automatically released share of local government units in national taxes, formerly called the Internal Revenue Allotment.',
+  },
+  {
+    id: 'devolution-transition-plan',
+    term: 'Devolution transition plan',
+    acronym: 'DTP',
+    short:
+      'A phased plan for transferring or assuming devolved functions, services, facilities, personnel, assets, and capacity requirements.',
+  },
+  {
+    id: 'absorptive-capacity',
+    term: 'Absorptive capacity',
+    short:
+      'The ability to use added resources effectively through sufficient people, systems, facilities, implementation processes, and oversight.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
