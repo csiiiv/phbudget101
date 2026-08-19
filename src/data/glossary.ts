@@ -85,6 +85,32 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'local-government-unit',
+    term: 'Local government unit',
+    acronym: 'LGU',
+    short:
+      'A territorial and political subdivision of the Philippines: a province, city, municipality, or barangay.',
+  },
+  {
+    id: 'own-source-revenue',
+    term: 'Own-source revenue',
+    short:
+      'Revenue an LGU raises through its authorized local taxes, fees, charges, and economic enterprises.',
+  },
+  {
+    id: 'intergovernmental-transfer',
+    term: 'Intergovernmental transfer',
+    short:
+      'Public money transferred from one level of government to another under law or a funding program.',
+  },
+  {
+    id: 'national-tax-allotment',
+    term: 'National Tax Allotment',
+    acronym: 'NTA',
+    short:
+      'The automatically released share of local government units in national taxes, formerly called the Internal Revenue Allotment.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
