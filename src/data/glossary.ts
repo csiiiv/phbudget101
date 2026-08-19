@@ -60,6 +60,25 @@ export const glossary: GlossaryEntry[] = [
       'The instruction the executive issues to agencies to submit budget proposals for the next fiscal year, usually with ceilings and priorities.',
   },
   {
+    id: 'coa',
+    term: 'Commission on Audit',
+    acronym: 'COA',
+    short:
+      'The constitutional commission that examines, audits, and settles government accounts involving public revenue, spending, funds, and property.',
+  },
+  {
+    id: 'internal-control',
+    term: 'Internal control',
+    short:
+      'Policies and processes within an organization that help protect resources, keep records reliable, follow rules, and manage operational risks.',
+  },
+  {
+    id: 'transparency-seal',
+    term: 'Transparency Seal',
+    short:
+      'A section of a government agency website that indexes required public disclosures such as approved budgets, targets, reports, procurement information, and implementation status.',
+  },
+  {
     id: 'procurement',
     term: 'Procurement',
     short:
