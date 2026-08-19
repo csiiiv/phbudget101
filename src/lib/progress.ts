@@ -57,10 +57,28 @@ export function newProgress(path: 'quick' | 'full' = 'full'): ProgressState {
     modules: {},
     diagnostic: { taken: false },
     drafts: {},
+    mistakes: {},
   };
 }
 
 export function progressFileName(date = new Date()): string {
   const iso = date.toISOString().slice(0, 10);
   return `budget101-progress-${iso}.json`;
+}
+
+/** Stable key for a missed check item: `${moduleId}/${lessonId}/${itemIndex}`. */
+export function mistakeKey(moduleId: string, lessonId: string, itemIndex: number): string {
+  return `${moduleId}/${lessonId}/${itemIndex}`;
+}
+
+export interface ParsedMistakeKey {
+  moduleId: string;
+  lessonId: string;
+  itemIndex: number;
+}
+
+export function parseMistakeKey(key: string): ParsedMistakeKey | null {
+  const match = key.match(/^(mod-\d{2})\/(\d{2}\.\d)\/(\d+)$/);
+  if (!match) return null;
+  return { moduleId: match[1], lessonId: match[2], itemIndex: Number(match[3]) };
 }

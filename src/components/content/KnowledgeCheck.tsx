@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useProgress } from '@/lib/useProgress';
+import { parseMistakeKey } from '@/lib/progress';
 
 export interface CheckItem {
   /** The question or statement shown to the learner. */
@@ -17,6 +19,10 @@ export interface CheckItem {
 interface KnowledgeCheckProps {
   title?: string;
   items: CheckItem[];
+  /** Owning module, e.g. "mod-01" — required to persist misses. */
+  moduleId: string;
+  /** Owning lesson id, e.g. "01.2" — required to persist misses. */
+  lessonId: string;
 }
 
 const MAX_WRONG_PICKS = 2;
@@ -41,10 +47,27 @@ function initialStates(count: number): ItemState[] {
  * Lesson-pattern slot 6: knowledge check. Self-assessment only — answers are
  * not scored or persisted (spec: advisory, not gating). Wrong picks explain
  * why the chosen option is wrong and may be retried; after two wrong picks
- * the item reveals the correct answer so the learner is never dead-ended.
+ * the item reveals the correct answer. Misses are recorded to the progress
+ * store (survives navigation; rides export/import) and shown as a recap so
+ * learners can review what they got wrong.
  */
-export function KnowledgeCheck({ title = 'Check your understanding', items }: KnowledgeCheckProps) {
+export function KnowledgeCheck({
+  title = 'Check your understanding',
+  items,
+  moduleId,
+  lessonId,
+}: KnowledgeCheckProps) {
   const [states, setStates] = useState<ItemState[]>(() => initialStates(items.length));
+  const { progress, recordMistake, clearMistake } = useProgress();
+
+  // Recap derives from the store on every render — single source of truth.
+  const misses = Object.entries(progress?.mistakes ?? {})
+    .filter(([key]) => {
+      const parsed = parseMistakeKey(key);
+      return parsed?.moduleId === moduleId && parsed?.lessonId === lessonId;
+    })
+    .sort((a, b) => (a[1].at < b[1].at ? -1 : 1))
+    .map(([key, mistake]) => ({ key, ...mistake }));
 
   const pick = (itemIndex: number, optionIndex: number) => {
     const item = items[itemIndex];
@@ -60,22 +83,27 @@ export function KnowledgeCheck({ title = 'Check your understanding', items }: Kn
           };
         }
         const wrongPicks = [...s.wrongPicks, optionIndex];
+        const reason =
+          item.wrong?.[optionIndex] ?? 'Not quite — try again.';
         if (wrongPicks.length >= MAX_WRONG_PICKS) {
-          return {
-            wrongPicks,
-            solved: 'revealed',
-            feedback: `The correct answer is highlighted. ${item.explanation}`,
-            feedbackKind: 'reveal',
-          };
+          return { wrongPicks, solved: 'revealed', feedback: `The correct answer is highlighted. ${item.explanation}`, feedbackKind: 'reveal' };
         }
         return {
           wrongPicks,
           solved: null,
-          feedback: item.wrong?.[optionIndex] ?? 'Not quite — try again.',
+          feedback: reason,
           feedbackKind: 'wrong',
         };
       })
     );
+    if (optionIndex !== item.correct) {
+      recordMistake(moduleId, lessonId, itemIndex, {
+        question: item.prompt,
+        picked: item.options[optionIndex],
+        reason: item.wrong?.[optionIndex] ?? 'Not quite — try again.',
+        at: new Date().toISOString(),
+      });
+    }
   };
 
   const allSolved = states.every((s) => s.solved);
@@ -89,6 +117,7 @@ export function KnowledgeCheck({ title = 'Check your understanding', items }: Kn
       <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         {title}
       </h3>
+
       <ol className="space-y-5">
         {items.map((item, i) => {
           const state = states[i];
@@ -154,6 +183,38 @@ export function KnowledgeCheck({ title = 'Check your understanding', items }: Kn
             Reset
           </Button>
         </div>
+      )}
+      {misses.length > 0 && (
+        <details className="rounded-md border bg-secondary/40 p-4" open={allSolved}>
+          <summary className="cursor-pointer text-sm font-medium">
+            Review your misses ({misses.length})
+          </summary>
+          <ul className="mt-3 space-y-3">
+            {misses.map((m) => (
+              <li key={m.key} className="text-sm space-y-1">
+                <p className="font-medium">{m.question}</p>
+                <p className="text-muted-foreground">
+                  You picked: <span className="line-through">{m.picked}</span>
+                </p>
+                <p>{m.reason}</p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="no-print h-7 px-2 text-xs"
+                  onClick={() => {
+                    const parsed = parseMistakeKey(m.key);
+                    if (parsed) clearMistake(parsed.moduleId, parsed.lessonId, parsed.itemIndex);
+                  }}
+                >
+                  Mark reviewed
+                </Button>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Misses are saved with your progress and clear when you mark them reviewed.
+          </p>
+        </details>
       )}
     </section>
   );

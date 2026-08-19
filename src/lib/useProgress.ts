@@ -4,8 +4,10 @@ import {
   newProgress,
   saveProgress,
   clearProgress,
+  mistakeKey,
   type ProgressState,
 } from './progress';
+import type { Mistake } from './progressSchema';
 
 const listeners = new Set<() => void>();
 
@@ -20,6 +22,8 @@ export function useProgress(): {
   markCompleted: (moduleId: string, lessonId: string) => void;
   setPath: (path: 'quick' | 'full') => void;
   reset: () => void;
+  recordMistake: (moduleId: string, lessonId: string, itemIndex: number, mistake: Mistake) => void;
+  clearMistake: (moduleId: string, lessonId: string, itemIndex: number) => void;
   moduleStatus: (moduleId: string) => { visited: number; completed: number };
 } {
   const [progress, setProgress] = useState<ProgressState | null>(() => loadProgress());
@@ -67,6 +71,26 @@ export function useProgress(): {
     [mutate]
   );
 
+  const recordMistake = useCallback(
+    (moduleId: string, lessonId: string, itemIndex: number, mistake: Mistake) =>
+      mutate((s) => ({
+        ...s,
+        mistakes: { ...s.mistakes, [mistakeKey(moduleId, lessonId, itemIndex)]: mistake },
+      })),
+    [mutate]
+  );
+
+  const clearMistake = useCallback(
+    (moduleId: string, lessonId: string, itemIndex: number) =>
+      mutate((s) => {
+        if (!(mistakeKey(moduleId, lessonId, itemIndex) in s.mistakes)) return s;
+        const mistakes = { ...s.mistakes };
+        delete mistakes[mistakeKey(moduleId, lessonId, itemIndex)];
+        return { ...s, mistakes };
+      }),
+    [mutate]
+  );
+
   const reset = useCallback(() => {
     clearProgress();
     setProgress(null);
@@ -85,5 +109,5 @@ export function useProgress(): {
     [progress]
   );
 
-  return { progress, markVisited, markCompleted, setPath, reset, moduleStatus };
+  return { progress, markVisited, markCompleted, setPath, reset, moduleStatus, recordMistake, clearMistake };
 }

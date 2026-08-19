@@ -1,8 +1,7 @@
 import { KeyTakeaway } from '@/components/content/KeyTakeaway';
 import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
 
-export default function Lesson0101() {
-  return (
+export default function Lesson0101() {  return (
     <>
       <p className="text-lg text-muted-foreground">
         When a classroom gets built, who decided that — and where did the money
@@ -71,6 +70,8 @@ export default function Lesson0101() {
 
       <KnowledgeCheck
         title="Match the service to the budget decision behind it"
+        moduleId="mod-01"
+        lessonId="01.1"
         items={[
           {
             prompt:

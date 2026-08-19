@@ -99,6 +99,8 @@ export default function Lesson0102() {
 
       <KnowledgeCheck
         title="Classify the statement under the correct lens"
+        moduleId="mod-01"
+        lessonId="01.2"
         items={[
           {
             prompt:

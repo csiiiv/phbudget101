@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { importProgress, exportProgress, progressFileName } from '../src/lib/progress';
+import { importProgress, exportProgress, progressFileName, mistakeKey, parseMistakeKey } from '../src/lib/progress';
 import { PROGRESS_VERSION } from '../src/lib/progressSchema';
 
 const validFile = {
@@ -9,6 +9,7 @@ const validFile = {
   modules: { 'mod-04': { lessons: { '04.1': 'completed' } } },
   diagnostic: { taken: true, suggested: 'quick' },
   drafts: {},
+  mistakes: {},
 };
 
 describe('importProgress', () => {
@@ -47,5 +48,41 @@ describe('progressFileName', () => {
     expect(progressFileName(new Date('2026-08-19T12:00:00Z'))).toBe(
       'budget101-progress-2026-08-19.json'
     );
+  });
+});
+
+describe('mistakes', () => {
+  it('round-trips a file with recorded misses', () => {
+    const withMisses = {
+      ...validFile,
+      mistakes: {
+        'mod-01/01.2/0': {
+          question: 'Is a budget just a spreadsheet?',
+          picked: 'Financial plan',
+          reason: 'The statement compares allocations over time, which is about choice.',
+          at: '2026-08-19T01:00:00.000Z',
+        },
+      },
+    };
+    const exported = exportProgress(withMisses as never);
+    const imported = importProgress(exported);
+    expect(imported.mistakes['mod-01/01.2/0'].picked).toBe('Financial plan');
+  });
+
+  it('imports pre-mistakes v1 files via the default', () => {
+    const legacy = { ...validFile };
+    const imported = importProgress(JSON.stringify(legacy));
+    expect(imported.mistakes).toEqual({});
+  });
+
+  it('keys and parses mistake keys stably', () => {
+    const key = mistakeKey('mod-01', '01.2', 0);
+    expect(key).toBe('mod-01/01.2/0');
+    expect(parseMistakeKey(key)).toEqual({
+      moduleId: 'mod-01',
+      lessonId: '01.2',
+      itemIndex: 0,
+    });
+    expect(parseMistakeKey('garbage')).toBeNull();
   });
 });

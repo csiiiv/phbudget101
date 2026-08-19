@@ -21,6 +21,25 @@ const draftsSchema = z.object({
   capstone: capstoneDraftSchema.optional(),
 });
 
+export const mistakeSchema = z.object({
+  /** Snapshot of the question prompt (survives lesson text edits). */
+  question: z.string(),
+  /** The wrong option the learner picked. */
+  picked: z.string(),
+  /** Why that option is wrong. */
+  reason: z.string(),
+  /** ISO timestamp of the miss. */
+  at: z.string(),
+});
+export type Mistake = z.infer<typeof mistakeSchema>;
+
+/**
+ * Wrong answers recorded per check item, keyed `${moduleId}/${lessonId}/${itemIndex}`.
+ * Kept even after the item is later solved — misses are the reference material.
+ * Optional with default so v1 files exported before this field still import.
+ */
+const mistakesSchema = z.record(z.string(), mistakeSchema).default({});
+
 export const progressFileSchema = z.object({
   version: z.literal(PROGRESS_VERSION),
   exportedAt: z.string(),
@@ -28,6 +47,7 @@ export const progressFileSchema = z.object({
   modules: z.record(z.string(), z.object({ lessons: lessonMapSchema })),
   diagnostic: diagnosticSchema,
   drafts: draftsSchema,
+  mistakes: mistakesSchema,
 });
 
 export type ProgressFile = z.infer<typeof progressFileSchema>;

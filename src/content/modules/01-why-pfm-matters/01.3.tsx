@@ -91,6 +91,8 @@ export default function Lesson0103() {
 
       <KnowledgeCheck
         title="Find the broken link"
+        moduleId="mod-01"
+        lessonId="01.3"
         items={[
           {
             prompt:
