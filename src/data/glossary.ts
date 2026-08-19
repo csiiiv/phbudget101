@@ -54,6 +54,11 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'trade-off',
+    term: 'Trade-off',
+    short:
+      'A choice in which gaining an advantage in one criterion involves accepting a cost, risk, or weaker result in another.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
