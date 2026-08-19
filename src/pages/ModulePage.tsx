@@ -1,9 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
 import { courseModules } from '@/data/course';
+import { useProgress } from '@/lib/useProgress';
 
 export function ModulePage() {
   const { moduleId } = useParams();
   const mod = courseModules.find((m) => m.slug === moduleId);
+  const { progress } = useProgress();
 
   if (!mod) {
     return (
@@ -26,19 +28,28 @@ export function ModulePage() {
       <section className="space-y-3">
         <h2 className="text-xl font-semibold">Lessons</h2>
         <ol className="space-y-2">
-          {mod.lessons.map((lesson) => (
-            <li key={lesson.id}>
-              <Link
-                to={`/modules/${mod.slug}/lessons/${encodeURIComponent(lesson.id)}`}
-                className="flex items-baseline gap-3 rounded-lg border bg-card p-4 hover:bg-secondary"
-              >
-                <span className="text-sm text-muted-foreground tabular-nums">
-                  {lesson.id}
-                </span>
-                <span className="font-medium">{lesson.title}</span>
-              </Link>
-            </li>
-          ))}
+          {mod.lessons.map((lesson) => {
+            const status = progress?.modules[mod.id]?.lessons[lesson.id];
+            return (
+              <li key={lesson.id}>
+                <Link
+                  to={`/modules/${mod.slug}/lessons/${encodeURIComponent(lesson.id)}`}
+                  className="flex items-baseline gap-3 rounded-lg border bg-card p-4 hover:bg-secondary"
+                >
+                  <span className="text-sm text-muted-foreground tabular-nums">
+                    {lesson.id}
+                  </span>
+                  <span className="font-medium flex-1">{lesson.title}</span>
+                  {status === 'completed' && (
+                    <span className="text-xs text-muted-foreground">✓</span>
+                  )}
+                  {status === 'visited' && (
+                    <span className="text-xs text-muted-foreground">·</span>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ol>
       </section>
     </article>

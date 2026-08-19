@@ -10,7 +10,7 @@ const navItems = [
 export function AppLayout() {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="border-b bg-card">
+      <header className="app-header">
         <div className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between">
           <NavLink to="/" className="font-semibold text-primary">
             Budget 101
@@ -37,7 +37,7 @@ export function AppLayout() {
       <main className="flex-1 mx-auto w-full max-w-4xl px-4 py-8">
         <Outlet />
       </main>
-      <footer className="border-t bg-card">
+      <footer className="app-footer">
         <div className="mx-auto max-w-4xl px-4 py-4 text-xs text-muted-foreground">
           Budget 101 — Philippine Public Financial Management. A self-paced course.
           Progress is stored on this device; export it from Settings.

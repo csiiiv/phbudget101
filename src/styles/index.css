@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "./lesson.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -42,6 +43,16 @@
 
 * {
   border-color: var(--border);
+}
+
+header.app-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+footer.app-footer {
+  border-top: 1px solid var(--border);
+  background: var(--card);
 }
 
 body {
