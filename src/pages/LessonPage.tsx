@@ -309,9 +309,16 @@ function GuidedBody({
         <span className="block text-center text-xs text-muted-foreground tabular-nums sm:hidden">
           Section {index + 1} of {total}
         </span>
-        <Button variant="outline" onClick={onPrev} disabled={index === 0}>
-          ← Previous
-        </Button>
+        <div className="flex sm:justify-start">
+          <Button
+            variant="outline"
+            className="w-full sm:w-auto"
+            onClick={onPrev}
+            disabled={index === 0}
+          >
+            ← Previous
+          </Button>
+        </div>
         <span className="hidden text-xs text-muted-foreground tabular-nums sm:block">
           Section {index + 1} of {total}
         </span>
