@@ -85,6 +85,13 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'completed-staff-work',
+    term: 'Completed Staff Work',
+    acronym: 'CSW',
+    short:
+      'A method for analyzing a problem and presenting a worked-out solution so the decision-maker can approve or disapprove a clear proposed action.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
