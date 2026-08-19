@@ -289,7 +289,7 @@ function GuidedBody({
   const s = sections[index];
   return (
     <>
-      <section id={`section-${s.id}`} className="scroll-mt-24">
+      <section id={`section-${s.id}`} key={s.id} className="scroll-mt-24">
         <h2 className="mb-0">{s.title}</h2>
         <div className="mt-4">{s.content}</div>
       </section>
