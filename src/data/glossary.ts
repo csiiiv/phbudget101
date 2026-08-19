@@ -54,6 +54,19 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'pap',
+    term: 'Program, activity, and project',
+    acronym: 'PAP',
+    short:
+      'The hierarchy used to connect an agency program to the recurring activities and specific projects that carry it out.',
+  },
+  {
+    id: 'special-purpose-fund',
+    term: 'Special-purpose fund',
+    acronym: 'SPF',
+    short:
+      'A budget provision presented separately from regular agency budgets for a specified purpose that may apply across agencies, recipients, or contingencies.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
