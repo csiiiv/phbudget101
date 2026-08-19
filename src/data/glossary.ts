@@ -40,6 +40,17 @@ export const glossary: GlossaryEntry[] = [
       'The actual payment of public money. A budget line can be appropriated and obligated long before it is disbursed.',
   },
   {
+    id: 'allotment',
+    term: 'Allotment',
+    short:
+      'The share of an appropriation made available to an agency as its limit and basis for incurring obligations for the authorized purpose.',
+  },
+  {
+    id: 'delivery',
+    term: 'Delivery',
+    short:
+      'The point at which the required public good, work, or service has been produced, accepted where required, and made usable for its intended purpose.',
+  },  {
     id: 'gaa',
     term: 'General Appropriations Act',
     acronym: 'GAA',
