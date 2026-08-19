@@ -1,0 +1,258 @@
+import { KeyTakeaway } from '@/components/content/KeyTakeaway';
+import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
+import { Term } from '@/components/content/Term';
+import { defineLesson } from '@/lib/sections';
+
+const PROPOSALS = [
+  { name: 'Rural clinic equipment', cost: 12 },
+  { name: 'Flood-drainage repairs', cost: 10 },
+  { name: 'Additional school rooms', cost: 15 },
+] as const;
+
+export default defineLesson({
+  sections: [
+    {
+      id: 'start',
+      title: 'A budget begins with an estimate',
+      shortTitle: 'Start',
+      type: 'introduction',
+      content: (
+        <>
+          <p className="text-lg text-muted-foreground">
+            If a public need is urgent, why can&apos;t government simply fund
+            it? Because the spending plan starts with an estimate of the
+            resources likely to be available, not an unlimited pool.
+          </p>
+          <p>
+            A <Term id="revenue-forecast" expand /> estimates future collections
+            using assumptions about the economy, tax rules, prices, trade, and
+            collection performance. The forecast can be revised when those
+            assumptions change.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'gaps-and-debt',
+      title: 'When revenue and spending do not match',
+      shortTitle: 'The gap',
+      type: 'concept',
+      content: (
+        <>
+          <p>
+            When expenditure is greater than revenue, government runs a{' '}
+            <Term id="fiscal-deficit" expand />. Borrowing finances the gap.
+            When revenue is greater than expenditure, government has a{' '}
+            <Term id="fiscal-surplus" expand />.
+          </p>
+          <p>
+            One deficit adds to financing needs for that period; repeated
+            borrowing contributes to <Term id="public-debt" expand />, the
+            outstanding obligations government must repay. Debt can spread the
+            cost of long-lived investments or help respond to shocks, but
+            principal and interest claims compete with other future spending.
+          </p>
+          <p>
+            <Term id="fiscal-space" expand /> means room in the public finances
+            for additional priorities after considering expected resources,
+            deficit limits, debt obligations, and the cost of continuing
+            commitments. A worthy proposal can still exceed that room.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'authority-and-cash',
+      title: 'Permission to spend is not cash in hand',
+      shortTitle: 'Authority vs cash',
+      type: 'concept',
+      content: (
+        <>
+          <p>
+            An <Term id="appropriation" expand /> gives legal authority to spend
+            for a stated purpose. It does not guarantee that the entire
+            authorized amount is sitting in an agency bank account at once.
+          </p>
+          <p>
+            Cash availability depends on actual collections, borrowing, the
+            timing of payments, and government&apos;s cash program. Releases may
+            therefore be scheduled over the year. If revenue arrives later than
+            expected, cash managers may adjust timing even though the legal
+            authority remains.
+          </p>
+          <div className="not-prose my-6 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border bg-card p-5">
+              <h3 className="font-semibold">Budget authority asks</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                May the agency commit public funds for this purpose, within this
+                limit?
+              </p>
+            </div>
+            <div className="rounded-lg border bg-card p-5">
+              <h3 className="font-semibold">Available cash asks</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Can government make the payment at this point in the cash
+                program?
+              </p>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: 'static-balancer',
+      title: 'Static activity: choose within the limit',
+      shortTitle: 'Try the limit',
+      type: 'interactive',
+      content: (
+        <>
+          <p>
+            <strong>
+              Illustrative example. Amounts are simplified resource units, not
+              pesos or public records.
+            </strong>
+          </p>
+          <p>
+            The forecast is 100 units. Continuing services and existing
+            commitments require 75, leaving 25 units of fiscal space. The three
+            proposals below cost 37 in total, so they cannot all fit.
+          </p>
+          <div className="not-prose my-8 space-y-5">
+            <div className="rounded-lg border bg-card p-5">
+              <div className="flex h-10 overflow-hidden rounded-md text-xs font-semibold">
+                <div className="flex basis-3/4 items-center justify-center bg-primary text-primary-foreground">
+                  Committed: 75
+                </div>
+                <div className="flex basis-1/4 items-center justify-center bg-accent text-accent-foreground">
+                  Space: 25
+                </div>
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {PROPOSALS.map((proposal) => (
+                  <div key={proposal.name} className="rounded-md border p-3">
+                    <p className="font-medium">{proposal.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {proposal.cost} units
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-lg border bg-card p-5">
+              <h3 className="font-semibold">Revenue shock</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Suppose the forecast falls to 90 while commitments remain 75.
+                Fiscal space falls from 25 to 15 units.
+              </p>
+              <div className="mt-4 flex h-10 overflow-hidden rounded-md text-xs font-semibold">
+                <div className="flex basis-5/6 items-center justify-center bg-primary text-primary-foreground">
+                  Committed: 75
+                </div>
+                <div className="flex basis-1/6 items-center justify-center bg-accent text-accent-foreground">
+                  Space: 15
+                </div>
+              </div>
+            </div>
+            <div className="rounded-lg border border-primary bg-accent/40 p-5">
+              <h3 className="font-semibold">Your decision</h3>
+              <p className="mt-2 text-sm">
+                Choose which proposals fit first under 25 units, then under 15.
+                Write one sentence explaining the service trade-off. You may
+                defer a proposal, reduce its scope, identify a lawful new
+                revenue source, or justify additional borrowing?but none makes
+                the cost disappear.
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            This worksheet and the before/after bars are the static fallback for
+            the Phase 3 budget-balancer simulation.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'check',
+      title: 'Check your understanding',
+      shortTitle: 'Check',
+      type: 'knowledge-check',
+      content: (
+        <KnowledgeCheck
+          title="Reason about the limit"
+          moduleId="mod-02"
+          lessonId="02.3"
+          items={[
+            {
+              prompt:
+                'Planned expenditure is greater than forecast revenue. What describes the gap?',
+              options: [
+                'A fiscal deficit',
+                'A fiscal surplus',
+                'Available cash',
+                'An appropriation',
+              ],
+              correct: 0,
+              explanation:
+                'A fiscal deficit is the shortfall when expenditure exceeds revenue; it must be financed, commonly through borrowing.',
+              wrong: {
+                1: 'A surplus occurs when revenue exceeds expenditure.',
+                2: 'Cash availability concerns payment timing, not the arithmetic gap.',
+                3: 'An appropriation is legal authority to spend, not the revenue-expenditure balance.',
+              },
+            },
+            {
+              prompt:
+                'A program has an appropriation, but its payment is scheduled for a later cash release. Which statement is best?',
+              options: [
+                'The program has legal authority, but cash timing is separate.',
+                'The appropriation is automatically cancelled.',
+                'Revenue must already exceed all expenditure.',
+                'The program is a grant.',
+              ],
+              correct: 0,
+              explanation:
+                'Appropriation answers whether spending is authorized; the cash program answers when payment capacity is made available.',
+              wrong: {
+                1: 'A later cash schedule does not by itself cancel legal authority.',
+                2: 'Government can run a deficit, so this conclusion does not follow.',
+                3: 'Nothing in the scenario describes funding received without repayment.',
+              },
+            },
+            {
+              prompt:
+                'A lower revenue forecast leaves continuing commitments unchanged. What usually happens to fiscal space?',
+              options: [
+                'It narrows.',
+                'It automatically expands.',
+                'It becomes the same as public debt.',
+                'It removes all trade-offs.',
+              ],
+              correct: 0,
+              explanation:
+                'With fewer expected resources and the same prior commitments, less room remains for additional priorities.',
+              wrong: {
+                1: 'Lower expected revenue does not create more room when commitments stay fixed.',
+                2: 'Fiscal space is room for choices; debt is outstanding obligations.',
+                3: 'A tighter limit makes trade-offs more important, not less.',
+              },
+            },
+          ]}
+        />
+      ),
+    },
+    {
+      id: 'takeaway',
+      title: 'Key takeaway',
+      shortTitle: 'Takeaway',
+      type: 'takeaway',
+      content: (
+        <KeyTakeaway>
+          Revenue forecasts set the planning baseline. Deficits require
+          financing, debt creates future claims, and continuing commitments
+          reduce fiscal space. Even after spending is legally authorized,
+          available cash determines when payment can occur.
+        </KeyTakeaway>
+      ),
+    },
+  ],
+});

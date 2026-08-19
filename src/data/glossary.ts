@@ -85,6 +85,36 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'revenue-forecast',
+    term: 'Revenue forecast',
+    short:
+      'An estimate of how much revenue government expects to collect in a future period, based on stated assumptions.',
+  },
+  {
+    id: 'fiscal-deficit',
+    term: 'Fiscal deficit',
+    short:
+      'The shortfall when government expenditure is greater than government revenue during a period.',
+  },
+  {
+    id: 'fiscal-surplus',
+    term: 'Fiscal surplus',
+    short:
+      'The excess when government revenue is greater than government expenditure during a period.',
+  },
+  {
+    id: 'public-debt',
+    term: 'Public debt',
+    short:
+      'Outstanding financial obligations of government arising from past borrowing and other liabilities.',
+  },
+  {
+    id: 'fiscal-space',
+    term: 'Fiscal space',
+    short:
+      'Room in the public finances for additional priorities after expected resources, fiscal limits, and existing commitments are considered.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
