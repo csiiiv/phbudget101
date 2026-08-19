@@ -262,6 +262,18 @@ export function LessonPage() {
                 {next.id} {next.title}
               </span>
             </button>
+          ) : isCompleted && mod.slug !== '00-start-here' ? (
+            <Link
+              to="/"
+              className="group rounded-lg border border-primary/40 bg-accent/40 p-4 text-right transition-colors hover:bg-accent/70 sm:col-start-2"
+            >
+              <span className="block text-xs font-medium uppercase tracking-wide text-primary">
+                Course home →
+              </span>
+              <span className="mt-1 block text-sm font-medium leading-snug">
+                You reached the end of this module — return to the course
+              </span>
+            </Link>
           ) : (
             <span aria-hidden className="hidden sm:block" />
           )}
