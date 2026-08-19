@@ -52,7 +52,7 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 | 00 Start Here | outline | 00.1 scaffolded | 00.2, 00.3; diagnostic and concept map are Phase 2 interactives |
 | 01 Why PFM Matters | content-draft | 01.1, 01.2, 01.3 **done** | Accuracy-gate review before `review` / `final` |
 | 02 The Government's Money | outline | none | Author 02.1–02.3; seed `src/data/modules/02.json` |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 03 Anatomy of the Budget | outline | 03.4 authored | Author 03.1–03.3 |
 | 04 The Budget Cycle | outline | 04.1 scaffolded | Finish 04.1; author 04.2–04.4; see notes on int-03 |
 | 05 Appropriation → Service | outline | none | Author 05.1–05.3 |
 | 06 Local Government Budgets | outline | none | Author 06.1–06.4 |
