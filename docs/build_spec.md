@@ -9,9 +9,13 @@ The overarching specification for the course build. The content outline (`outlin
 | `docs/outline_for_web.md` | Course-level content outline; source of truth for scope and sequence | Current |
 | `docs/build_spec.md` | This file: architecture, conventions, registries | Current |
 | `docs/tech_stack.md` | Tech stack, hosting, and content pipeline decision | Decided |
+| `docs/tasklist.md` | Master list of done / in-progress / remaining work | Current |
+| `docs/styleguide.md` | UI and lesson-presentation conventions as built | Current |
+| `docs/ADRs.md` | Architecture decision records | Current |
 | `docs/modules/NN-*.md` | Per-module specs (11 files, modules 0–10) | Draft |
 | `docs/budget_natin_rough_layout.md` | Map of the source guidebook (reference only) | Frozen |
 | `docs/reference-section.md` | Spec for the Supporting Reference Section (ref-01 to ref-10) | Current |
+| `docs/notes/` | Working notes (lesson format, interactive options) | Current |
 | `sources/*.pdf` | Source material | Frozen |
 
 Rule: scope changes happen in the outline first, then propagate to the affected module spec. Module specs never introduce new scope.
@@ -21,7 +25,7 @@ Rule: scope changes happen in the outline first, then propagate to the affected 
 * **Spine:** Modules 0–10 in fixed order. Modules 1–9 each teach one stage of the arc: why budgets matter → where money comes from → how budgets are structured → how the cycle works → how funds become services → local budgets → how to read documents → how to evaluate decisions → how to participate. Module 10 integrates everything.
 * **Learning paths** (chosen in Module 0, switchable anytime):
   * *Quick overview:* Modules 1, 3, 4, 5, plus the reference section.
-  * *Full Budget 101:* Modules 0–10 in order.
+  * *Full PH Budget 101:* Modules 0–10 in order.
   * *Topic-based reference:* free navigation; every lesson page is reachable and self-contained via the reference section.
 * **Reference section:** separate area — glossary, document library, institutional map, budget calendar, classification reference, local budget structures, acronyms, legal references, sources and attribution, data-source directory, FAQ (full registry in `reference-section.md`). Lessons link into it; it never depends on lesson order.
 * **Progression model:** linear default, but no hard gates except the capstone, which requires Modules 1–9 content availability (not completion scores).
