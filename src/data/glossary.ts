@@ -54,6 +54,13 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'besf',
+    term: 'Budget of Expenditures and Sources of Financing',
+    acronym: 'BESF',
+    short:
+      'The budget document that presents estimated government expenditures together with the revenues, borrowing, and other financing that support them.',
+  },
+  {
     id: 'budget-call',
     term: 'Budget call',
     short:
