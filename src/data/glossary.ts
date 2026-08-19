@@ -85,6 +85,12 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'coalition',
+    term: 'Coalition',
+    short:
+      'Two or more groups or actors that agree on shared objectives, communicate, and coordinate joint action to pursue them.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
