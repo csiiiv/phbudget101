@@ -85,6 +85,48 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'adequacy',
+    term: 'Adequacy',
+    short:
+      'Whether the scale and design of a budget response are sufficient relative to the identified need and intended standard.',
+  },
+  {
+    id: 'efficiency',
+    term: 'Efficiency',
+    short:
+      'How well resources are converted into useful outputs or services, considering cost, time, quality, and avoidable waste.',
+  },
+  {
+    id: 'effectiveness',
+    term: 'Effectiveness',
+    short:
+      'The extent to which a policy, program, or budget decision achieves its intended results.',
+  },
+  {
+    id: 'equity',
+    term: 'Equity',
+    short:
+      'Whether benefits, burdens, and access are distributed fairly, taking account of differences in people’s needs and circumstances.',
+  },
+  {
+    id: 'sustainability',
+    term: 'Sustainability',
+    short:
+      'Whether financing, implementation capacity, and intended benefits can be maintained over time without undermining future needs.',
+  },
+  {
+    id: 'transparency',
+    term: 'Transparency',
+    short:
+      'Whether relevant information about decisions, resources, implementation, and results is accessible, timely, and understandable.',
+  },
+  {
+    id: 'accountability',
+    term: 'Accountability',
+    short:
+      'Whether responsible actors must explain decisions and results, face review, and correct problems or answer for failures.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
