@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { MDXContent } from '@/components/content/MDXContent';
-import { hasLessonMdx } from '@/content/registry';
+import { LessonContent } from '@/components/content/LessonContent';
+import { hasLessonContent } from '@/content/registry';
 import { courseModules } from '@/data/course';
 import { useProgress } from '@/lib/useProgress';
 
@@ -38,7 +38,7 @@ export function LessonPage() {
   }
 
   const isCompleted = progress?.modules[mod.id]?.lessons[lesson.id] === 'completed';
-  const hasMdx = hasLessonMdx(mod.slug, lesson.id);
+  const hasContent = hasLessonContent(mod.slug, lesson.id);
 
   return (
     <article className="space-y-6">
@@ -52,9 +52,9 @@ export function LessonPage() {
         <h1 className="text-3xl font-bold tracking-tight">{lesson.title}</h1>
       </header>
 
-      {hasMdx ? (
-        <div className="lesson-prose">
-          <MDXContent moduleSlug={mod.slug} lessonId={lesson.id} />
+      {hasContent ? (
+        <div className="lesson-prose prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-primary">
+          <LessonContent moduleSlug={mod.slug} lessonId={lesson.id} />
         </div>
       ) : (
         <div className="rounded-lg border border-dashed bg-card p-6 text-sm text-muted-foreground">

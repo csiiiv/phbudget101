@@ -4,6 +4,8 @@
 @import "@fontsource-variable/geist";
 @import "./lesson.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

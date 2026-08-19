@@ -1,28 +1,26 @@
-import { useEffect, useState } from 'react';
-import { findLessonMdx, type MDXModule } from '@/content/registry';
+import { useEffect, useState, type ComponentType } from 'react';
+import { findLessonContent } from '@/content/registry';
 import { Figure } from './Figure';
 import { TraceConcern } from '@/components/interactives/TraceConcern';
 
-interface MDXContentProps {
+interface LessonContentProps {
   moduleSlug: string;
   lessonId: string;
 }
 
-/** Components available inside lesson MDX (no import needed in the MDX file). */
+/** Components injected into .mdx lessons (no import needed in the MDX file). */
 const mdxComponents = { Figure, TraceConcern };
 
-type LessonComponent = MDXModule['default'];
-
 /**
- * Lazily loads and renders a lesson's MDX body with route-level code
- * splitting (glob import -> dynamic chunk per lesson).
+ * Lazily loads and renders a lesson body (.tsx default, .mdx supported) with
+ * route-level code splitting via the glob registry.
  */
-export function MDXContent({ moduleSlug, lessonId }: MDXContentProps) {
-  const [Content, setContent] = useState<LessonComponent | null>(null);
+export function LessonContent({ moduleSlug, lessonId }: LessonContentProps) {
+  const [Content, setContent] = useState<ComponentType<Record<string, unknown>> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loader = findLessonMdx(moduleSlug, lessonId);
+    const loader = findLessonContent(moduleSlug, lessonId);
     if (!loader) {
       setContent(null);
       setError(null);
