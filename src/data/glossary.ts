@@ -85,6 +85,40 @@ export const glossary: GlossaryEntry[] = [
     short:
       'The twelve-month period a budget covers. In the Philippines the fiscal year is the calendar year.',
   },
+  {
+    id: 'local-development-investment-program',
+    term: 'Local Development Investment Program',
+    acronym: 'LDIP',
+    short:
+      "A multi-year program that translates an LGU's development plan into prioritized programs and projects for funding.",
+  },
+  {
+    id: 'annual-investment-program',
+    term: 'Annual Investment Program',
+    acronym: 'AIP',
+    short:
+      "The annual portion of an LGU's investment program proposed for implementation and funding in a budget year.",
+  },
+  {
+    id: 'local-chief-executive',
+    term: 'Local chief executive',
+    acronym: 'LCE',
+    short:
+      'The governor, city mayor, municipal mayor, or punong barangay who heads the executive branch of an LGU.',
+  },
+  {
+    id: 'local-finance-committee',
+    term: 'Local finance committee',
+    acronym: 'LFC',
+    short:
+      'The local body that helps estimate income, recommend expenditure ceilings, and advise on LGU finances.',
+  },
+  {
+    id: 'local-executive-budget',
+    term: 'Local executive budget',
+    short:
+      'The annual local budget proposal prepared by the local chief executive and submitted to the sanggunian.',
+  },
 ];
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
