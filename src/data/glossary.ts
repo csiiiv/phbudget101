@@ -54,6 +54,47 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'besf',
+    term: 'Budget of Expenditures and Sources of Financing',
+    acronym: 'BESF',
+    short:
+      'The budget document that presents estimated government expenditures together with the revenues, borrowing, and other financing that support them.',
+  },
+  {
+    id: 'far-1',
+    term: 'Financial Accountability Report No. 1',
+    acronym: 'FAR No. 1',
+    short:
+      'The national agency report showing appropriations, allotments, obligations, disbursements, and balances for a reporting period.',
+  },
+  {
+    id: 'nca',
+    term: 'Notice of Cash Allocation',
+    acronym: 'NCA',
+    short:
+      'Cash authority issued to an agency or operating unit through the government banking system to cover eligible cash requirements.',
+  },
+  {
+    id: 'annual-audit-report',
+    term: 'Annual Audit Report',
+    acronym: 'AAR',
+    short:
+      'COA’s year-end report on its audit of a government entity’s accounts and operations, including the relevant financial statements and audit observations.',
+  },
+  {
+    id: 'annual-investment-program',
+    term: 'Annual Investment Program',
+    acronym: 'AIP',
+    short:
+      'An LGU’s approved annual list of programs, projects, and activities drawn from its local development investment program.',
+  },
+  {
+    id: 'appropriation-ordinance',
+    term: 'Appropriation ordinance',
+    acronym: 'AO',
+    short:
+      'The ordinance through which a sanggunian authorizes an LGU’s annual or supplemental budget for specified purposes and conditions.',
+  },  {
     id: 'budget-call',
     term: 'Budget call',
     short:
