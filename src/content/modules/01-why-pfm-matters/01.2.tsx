@@ -1,5 +1,6 @@
 import { KeyTakeaway } from '@/components/content/KeyTakeaway';
 import { KnowledgeCheck } from '@/components/content/KnowledgeCheck';
+import { defineLesson } from '@/lib/sections';
 
 const LENSES = [
   {
@@ -28,143 +29,177 @@ const LENSES = [
   },
 ];
 
-export default function Lesson0102() {
-  return (
-    <>
-      <p className="text-lg text-muted-foreground">
-        Is a budget just a spreadsheet? It is at least four documents wearing
-        one cover.
-      </p>
-
-      <h2>One document, four readings</h2>
-      <p>
-        A budget looks like a table of numbers. But depending on the question
-        you bring to it, the same document answers in four different ways. The
-        rest of this course uses these four lenses constantly, so it is worth
-        fixing them now.
-      </p>
-
-      <div className="not-prose my-8 grid gap-4 sm:grid-cols-2">
-        {LENSES.map((l, i) => (
-          <div
-            key={l.lens}
-            className="rounded-lg border bg-card p-5 space-y-2"
-          >
-            <div className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Lens {i + 1}
-            </div>
-            <h3 className="font-semibold leading-snug">{l.lens}</h3>
-            <p className="text-sm italic text-muted-foreground">{l.question}</p>
-            <p className="text-sm leading-relaxed">{l.body}</p>
-            {l.signal && (
-              <p className="text-xs text-muted-foreground pt-1">
-                <span className="font-medium">Where you see it:</span> {l.signal}
-              </p>
-            )}
-            {l.realWorld && (
-              <p className="text-xs text-muted-foreground pt-1">
-                <span className="font-medium">Where you see it:</span> {l.realWorld}
-              </p>
-            )}
+export default defineLesson({
+  sections: [
+    {
+      id: 'start',
+      title: 'Is a budget just a spreadsheet?',
+      shortTitle: 'Start',
+      type: 'introduction',
+      content: (
+        <p className="text-lg text-muted-foreground">
+          Is a budget just a spreadsheet? It is at least four documents wearing
+          one cover.
+        </p>
+      ),
+    },
+    {
+      id: 'four-readings',
+      title: 'One document, four readings',
+      shortTitle: 'Four readings',
+      type: 'concept',
+      content: (
+        <>
+          <p>
+            A budget looks like a table of numbers. But depending on the question
+            you bring to it, the same document answers in four different ways. The
+            rest of this course uses these four lenses constantly, so it is worth
+            fixing them now.
+          </p>
+          <div className="not-prose my-8 grid gap-4 sm:grid-cols-2">
+            {LENSES.map((l, i) => (
+              <div key={l.lens} className="rounded-lg border bg-card p-5 space-y-2">
+                <div className="text-xs font-semibold uppercase tracking-wide text-primary">
+                  Lens {i + 1}
+                </div>
+                <h3 className="font-semibold leading-snug">{l.lens}</h3>
+                <p className="text-sm italic text-muted-foreground">{l.question}</p>
+                <p className="text-sm leading-relaxed">{l.body}</p>
+                {(l.signal ?? l.realWorld) && (
+                  <p className="text-xs text-muted-foreground pt-1">
+                    <span className="font-medium">Where you see it:</span>{' '}
+                    {l.signal ?? l.realWorld}
+                  </p>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      <h2>Follow the money</h2>
-      <p>
-        The second lens deserves special attention, because it is the one this
-        course keeps returning to. Governments say many things; the budget is
-        where those statements meet arithmetic. When a program is announced but
-        never funded, the announcement is not yet a policy — it is a press
-        release. When a program is funded year after year, that is a priority,
-        whatever the speeches say.
-      </p>
-      <p>
-        <strong>What is funded is what is real.</strong> A budget increase
-        reveals a new priority. A cut reveals an abandoned one. A line that
-        exists but never gets spent reveals an implementation problem. Learning
-        to read these signals is the core skill of budget literacy.
-      </p>
-
-      <h2>Why the fourth lens matters most for accountability</h2>
-      <p>
-        Anyone can read a budget as a plan or as priorities. The harder — and
-        more consequential — reading treats it as an accountability document.
-        Because every peso must be authorized, obligated, disbursed, and
-        accounted for, the budget leaves a trail. That trail is what turns
-        public money into public trust: it makes it possible to ask, years
-        later, whether the classroom promised in the plan was the classroom
-        built on the ground.
-      </p>
-
-      <KnowledgeCheck
-        title="Classify the statement under the correct lens"
-        moduleId="mod-01"
-        lessonId="01.2"
-        items={[
-          {
-            prompt:
-              '"The 2025 program support fund for a child nutrition drive is ₱1.2 billion, up from ₱0.9 billion the year before."',
-            options: [
-              'Financial plan',
-              'Statement of priorities',
-              'Legal authorization',
-              'Accountability mechanism',
-            ],
-            correct: 1,
-            explanation:
-              'The year-on-year comparison is about choice: the increase signals a rising priority relative to everything else that could have been funded.',
-            wrong: {
-              0: 'Reading it as a plan is about affordability — whether revenues cover the spending. This statement compares allocations over time, which is about choice.',
-              2: 'Nothing here is about legal authority to spend — the statement is a comparison of amounts between years.',
-              3: 'No audit trail is involved; this is a forward-looking allocation comparison.',
+        </>
+      ),
+    },
+    {
+      id: 'follow-the-money',
+      title: 'Follow the money',
+      shortTitle: 'Follow the money',
+      type: 'concept',
+      content: (
+        <>
+          <p>
+            The second lens deserves special attention, because it is the one this
+            course keeps returning to. Governments say many things; the budget is
+            where those statements meet arithmetic. When a program is announced but
+            never funded, the announcement is not yet a policy — it is a press
+            release. When a program is funded year after year, that is a priority,
+            whatever the speeches say.
+          </p>
+          <p>
+            <strong>What is funded is what is real.</strong> A budget increase
+            reveals a new priority. A cut reveals an abandoned one. A line that
+            exists but never gets spent reveals an implementation problem. Learning
+            to read these signals is the core skill of budget literacy.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'accountability',
+      title: 'Why the fourth lens matters most',
+      shortTitle: 'Accountability',
+      type: 'concept',
+      content: (
+        <p>
+          Anyone can read a budget as a plan or as priorities. The harder — and
+          more consequential — reading treats it as an accountability document.
+          Because every peso must be authorized, obligated, disbursed, and
+          accounted for, the budget leaves a trail. That trail is what turns
+          public money into public trust: it makes it possible to ask, years
+          later, whether the classroom promised in the plan was the classroom
+          built on the ground.
+        </p>
+      ),
+    },
+    {
+      id: 'check',
+      title: 'Check your understanding',
+      shortTitle: 'Check',
+      type: 'knowledge-check',
+      content: (
+        <KnowledgeCheck
+          title="Classify the statement under the correct lens"
+          moduleId="mod-01"
+          lessonId="01.2"
+          items={[
+            {
+              prompt:
+                '"The 2025 program support fund for a child nutrition drive is ₱1.2 billion, up from ₱0.9 billion the year before."',
+              options: [
+                'Financial plan',
+                'Statement of priorities',
+                'Legal authorization',
+                'Accountability mechanism',
+              ],
+              correct: 1,
+              explanation:
+                'The year-on-year comparison is about choice: the increase signals a rising priority relative to everything else that could have been funded.',
+              wrong: {
+                0: 'Reading it as a plan is about affordability — whether revenues cover the spending. This statement compares allocations over time, which is about choice.',
+                2: 'Nothing here is about legal authority to spend — the statement is a comparison of amounts between years.',
+                3: 'No audit trail is involved; this is a forward-looking allocation comparison.',
+              },
             },
-          },
-          {
-            prompt:
-              '"No agency may enter into a contract for a new feeding center until the funds are appropriated for it."',
-            options: [
-              'Financial plan',
-              'Statement of priorities',
-              'Legal authorization',
-              'Accountability mechanism',
-            ],
-            correct: 2,
-            explanation:
-              'This is the budget as law: appropriation comes before obligation. Spending without it is unauthorized.',
-            wrong: {
-              0: 'Affordability is not the issue — the statement is about permission to spend, not whether the money exists.',
-              1: 'The statement is not comparing this program against others; it sets a condition for any spending at all.',
-              3: 'No record of past spending is at issue here; this is a rule about authorization before the fact.',
+            {
+              prompt:
+                '"No agency may enter into a contract for a new feeding center until the funds are appropriated for it."',
+              options: [
+                'Financial plan',
+                'Statement of priorities',
+                'Legal authorization',
+                'Accountability mechanism',
+              ],
+              correct: 2,
+              explanation:
+                'This is the budget as law: appropriation comes before obligation. Spending without it is unauthorized.',
+              wrong: {
+                0: 'Affordability is not the issue — the statement is about permission to spend, not whether the money exists.',
+                1: 'The statement is not comparing this program against others; it sets a condition for any spending at all.',
+                3: 'No record of past spending is at issue here; this is a rule about authorization before the fact.',
+              },
             },
-          },
-          {
-            prompt:
-              '"The audit report found that 60% of last year’s classroom construction budget was obligated but only 20% was disbursed by year-end."',
-            options: [
-              'Financial plan',
-              'Statement of priorities',
-              'Legal authorization',
-              'Accountability mechanism',
-            ],
-            correct: 3,
-            explanation:
-              'The audit trail lets reviewers compare what was authorized with what actually moved — and ask why the gap exists.',
-            wrong: {
-              0: 'No forecast or revenue estimate is involved — the statement reports what already happened to money that was authorized.',
-              1: 'The percentages describe execution, not a choice among competing programs.',
-              2: 'The funds were already appropriated; the issue is what happened after authorization.',
+            {
+              prompt:
+                '"The audit report found that 60% of last year’s classroom construction budget was obligated but only 20% was disbursed by year-end."',
+              options: [
+                'Financial plan',
+                'Statement of priorities',
+                'Legal authorization',
+                'Accountability mechanism',
+              ],
+              correct: 3,
+              explanation:
+                'The audit trail lets reviewers compare what was authorized with what actually moved — and ask why the gap exists.',
+              wrong: {
+                0: 'No forecast or revenue estimate is involved — the statement reports what already happened to money that was authorized.',
+                1: 'The percentages describe execution, not a choice among competing programs.',
+                2: 'The funds were already appropriated; the issue is what happened after authorization.',
+              },
             },
-          },
-        ]}
-      />
-
-      <KeyTakeaway>
-        A budget is simultaneously a financial plan, a statement of
-        priorities, a legal authorization, and an accountability mechanism.
-        Which lens you use depends on the question you are asking — and{' '}
-        <strong>what is funded is what is real</strong>.
-      </KeyTakeaway>
-    </>
-  );
-}
+          ]}
+        />
+      ),
+    },
+    {
+      id: 'takeaway',
+      title: 'Key takeaway',
+      shortTitle: 'Takeaway',
+      type: 'takeaway',
+      content: (
+        <KeyTakeaway>
+          A budget is simultaneously a financial plan, a statement of
+          priorities, a legal authorization, and an accountability mechanism.
+          Which lens you use depends on the question you are asking — and{' '}
+          <strong>what is funded is what is real</strong>.
+        </KeyTakeaway>
+      ),
+    },
+  ],
+});

@@ -21,6 +21,7 @@ export function useProgress(): {
   markVisited: (moduleId: string, lessonId: string) => void;
   markCompleted: (moduleId: string, lessonId: string) => void;
   setPath: (path: 'quick' | 'full') => void;
+  setReadingMode: (mode: 'guided' | 'full') => void;
   reset: () => void;
   recordMistake: (moduleId: string, lessonId: string, itemIndex: number, mistake: Mistake) => void;
   clearMistake: (moduleId: string, lessonId: string, itemIndex: number) => void;
@@ -71,6 +72,11 @@ export function useProgress(): {
     [mutate]
   );
 
+  const setReadingMode = useCallback(
+    (mode: 'guided' | 'full') => mutate((s) => ({ ...s, readingMode: mode })),
+    [mutate]
+  );
+
   const recordMistake = useCallback(
     (moduleId: string, lessonId: string, itemIndex: number, mistake: Mistake) =>
       mutate((s) => ({
@@ -109,5 +115,5 @@ export function useProgress(): {
     [progress]
   );
 
-  return { progress, markVisited, markCompleted, setPath, reset, moduleStatus, recordMistake, clearMistake };
+  return { progress, markVisited, markCompleted, setPath, setReadingMode, reset, moduleStatus, recordMistake, clearMistake };
 }

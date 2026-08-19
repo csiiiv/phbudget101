@@ -21,6 +21,9 @@ const draftsSchema = z.object({
   capstone: capstoneDraftSchema.optional(),
 });
 
+/** Preferred lesson presentation; defaults to guided for new learners. */
+export const readingModeSchema = z.enum(['guided', 'full']).default('guided');
+
 export const mistakeSchema = z.object({
   /** Snapshot of the question prompt (survives lesson text edits). */
   question: z.string(),
@@ -47,6 +50,7 @@ export const progressFileSchema = z.object({
   modules: z.record(z.string(), z.object({ lessons: lessonMapSchema })),
   diagnostic: diagnosticSchema,
   drafts: draftsSchema,
+  readingMode: readingModeSchema,
   mistakes: mistakesSchema,
 });
 

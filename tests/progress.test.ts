@@ -9,6 +9,7 @@ const validFile = {
   modules: { 'mod-04': { lessons: { '04.1': 'completed' } } },
   diagnostic: { taken: true, suggested: 'quick' },
   drafts: {},
+  readingMode: 'guided',
   mistakes: {},
 };
 

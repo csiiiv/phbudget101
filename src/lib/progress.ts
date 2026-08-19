@@ -57,6 +57,7 @@ export function newProgress(path: 'quick' | 'full' = 'full'): ProgressState {
     modules: {},
     diagnostic: { taken: false },
     drafts: {},
+    readingMode: 'guided',
     mistakes: {},
   };
 }
