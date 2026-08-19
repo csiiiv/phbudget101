@@ -40,6 +40,30 @@ export const glossary: GlossaryEntry[] = [
       'The actual payment of public money. A budget line can be appropriated and obligated long before it is disbursed.',
   },
   {
+    id: 'budget-utilization-rate',
+    term: 'Budget utilization rate',
+    acronym: 'BUR',
+    short:
+      'A financial ratio comparing two budget execution amounts, such as obligations to allotments or disbursements to obligations. The formula and cutoff date must be stated.',
+  },
+  {
+    id: 'physical-accomplishment',
+    term: 'Physical accomplishment',
+    short:
+      'The actual quantity, quality, or timeliness of work delivered compared with the corresponding physical target.',
+  },
+  {
+    id: 'output',
+    term: 'Output',
+    short:
+      'A good or service that an agency delivers to an intended population or client group.',
+  },
+  {
+    id: 'outcome',
+    term: 'Outcome',
+    short:
+      'A change, effect, or result that an agency program or strategy seeks to produce for people, society, or the physical environment.',
+  },  {
     id: 'gaa',
     term: 'General Appropriations Act',
     acronym: 'GAA',
