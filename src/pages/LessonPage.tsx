@@ -183,7 +183,10 @@ export function LessonPage() {
                 onSelect={goTo}
               />
 
-              <div className="lesson-prose prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-primary">
+              <div
+                key={lesson.id}
+                className="lesson-prose prose prose-slate max-w-none prose-headings:tracking-tight prose-a:text-primary"
+              >
                 {mode === 'guided' ? (
                   <GuidedBody
                     sections={sections}
@@ -204,7 +207,10 @@ export function LessonPage() {
               </div>
             </>
           ) : (
-            <LegacyLesson legacy={(loaded as LoadedLesson).legacy ?? null} />
+            <LegacyLesson
+              key={lesson.id}
+              legacy={(loaded as LoadedLesson).legacy ?? null}
+            />
           )}
         </>
       )}
