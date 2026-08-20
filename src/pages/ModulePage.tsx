@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { CircleCheck } from 'lucide-react';
 import { courseModules } from '@/data/course';
 import { useProgress } from '@/lib/useProgress';
 
@@ -22,6 +23,10 @@ export function ModulePage() {
   const done = Object.values(lessons).filter((s) => s === 'completed').length;
   const total = mod.lessons.length;
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const nextModule =
+    courseModules[
+      courseModules.findIndex((m) => m.id === mod.id) + 1
+    ] ?? null;
 
   return (
     <article className="space-y-8">
@@ -64,16 +69,19 @@ export function ModulePage() {
                   to={`/modules/${mod.slug}/lessons/${encodeURIComponent(lesson.id)}`}
                   className="flex items-center gap-4 rounded-lg border bg-card p-4 hover:bg-secondary/60 transition-colors"
                 >
-                  <span
-                    className={`grid size-8 shrink-0 place-items-center rounded-full border text-xs font-medium tabular-nums ${
-                      status === 'completed'
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'text-muted-foreground'
-                    }`}
-                    aria-hidden
-                  >
-                    {status === 'completed' ? '✓' : lesson.id.split('.')[1]}
-                  </span>
+                  {status === 'completed' ? (
+                    <CircleCheck
+                      className="size-8 shrink-0 text-primary"
+                      aria-hidden
+                    />
+                  ) : (
+                    <span
+                      className="grid size-8 shrink-0 place-items-center rounded-full border text-xs font-medium tabular-nums text-muted-foreground"
+                      aria-hidden
+                    >
+                      {lesson.id.split('.')[1]}
+                    </span>
+                  )}
                   <span className="flex-1 font-medium leading-snug">
                     {lesson.title}
                   </span>
@@ -88,6 +96,22 @@ export function ModulePage() {
           })}
         </ol>
       </section>
+      {nextModule && done === total && (
+        <section className="rounded-lg border border-primary/40 bg-accent/40 p-5">
+          <p className="text-xs font-medium uppercase tracking-wide text-primary">
+            Module complete
+          </p>
+          <p className="mt-1 font-semibold leading-snug">
+            You finished all {total} lessons of Module {mod.id.replace('mod-', '')}.
+          </p>
+          <Link
+            to={`/modules/${nextModule.slug}`}
+            className="mt-3 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+          >
+            Next module: {nextModule.id.replace('mod-', '')} — {nextModule.title} →
+          </Link>
+        </section>
+      )}
     </article>
   );
 }

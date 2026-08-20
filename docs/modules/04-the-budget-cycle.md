@@ -30,7 +30,7 @@ After this module, the learner can:
 * Guiding question: Who writes the first draft of the national budget?
 * Concepts: fiscal targets and budget priorities (DBCC, macroeconomic assumptions); the budget call; agency proposals; technical budget hearings; executive review; NEP preparation
 * Interactive or visual: int-03 timeline (shared across 04.1–04.4)
-* Worked example: active-transport budget items (protected bike lanes, service contracting) traced from advocacy input during preparation into the enacted budget — presented as public record of the items, amounts, and dates, with civil society engagement described generically (no organization named)
+* Worked example: active-transport budget items (protected bike lanes, service contracting) traced from advocacy input during preparation into the enacted budget — public record of the items, amounts, and dates; the Move As One coalition is named as the documented proponent under the factual-event exception (ADR-008, amended 2026-08), described neutrally with no implied endorsement
 * Activity and knowledge check: sequence the preparation steps; 2-item check
 
 ### 04.2 Legislation: Congress Decides

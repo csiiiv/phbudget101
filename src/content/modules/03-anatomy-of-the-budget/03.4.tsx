@@ -110,8 +110,8 @@ export default defineLesson({
         <>
           <p>
             A <Term id="current-appropriation" expand /> comes from the budget for
-            the current fiscal year. A <Term id="continuing-appropriation" expand />
-            is prior-year authority that remains valid into the current year under
+            the current fiscal year. A <Term id="continuing-appropriation" expand /> is
+            prior-year authority that remains valid into the current year under
             the law and rules that govern it.
           </p>
           <p>

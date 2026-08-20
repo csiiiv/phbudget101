@@ -29,7 +29,7 @@ After this module, the learner can:
 ### 09.1 Why Participate
 
 * Guiding question: The budget process is technical — does my input actually change anything?
-* Concepts: participation as right and responsibility across the cycle; documented instances where civil society engagement moved budget outcomes (₱69 billion and ₱33 billion asks vs enacted figures — attributed generically to civil society coalitions, amounts are public record); what participation realistically shifts
+* Concepts: participation as right and responsibility across the cycle; documented instances where civil society engagement moved budget outcomes (₱69 billion and ₱33 billion asks vs enacted figures — named proponents on the public record per the factual-event exception, ADR-008 amended 2026-08); what participation realistically shifts
 * Interactive or visual: engagement-outcomes timeline strip
 * Worked example: the same active-transport items from 04.1, now told as the participation story — asks, engagement, and enacted outcomes
 * Activity and knowledge check: match participation claim to phase; 2-item check
@@ -76,7 +76,7 @@ Module check: 6 items on entry points, listening method, target-mapping, and CSW
 
 ## Worked examples used
 
-* Active-transport items (09.1): the participation story of the same budget lines used in 04.1 and 07.4 — asks vs enacted outcomes, engagement described generically. Using one thread across three modules gives the course a running example without naming any organization.
+* Active-transport items (04.1): the participation story of the same budget lines used in 04.1 and 07.4 — asks vs enacted outcomes; the Move As One coalition is named as the documented proponent under the factual-event exception (ADR-008, amended 2026-08), described neutrally. Using one thread across three modules gives the course a running example.
 * City health-emergency composite (09.2): reprises 06.4 with the listening method as the focus.
 * Sectoral-proposal composite (09.4): illustrative, labeled as such; assembled from the guidebook's proposal patterns rather than any named fellow or program.
 

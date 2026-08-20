@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { KeyTakeaway } from "@/components/content/KeyTakeaway";
 import { Term } from "@/components/content/Term";
 import { defineLesson } from "@/lib/sections";
@@ -123,40 +121,17 @@ export default defineLesson({
       ),
     },
     {
-      id: "choose",
-      title: "Choose your path",
-      shortTitle: "Choose",
+      id: "paths-ahead",
+      title: "Your choice comes at the end",
+      shortTitle: "What’s next",
       type: "takeaway",
       content: (
-        <>
-          <KeyTakeaway>
-            Start with the route that matches your goal today. There are no
-            locked lessons, and you can change paths at any time.
-          </KeyTakeaway>
-          <nav
-            aria-label="Choose a learning path"
-            className="not-prose grid gap-3 sm:grid-cols-3"
-          >
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Start the quick overview
-            </Link>
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/modules/00-start-here/lessons/00.2"
-            >
-              Continue the full course
-            </Link>
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/reference"
-            >
-              Browse by topic
-            </Link>
-          </nav>
-        </>
+        <KeyTakeaway>
+          Keep these three routes in mind as you go. After a short self-check at
+          the end of this module, you will choose the one that fits you — and
+          you can change it at any time. Continue to the next lesson to see the
+          whole course in one flow.
+        </KeyTakeaway>
       ),
     },
   ],

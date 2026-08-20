@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-
 import { KeyTakeaway } from "@/components/content/KeyTakeaway";
+import { CourseworkChooser } from "@/components/content/CourseworkChooser";
 import { defineLesson } from "@/lib/sections";
 
 export default defineLesson({
@@ -108,12 +107,6 @@ export default defineLesson({
               and want a short map. It covers Modules 1, 3, 4, and 5, with the
               reference section available when you need more detail.
             </p>
-            <Link
-              className="mt-4 inline-block text-sm font-semibold text-primary hover:underline"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Begin the quick overview
-            </Link>
           </section>
           <section className="rounded-lg border bg-card p-5">
             <h3 className="font-semibold text-foreground">
@@ -124,12 +117,6 @@ export default defineLesson({
               or if you want a step-by-step foundation. The full route follows
               Modules 0–10 in order.
             </p>
-            <Link
-              className="mt-4 inline-block text-sm font-semibold text-primary hover:underline"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Follow the full course
-            </Link>
           </section>
           <p className="text-sm text-muted-foreground sm:col-span-2">
             Mixed answers are normal. If you are unsure, start with the full
@@ -151,6 +138,42 @@ export default defineLesson({
           when you want a foundation or found a gap. Neither choice is
           permanent.
         </KeyTakeaway>
+      ),
+    },
+    {
+      id: "choose-path",
+      title: "Choose your coursework",
+      shortTitle: "Choose",
+      type: "takeaway",
+      content: (
+        <>
+          <p>
+            When you are ready, mark this lesson complete below. Your way out
+            of Start Here unlocks with it — pick the route that fits you today.
+            You can return or switch at any time.
+          </p>
+          <CourseworkChooser
+            moduleId="mod-00"
+            lessonId="00.3"
+            options={[
+              {
+                to: "/modules/01-why-pfm-matters/lessons/01.1",
+                label: "Start the quick overview",
+                description: "Modules 1, 3, 4, and 5 · about 2–3 hours",
+              },
+              {
+                to: "/modules/01-why-pfm-matters/lessons/01.1",
+                label: "Continue the full course",
+                description: "Modules 0–10 · about 10–12 hours",
+              },
+              {
+                to: "/reference",
+                label: "Browse by topic",
+                description: "Reference pages and every lesson",
+              },
+            ]}
+          />
+        </>
       ),
     },
   ],

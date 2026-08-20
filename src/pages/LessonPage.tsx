@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SubwayMap, type StationState } from '@/components/lesson/SubwayMap';
 import { findLessonContent, hasLessonContent } from '@/content/registry';
@@ -242,7 +243,13 @@ export function LessonPage() {
               onClick={() => markCompleted(mod.id, lesson.id)}
               disabled={isCompleted}
             >
-              {isCompleted ? '✓ Lesson completed' : 'Mark lesson complete'}
+              {isCompleted ? (
+                <>
+                  <Check className="size-4" aria-hidden /> Lesson completed
+                </>
+              ) : (
+                'Mark lesson complete'
+              )}
             </Button>
           </div>
           <nav

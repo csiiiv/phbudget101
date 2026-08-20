@@ -1,6 +1,21 @@
 import { Link } from 'react-router-dom';
+import { CircleCheck } from 'lucide-react';
 import { courseModules } from '@/data/course';
 import { useProgress } from '@/lib/useProgress';
+
+/** First lesson the learner has not completed, in course order. */
+function nextUpcomingLesson(
+  progress: ReturnType<typeof useProgress>['progress']
+) {
+  for (const mod of courseModules) {
+    const lessons = progress?.modules[mod.id]?.lessons ?? {};
+    const lesson = mod.lessons.find((l) => lessons[l.id] !== 'completed');
+    if (lesson) {
+      return { mod, lesson };
+    }
+  }
+  return null;
+}
 
 export function HomePage() {
   const { progress } = useProgress();
@@ -9,6 +24,11 @@ export function HomePage() {
       sum + Object.values(m.lessons).filter((s) => s === 'completed').length,
     0
   );
+  const next = nextUpcomingLesson(progress);
+  const startHref =
+    next === null
+      ? '/modules/00-start-here'
+      : `/modules/${next.mod.slug}/lessons/${encodeURIComponent(next.lesson.id)}`;
 
   return (
     <div className="space-y-10">
@@ -25,10 +45,12 @@ export function HomePage() {
         </p>
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <Link
-            to="/modules/00-start-here"
+            to={startHref}
             className="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
-            {completedTotal > 0 ? 'Continue the course' : 'Start the course'}
+            {completedTotal > 0
+              ? `Continue: ${next ? `${next.lesson.id} ${next.lesson.title}` : 'the course'}`
+              : 'Start the course'}
           </Link>
           <Link
             to="/reference"
@@ -58,6 +80,7 @@ export function HomePage() {
             const lessons = progress?.modules[mod.id]?.lessons ?? {};
             const done = Object.values(lessons).filter((s) => s === 'completed').length;
             const total = mod.lessons.length;
+            const moduleComplete = total > 0 && done === total;
             return (
               <li key={mod.id}>
                 <Link
@@ -73,11 +96,21 @@ export function HomePage() {
                       {mod.purpose}
                     </span>
                   </span>
-                  {done > 0 && (
+                  {moduleComplete ? (
+                    <span
+                      className="shrink-0"
+                      title={`Module complete — all ${total} lessons`}
+                    >
+                      <CircleCheck
+                        className="size-7 text-emerald-600"
+                        aria-label={`Module complete — all ${total} lessons`}
+                      />
+                    </span>
+                  ) : done > 0 ? (
                     <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
                       {done}/{total}
                     </span>
-                  )}
+                  ) : null}
                 </Link>
               </li>
             );
