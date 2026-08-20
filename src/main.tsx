@@ -10,6 +10,7 @@ import { ReferencePage } from '@/pages/ReferencePage';
 import { AboutPage } from '@/pages/AboutPage';
 import { SettingsPage } from '@/pages/SettingsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { LocaleProvider } from '@/lib/LocaleProvider';
 import '@/styles/index.css';
 
 const router = createBrowserRouter(
@@ -33,6 +34,8 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <LocaleProvider>
+      <RouterProvider router={router} />
+    </LocaleProvider>
   </StrictMode>
 );

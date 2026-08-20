@@ -6,6 +6,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { getTerm } from '@/data/glossary';
+import { useLocale, useT } from '@/lib/LocaleProvider';
 import { cn } from '@/lib/utils';
 
 interface TermProps {
@@ -64,7 +65,9 @@ function releasePinned(unpin: () => void) {
  * different term) closes the previous one.
  */
 export function Term({ id, expand, children, className }: TermProps) {
-  const entry = getTerm(id);
+  const { locale } = useLocale();
+  const t = useT();
+  const entry = getTerm(id, locale);
   const coarse = useCoarsePointer();
   const [open, setOpen] = useState(false);
   /** Fine-pointer pin: keeps the tooltip visible after the cursor leaves. */
@@ -84,7 +87,7 @@ export function Term({ id, expand, children, className }: TermProps) {
 
   if (!entry) {
     return (
-      <span className="text-destructive" title={`Missing glossary term: ${id}`}>
+      <span className="text-destructive" title={t.term.missing(id)}>
         {children ?? id}
       </span>
     );
@@ -157,7 +160,7 @@ export function Term({ id, expand, children, className }: TermProps) {
           className="text-background/60 underline underline-offset-2"
           onClick={dismiss}
         >
-          Open glossary
+          {t.term.openGlossary}
         </Link>
       </TooltipContent>
     </Tooltip>

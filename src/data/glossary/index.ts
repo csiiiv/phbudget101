@@ -1,4 +1,6 @@
 import type { GlossaryEntry } from './types';
+import type { Locale } from '@/lib/locale';
+import { glossaryFilOverrides } from './locale/fil';
 
 const files = import.meta.glob(['./*.ts', '!./index.ts', '!./types.ts'], {
   eager: true,
@@ -15,8 +17,14 @@ export const glossary: GlossaryEntry[] = Object.values(files)
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
 
-export function getTerm(id: string): GlossaryEntry | null {
-  return byId.get(id) ?? null;
+export function getTerm(id: string, locale: Locale = 'en'): GlossaryEntry | null {
+  const base = byId.get(id) ?? null;
+  if (!base) return null;
+  if (locale === 'fil') {
+    const override = glossaryFilOverrides[id];
+    if (override) return { ...base, ...override };
+  }
+  return base;
 }
 
 export function acronyms(): GlossaryEntry[] {

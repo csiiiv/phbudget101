@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import type { Locale } from '@/lib/locale';
 import type { LessonDefinition } from '@/lib/sections';
 
 export interface LessonModule {
@@ -10,6 +11,7 @@ export interface LessonModule {
 
 /**
  * Lessons are resolved by glob from src/content/modules/<module-slug>/<lesson-id>.<ext>.
+ * Locale-specific peers use `<lesson-id>.<locale>.tsx` (e.g. `00.1.fil.tsx`).
  * .tsx lessons export defineLesson({ sections }) as default (see src/lib/sections.ts);
  * .mdx lessons remain supported as legacy continuous articles.
  */
@@ -20,29 +22,73 @@ const files = {
 
 export type LessonLoader = () => Promise<LessonModule>;
 
+export interface ParsedLessonPath {
+  moduleSlug: string;
+  lessonId: string;
+  locale: Locale;
+}
+
+/**
+ * Extract module slug, lesson id, and locale from a globbed lesson path.
+ * e.g. './modules/01-why-pfm-matters/01.1.tsx' -> en default
+ *      './modules/00-start-here/00.1.fil.tsx' -> fil
+ */
+export function parseLessonPath(path: string): ParsedLessonPath | null {
+  const match = path.match(/modules\/([^/]+)\/([^/]+)\.(tsx|mdx)$/);
+  if (!match) return null;
+  const [, moduleSlug, fileBase] = match;
+  const localeMatch = fileBase.match(/^(.+)\.(fil|en)$/);
+  if (localeMatch) {
+    return {
+      moduleSlug,
+      lessonId: localeMatch[1],
+      locale: localeMatch[2] as Locale,
+    };
+  }
+  return { moduleSlug, lessonId: fileBase, locale: 'en' };
+}
+
 /**
  * Extract the `${moduleSlug}/${lessonId}` key from a globbed lesson path,
  * e.g. './modules/01-why-pfm-matters/01.1.tsx' -> '01-why-pfm-matters/01.1'.
  * Returns null for paths that do not match the expected shape.
  */
 export function lessonKeyFromPath(path: string): string | null {
-  const match = path.match(/modules\/([^/]+)\/([^/]+)\.(tsx|mdx)$/);
-  return match ? `${match[1]}/${match[2]}` : null;
+  const parsed = parseLessonPath(path);
+  return parsed ? `${parsed.moduleSlug}/${parsed.lessonId}` : null;
 }
 
 const lessonLoaders = new Map<string, LessonLoader>();
 for (const [path, loader] of Object.entries(files)) {
-  const key = lessonKeyFromPath(path);
-  if (key) lessonLoaders.set(key, loader);
+  const parsed = parseLessonPath(path);
+  if (parsed) {
+    lessonLoaders.set(
+      `${parsed.moduleSlug}/${parsed.lessonId}@${parsed.locale}`,
+      loader
+    );
+  }
 }
 
 export function findLessonContent(
   moduleSlug: string,
-  lessonId: string
+  lessonId: string,
+  locale: Locale = 'en'
 ): LessonLoader | null {
-  return lessonLoaders.get(`${moduleSlug}/${lessonId}`) ?? null;
+  const key = `${moduleSlug}/${lessonId}`;
+  if (locale === 'fil') {
+    return (
+      lessonLoaders.get(`${key}@fil`) ??
+      lessonLoaders.get(`${key}@en`) ??
+      null
+    );
+  }
+  return lessonLoaders.get(`${key}@en`) ?? null;
 }
 
-export function hasLessonContent(moduleSlug: string, lessonId: string): boolean {
-  return lessonLoaders.has(`${moduleSlug}/${lessonId}`);
+export function hasLessonContent(
+  moduleSlug: string,
+  lessonId: string,
+  locale: Locale = 'en'
+): boolean {
+  return findLessonContent(moduleSlug, lessonId, locale) !== null;
 }

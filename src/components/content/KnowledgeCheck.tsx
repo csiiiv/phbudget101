@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useProgress } from '@/lib/useProgress';
+import { useT } from '@/lib/LocaleProvider';
 import { parseMistakeKey } from '@/lib/progress';
 
 export interface CheckItem {
@@ -51,11 +52,13 @@ function initialStates(count: number): ItemState[] {
  * to the progress store and surface in a review recap.
  */
 export function KnowledgeCheck({
-  title = 'Check your understanding',
+  title,
   items,
   moduleId,
   lessonId,
 }: KnowledgeCheckProps) {
+  const t = useT();
+  const resolvedTitle = title ?? t.knowledgeCheck.defaultTitle;
   const [states, setStates] = useState<ItemState[]>(() => initialStates(items.length));
   const [current, setCurrent] = useState(0);
   const { progress, recordMistake, clearMistake } = useProgress();
@@ -82,7 +85,7 @@ export function KnowledgeCheck({
           };
         }
         const wrongPicks = [...s.wrongPicks, optionIndex];
-        const reason = item.wrong?.[optionIndex] ?? 'Not quite — try again.';
+        const reason = item.wrong?.[optionIndex] ?? t.knowledgeCheck.notQuite;
         if (wrongPicks.length >= MAX_WRONG_PICKS) {
           return {
             wrongPicks,
@@ -98,7 +101,7 @@ export function KnowledgeCheck({
       recordMistake(moduleId, lessonId, itemIndex, {
         question: item.prompt,
         picked: item.options[optionIndex],
-        reason: item.wrong?.[optionIndex] ?? 'Not quite — try again.',
+        reason: item.wrong?.[optionIndex] ?? t.knowledgeCheck.notQuite,
         at: new Date().toISOString(),
       });
     }
@@ -116,7 +119,7 @@ export function KnowledgeCheck({
     >
       <header className="flex items-baseline justify-between gap-3">
         <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          {title}
+          {resolvedTitle}
         </h3>
         {items.length > 1 && (
           <span className="text-xs text-muted-foreground tabular-nums">
@@ -169,7 +172,7 @@ export function KnowledgeCheck({
           {state.solved && current < items.length - 1 && (
             <div className="flex justify-end">
               <Button size="sm" onClick={() => setCurrent((c) => c + 1)}>
-                Next question →
+                {t.knowledgeCheck.nextQuestion} →
               </Button>
             </div>
           )}
@@ -181,7 +184,7 @@ export function KnowledgeCheck({
           <div className="flex items-center gap-3">
             <p className="text-sm font-medium">
               {firstTry === items.length
-                ? 'All correct on the first try — nice work.'
+                ? t.knowledgeCheck.allCorrect
                 : `${firstTry} of ${items.length} correct on the first try.`}
             </p>
             <Button
@@ -193,7 +196,7 @@ export function KnowledgeCheck({
                 setCurrent(0);
               }}
             >
-              Try again
+              {t.knowledgeCheck.tryAgain}
             </Button>
           </div>
           <details className="rounded-md border bg-secondary/40 p-4" open>

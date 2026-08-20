@@ -1,14 +1,16 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { TooltipProvider } from '@/components/ui/tooltip';
-
-const navItems = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/modules/00-start-here', label: 'Course' },
-  { to: '/reference', label: 'Reference' },
-  { to: '/settings', label: 'Settings' },
-];
+import { useT } from '@/lib/LocaleProvider';
 
 export function AppLayout() {
+  const t = useT();
+  const navItems = [
+    { to: '/', label: t.nav.home, end: true },
+    { to: '/modules/00-start-here', label: t.nav.course },
+    { to: '/reference', label: t.nav.reference },
+    { to: '/settings', label: t.nav.settings },
+  ];
+
   return (
     <TooltipProvider delayDuration={300}>
       <div className="min-h-screen flex flex-col">
@@ -18,7 +20,7 @@ export function AppLayout() {
               <span className="grid size-7 place-items-center rounded-md bg-primary text-sm text-primary-foreground">
                 ₱
               </span>
-              PH Budget 101
+              {t.app.title}
             </NavLink>
             <nav className="flex gap-1 text-sm">
               {navItems.map((item) => (
@@ -45,12 +47,9 @@ export function AppLayout() {
         </main>
         <footer className="app-footer">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-            <p>
-              PH Budget 101 — Philippine Public Financial Management. Progress
-              is stored on this device; export it from Settings.
-            </p>
+            <p>{t.app.footer}</p>
             <Link to="/about" className="hover:text-foreground hover:underline">
-              About
+              {t.nav.about}
             </Link>
           </div>
         </footer>
