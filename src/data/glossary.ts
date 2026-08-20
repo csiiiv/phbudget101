@@ -103,6 +103,26 @@ export const glossary: GlossaryEntry[] = [
       'The process of buying goods, works, or services with public funds — typically through bidding or other authorized methods.',
   },
   {
+    id: 'annual-procurement-plan',
+    term: 'Annual Procurement Plan',
+    acronym: 'APP',
+    short:
+      'The procuring entity’s consolidated plan for the procurement projects it expects to undertake during the budget year.',
+  },
+  {
+    id: 'approved-budget-contract',
+    term: 'Approved Budget for the Contract',
+    acronym: 'ABC',
+    short:
+      'The budget approved for a procurement contract, which serves as the ceiling for bids and the resulting contract price under the applicable rules.',
+  },
+  {
+    id: 'bids-awards-committee',
+    term: 'Bids and Awards Committee',
+    acronym: 'BAC',
+    short:
+      'The committee that conducts key procurement proceedings, including solicitation and evaluation functions, and recommends award under the applicable rules.',
+  },  {
     id: 'sanggunian',
     term: 'Sanggunian',
     short:
