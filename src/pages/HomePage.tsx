@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { CircleCheck } from 'lucide-react';
 import { courseModules } from '@/data/course';
 import { useProgress } from '@/lib/useProgress';
 
@@ -97,11 +98,13 @@ export function HomePage() {
                   </span>
                   {moduleComplete ? (
                     <span
-                      className="grid size-7 shrink-0 place-items-center rounded-full bg-emerald-600 text-sm font-bold text-white"
+                      className="shrink-0"
                       title={`Module complete — all ${total} lessons`}
-                      aria-label={`Module complete — all ${total} lessons`}
                     >
-                      ✓
+                      <CircleCheck
+                        className="size-7 text-emerald-600"
+                        aria-label={`Module complete — all ${total} lessons`}
+                      />
                     </span>
                   ) : done > 0 ? (
                     <span className="shrink-0 text-xs text-muted-foreground tabular-nums">

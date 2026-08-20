@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { CircleCheck } from 'lucide-react';
 import { courseModules } from '@/data/course';
 import { useProgress } from '@/lib/useProgress';
 
@@ -68,16 +69,19 @@ export function ModulePage() {
                   to={`/modules/${mod.slug}/lessons/${encodeURIComponent(lesson.id)}`}
                   className="flex items-center gap-4 rounded-lg border bg-card p-4 hover:bg-secondary/60 transition-colors"
                 >
-                  <span
-                    className={`grid size-8 shrink-0 place-items-center rounded-full border text-xs font-medium tabular-nums ${
-                      status === 'completed'
-                        ? 'border-primary bg-primary text-primary-foreground'
-                        : 'text-muted-foreground'
-                    }`}
-                    aria-hidden
-                  >
-                    {status === 'completed' ? '✓' : lesson.id.split('.')[1]}
-                  </span>
+                  {status === 'completed' ? (
+                    <CircleCheck
+                      className="size-8 shrink-0 text-primary"
+                      aria-hidden
+                    />
+                  ) : (
+                    <span
+                      className="grid size-8 shrink-0 place-items-center rounded-full border text-xs font-medium tabular-nums text-muted-foreground"
+                      aria-hidden
+                    >
+                      {lesson.id.split('.')[1]}
+                    </span>
+                  )}
                   <span className="flex-1 font-medium leading-snug">
                     {lesson.title}
                   </span>
