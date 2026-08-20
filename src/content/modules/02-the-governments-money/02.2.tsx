@@ -127,15 +127,15 @@ export default defineLesson({
           <div className="not-prose my-6 rounded-lg border bg-accent/40 p-5">
             <p className="font-medium">A useful reading question</p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Ask both ?Who collected it first?? and ?Who now has legal
-              authority to budget it?? The answers may differ when a transfer is
+              Ask both “Who collected it first?” and “Who now has legal
+              authority to budget it?” The answers may differ when a transfer is
               involved.
             </p>
           </div>
           <p className="text-sm text-muted-foreground">
             Deeper reading:{' '}
             <a href="https://lawphil.net/statutes/repacts/ra1991/ra_7160_1991.html">
-              Local Government Code, especially Sections 129, 132, and 284?286
+              Local Government Code, especially Sections 129, 132, and 284–286
             </a>
             , and the{' '}
             <a href="https://reports.dbm.gov.ph/ira2.0/">
@@ -186,7 +186,7 @@ export default defineLesson({
               ],
               correct: 1,
               explanation:
-                'The NTA transfers an LGU?s lawful share of national taxes from the national government to the local government.',
+                'The NTA transfers an LGU’s lawful share of national taxes from the national government to the local government.',
               wrong: {
                 0: 'The municipality did not impose a new tax; the amount comes from national tax collections.',
                 2: 'No resident paid for a particular municipal service in this transaction.',
