@@ -83,6 +83,20 @@ export const glossary: GlossaryEntry[] = [
       'The instruction the executive issues to agencies to submit budget proposals for the next fiscal year, usually with ceilings and priorities.',
   },
   {
+    id: 'dbcc',
+    term: 'Development Budget Coordination Committee',
+    acronym: 'DBCC',
+    short:
+      'The inter-agency committee that recommends macroeconomic assumptions, fiscal targets, and overall government expenditure levels for budget planning.',
+  },
+  {
+    id: 'dbm',
+    term: 'Department of Budget and Management',
+    acronym: 'DBM',
+    short:
+      'The executive department that leads national budget preparation, supports execution, and manages related budget policies and systems.',
+  },
+  {
     id: 'procurement',
     term: 'Procurement',
     short:
