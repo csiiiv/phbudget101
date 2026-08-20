@@ -55,6 +55,7 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 | 03 Anatomy of the Budget | outline | 03.4 authored | Author 03.1–03.3 |
 | 03 Anatomy of the Budget | outline | 03.1 authored | Author 03.2–03.4 |
 | 03 Anatomy of the Budget | outline | 03.2 authored | Author 03.1, 03.3–03.4 |
+| 03 Anatomy of the Budget | outline | 03.3 authored | Author 03.1–03.2, 03.4 |
 | 04 The Budget Cycle | outline | 04.1 scaffolded | Finish 04.1; author 04.2–04.4; see notes on int-03 |
 | 05 Appropriation → Service | outline | 05.1 authored | Author 05.2–05.3 |
 | 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
