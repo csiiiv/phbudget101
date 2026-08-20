@@ -1,4 +1,4 @@
-# Budget 101: Understanding Philippine Public Financial Management
+# PH Budget 101: Understanding Philippine Public Financial Management
 
 A self-paced, foundational course on how the Philippine public financial management system works. It teaches the PFM system first and advocacy second: advocacy is presented as the application of budget literacy, not the organizing frame of the course.
 
@@ -28,7 +28,7 @@ Purpose: Orient the learner and establish a baseline.
 * Choose a learning path:
 
   * Quick overview
-  * Full Budget 101
+  * Full PH Budget 101
   * Topic-based reference
 
 Interactive element: “Where does government money come from, and where does it go?” initial concept map.

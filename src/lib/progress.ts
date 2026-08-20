@@ -43,7 +43,7 @@ export function importProgress(rawJson: string): ProgressState {
   const result = progressFileSchema.safeParse(parsed);
   if (!result.success) {
     throw new Error(
-      'This file is not a valid Budget 101 progress file (missing or invalid fields).'
+      'This file is not a valid PH Budget 101 progress file (missing or invalid fields).'
     );
   }
   return result.data;
