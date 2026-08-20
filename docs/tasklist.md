@@ -52,12 +52,36 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 | 00 Start Here | outline | 00.1 scaffolded | 00.2, 00.3; diagnostic and concept map are Phase 2 interactives |
 | 01 Why PFM Matters | content-draft | 01.1, 01.2, 01.3 **done** | Accuracy-gate review before `review` / `final` |
 | 02 The Government's Money | outline | none | Author 02.1–02.3; seed `src/data/modules/02.json` |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 03 Anatomy of the Budget | outline | 03.4 authored | Author 03.1–03.3 |
 | 04 The Budget Cycle | outline | 04.1 scaffolded | Finish 04.1; author 04.2–04.4; see notes on int-03 |
+| 05 Appropriation → Service | outline | 05.1 authored | Author 05.2–05.3 |
+| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 04 The Budget Cycle | outline | 04.1 **in progress** | Finish 04.1; author 04.2–04.4; see notes on int-03 |
+| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.2 **in progress** | Finish 04.1; author 04.3–04.4; see notes on int-03 |
+| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.3 **in progress** | Finish 04.1; author 04.2, 04.4; see notes on int-03 |
+| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
+| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.4 **in progress** | Finish 04.1; author 04.2–04.3; see notes on int-03 |
 | 05 Appropriation → Service | outline | none | Author 05.1–05.3 |
+| 05 Appropriation → Service | outline | 05.2 authored | Author 05.1, 05.3 |
+| 05 Appropriation → Service | outline | 05.3 authored | Author 05.1–05.2 |
 | 06 Local Government Budgets | outline | none | Author 06.1–06.4 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 07 Reading Budget Documents | outline | 07.1 authored | Author 07.2–07.4 |
+| 07 Reading Budget Documents | outline | 07.2 authored | Author 07.1, 07.3–07.4 |
+| 07 Reading Budget Documents | outline | 07.3 authored | Author 07.1–07.2, 07.4 |
+| 07 Reading Budget Documents | outline | 07.4 authored | Author 07.1–07.3 |
 | 08 Evaluating Decisions | outline | none | Author 08.1–08.5 |
+| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 08 Evaluating Decisions | outline | 08.1 **in progress** | Author 08.2–08.5 |
+| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 08 Evaluating Decisions | outline | 08.2 **in progress** | Author 08.1, 08.3–08.5 |
+| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 08 Evaluating Decisions | outline | 08.3 **in progress** | Author 08.1–08.2, 08.4–08.5 |
+| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 08 Evaluating Decisions | outline | 08.4 authored | Author 08.1–08.3, 08.5 |
+| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
+| 08 Evaluating Decisions | outline | 08.5 authored | Author 08.1–08.4 |
 | 09 Participating | outline | none | Author 09.1–09.5 |
 | 10 Capstone | outline | none | Phase 2 — after Modules 1–9 exist |
 

@@ -1,0 +1,21 @@
+{
+  "moduleId": "mod-02",
+  "figures": [
+    {
+      "id": "tax-share",
+      "value": 86,
+      "unit": "percent",
+      "asOf": "2024",
+      "source": "Bureau of the Treasury, National Government Cash Operations Report, CY 2024.",
+      "note": "Calculated from PHP 3,800.693 billion in tax revenue divided by PHP 4,419.023 billion in total revenue; rounded to the nearest whole percent."
+    },
+    {
+      "id": "non-tax-share",
+      "value": 14,
+      "unit": "percent",
+      "asOf": "2024",
+      "source": "Bureau of the Treasury, National Government Cash Operations Report, CY 2024.",
+      "note": "Calculated from PHP 618.330 billion in non-tax revenue divided by PHP 4,419.023 billion in total revenue; includes grants and is rounded to the nearest whole percent."
+    }
+  ]
+}
