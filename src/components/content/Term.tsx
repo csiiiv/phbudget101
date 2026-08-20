@@ -23,9 +23,8 @@ interface TermProps {
 
 /**
  * True when the primary pointer cannot hover (touch screens, most phones and
- * tablets). On such devices hover text is unreachable, so Term falls back to a
- * two-tap pattern: tap once to reveal the definition, tap again (or use the
- * link inside the definition) to open the glossary entry.
+ * tablets). On such devices hover text is unreachable, so a tap is what
+ * reveals the definition — same pin/toggle behavior a desktop click gets.
  */
 function useCoarsePointer(): boolean {
   const query = '(hover: none), (pointer: coarse)';
@@ -40,16 +39,18 @@ function useCoarsePointer(): boolean {
 }
 
 /**
- * Inline glossary term: dotted underline, hover/focus definition, click/tap
- * opens the glossary entry. Hover is not the only affordance (mobile taps
- * through to the glossary page).
+ * Inline glossary term: dotted underline, hover/focus definition. A plain
+ * click or tap pins the definition open (tap again to close); the glossary
+ * entry itself opens only via the "Open glossary" link inside the tooltip.
+ * Modified clicks (Ctrl/Cmd-click, middle-click) keep native Link behavior,
+ * so the entry can still be opened directly in a new tab.
  */
 export function Term({ id, expand, children, className }: TermProps) {
   const entry = getTerm(id);
   const coarse = useCoarsePointer();
   const [open, setOpen] = useState(false);
-  /** Whether the definition was already revealed for this touch session. */
-  const revealed = useRef(false);
+  /** Fine-pointer pin: keeps the tooltip visible after the cursor leaves. */
+  const [pinned, setPinned] = useState(false);
   const triggerRef = useRef<HTMLAnchorElement>(null);
 
   if (!entry) {
@@ -75,12 +76,12 @@ export function Term({ id, expand, children, className }: TermProps) {
 
   const href = `/reference/glossary#${entry.id}`;
   const dismiss = () => {
-    revealed.current = false;
+    setPinned(false);
     setOpen(false);
   };
 
   return (
-    <Tooltip open={coarse ? open : undefined}>
+    <Tooltip open={coarse ? open : pinned ? true : undefined}>
       <TooltipTrigger asChild>
         <Link
           ref={triggerRef}
@@ -90,12 +91,14 @@ export function Term({ id, expand, children, className }: TermProps) {
             className
           )}
           onClick={(event) => {
-            if (!coarse) return;
-            // Second tap falls through and navigates.
-            if (revealed.current) return;
+            // Let modified clicks open the glossary directly (new tab etc.).
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+              return;
             event.preventDefault();
-            revealed.current = true;
-            setOpen(true);
+            // Toggle: a second plain click/tap closes the pinned tooltip.
+            const next = !(coarse ? open : pinned);
+            setOpen(next);
+            setPinned(next);
           }}
         >
           {label}
@@ -106,7 +109,7 @@ export function Term({ id, expand, children, className }: TermProps) {
         className="max-w-xs flex-col items-start gap-1 py-2 text-left font-normal"
         onPointerDownOutside={(event) => {
           // A tap on the term itself is not "outside" for our purposes — let
-          // the click handler decide (second tap navigates).
+          // the click handler decide (second tap closes the tooltip).
           if (triggerRef.current?.contains(event.target as Node)) return;
           dismiss();
         }}
