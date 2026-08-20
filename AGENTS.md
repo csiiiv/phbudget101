@@ -13,7 +13,7 @@ Standing orders for Cloud Agents and local agents. Human source of truth for *wh
 ## Slice definition of done
 
 - `export default defineLesson({ sections })` with about 4–6 stations ([`docs/notes/self_paced_lesson_format.md`](docs/notes/self_paced_lesson_format.md)).
-- New jargon: add [`src/data/glossary.ts`](src/data/glossary.ts), wrap with `<Term />`.
+- New jargon: add an entry to your module's file in [`src/data/glossary/`](src/data/glossary/) (create it if absent; course-wide terms go in `core.ts`), then wrap with `<Term />`. Never edit another module's glossary file.
 - Year-specific pesos only via `<Figure />` + `src/data/modules/NN.json` (`asOf` + `source` required). Do **not invent** GAA amounts; omit the figure or label a teaching number illustrative.
 - Neutrality: no advocacy organizations, campaigns, or personalities in lessons (ADR-008).
 - Interactives: `not-prose` on the root.
