@@ -1,4 +1,4 @@
-# Budget 101 — Build Spec
+# PH Budget 101 — Build Spec
 
 The overarching specification for the course build. The content outline (`outline_for_web.md`) defines *what* the course covers; this spec defines *how the build is organized*, and each module file in `docs/modules/` defines one module in authoring-ready detail.
 

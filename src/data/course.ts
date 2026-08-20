@@ -17,7 +17,7 @@ export const courseModules: CourseModule[] = [
     title: 'Start Here',
     purpose: 'Orient the learner and establish a baseline.',
     lessons: [
-      { id: '00.1', title: 'Welcome to Budget 101' },
+      { id: '00.1', title: 'Welcome to PH Budget 101' },
       { id: '00.2', title: 'Where the Money Comes From and Where It Goes' },
       { id: '00.3', title: 'Find Your Starting Point' },
     ],

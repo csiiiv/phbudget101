@@ -27,7 +27,7 @@ describe('importProgress', () => {
   it('rejects a future version', () => {
     expect(() =>
       importProgress(JSON.stringify({ ...validFile, version: 99 }))
-    ).toThrow('not a valid Budget 101 progress file');
+    ).toThrow('not a valid PH Budget 101 progress file');
   });
 
   it('rejects missing required fields', () => {

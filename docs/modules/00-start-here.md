@@ -23,7 +23,7 @@ After this module, the learner can:
 
 ## Lessons
 
-### 00.1 Welcome to Budget 101
+### 00.1 Welcome to PH Budget 101
 
 * Guiding question: What will I be able to do after this course?
 * Concepts: course scope; the PFM-first framing (advocacy as the application of budget literacy); who the course serves; the three learning paths (quick overview, full course, topic-based reference)
