@@ -79,6 +79,7 @@ export function HomePage() {
             const lessons = progress?.modules[mod.id]?.lessons ?? {};
             const done = Object.values(lessons).filter((s) => s === 'completed').length;
             const total = mod.lessons.length;
+            const moduleComplete = total > 0 && done === total;
             return (
               <li key={mod.id}>
                 <Link
@@ -94,11 +95,19 @@ export function HomePage() {
                       {mod.purpose}
                     </span>
                   </span>
-                  {done > 0 && (
+                  {moduleComplete ? (
+                    <span
+                      className="grid size-7 shrink-0 place-items-center rounded-full bg-emerald-600 text-sm font-bold text-white"
+                      title={`Module complete — all ${total} lessons`}
+                      aria-label={`Module complete — all ${total} lessons`}
+                    >
+                      ✓
+                    </span>
+                  ) : done > 0 ? (
                     <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
                       {done}/{total}
                     </span>
-                  )}
+                  ) : null}
                 </Link>
               </li>
             );
