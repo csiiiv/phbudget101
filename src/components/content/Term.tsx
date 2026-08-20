@@ -71,6 +71,17 @@ export function Term({ id, expand, children, className }: TermProps) {
   const [pinned, setPinned] = useState(false);
   const triggerRef = useRef<HTMLAnchorElement>(null);
 
+  const unpin = useCallback(() => {
+    setPinned(false);
+    setOpen(false);
+  }, []);
+  useEffect(() => {
+    if (pinned) claimPinned(unpin);
+    else releasePinned(unpin);
+  }, [pinned, unpin]);
+  // Cleanup on unmount (e.g. navigating away mid-pin).
+  useEffect(() => () => releasePinned(unpin), [unpin]);
+
   if (!entry) {
     return (
       <span className="text-destructive" title={`Missing glossary term: ${id}`}>
@@ -93,16 +104,6 @@ export function Term({ id, expand, children, className }: TermProps) {
     ));
 
   const href = `/reference/glossary#${entry.id}`;
-  const unpin = useCallback(() => {
-    setPinned(false);
-    setOpen(false);
-  }, []);
-  useEffect(() => {
-    if (pinned) claimPinned(unpin);
-    else releasePinned(unpin);
-  }, [pinned, unpin]);
-  // Cleanup on unmount (e.g. navigating away mid-pin).
-  useEffect(() => () => releasePinned(unpin), [unpin]);
   const dismiss = unpin;
 
   return (
