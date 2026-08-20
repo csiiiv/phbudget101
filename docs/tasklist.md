@@ -61,6 +61,7 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 | 04 The Budget Cycle | outline | 04.1 scaffolded; 04.2 **in progress** | Finish 04.1; author 04.3–04.4; see notes on int-03 |
 | 05 Appropriation → Service | outline | none | Author 05.1–05.3 |
 | 05 Appropriation → Service | outline | 05.2 authored | Author 05.1, 05.3 |
+| 05 Appropriation → Service | outline | 05.3 authored | Author 05.1–05.2 |
 | 06 Local Government Budgets | outline | none | Author 06.1–06.4 |
 | 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
 | 08 Evaluating Decisions | outline | none | Author 08.1–08.5 |
