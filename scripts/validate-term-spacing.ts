@@ -23,7 +23,6 @@ const ENDS_WITH_TERM = /(<Term[^>]*\/>|<\/Term>)\s*$/;
 const STARTS_TEXT = /^[a-zA-Z0-9(“"'\u2018\u201C]/;
 
 let failures = 0;
-let checked = 0;
 
 function scan(filePath: string) {
   const rel = path.relative(process.cwd(), filePath);
@@ -42,7 +41,6 @@ function scan(filePath: string) {
 
     if (beforeTerm || afterTerm) {
       failures++;
-      checked++;
       console.error(
         `FAIL ${rel}:${i + 2}: term and prose split across lines without {' '} — ` +
           (beforeTerm ? 'text before <Term>' : 'prose after Term') +
