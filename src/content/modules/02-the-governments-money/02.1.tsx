@@ -103,7 +103,7 @@ export default defineLesson({
           </p>
           <div className="not-prose my-8 rounded-lg border bg-card p-5">
             <div
-              className="flex min-h-20 w-full overflow-hidden rounded-md"
+              className="flex min-h-14 w-full overflow-hidden rounded-md"
               aria-label="2024 national government revenue composition"
             >
               {MIX.map((item) => {
@@ -111,14 +111,25 @@ export default defineLesson({
                 return (
                   <div
                     key={item.id}
-                    className={`flex min-w-24 items-center justify-center p-3 text-center text-sm font-semibold ${item.color}`}
+                    className={`flex items-center justify-center p-3 text-center text-sm font-semibold tabular-nums ${item.color}`}
                     style={{ flexGrow: share }}
                   >
-                    {item.label}
+                    {share.toFixed(1)}%
                   </div>
                 );
               })}
             </div>
+            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+              {MIX.map((item) => (
+                <li key={item.id} className="flex items-center gap-2 text-sm">
+                  <span
+                    aria-hidden
+                    className={`inline-block size-3 rounded-sm ${item.color.split(' ')[0]}`}
+                  />
+                  {item.label}
+                </li>
+              ))}
+            </ul>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div>
                 <p className="text-sm font-medium">Tax revenue</p>
