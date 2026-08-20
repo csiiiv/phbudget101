@@ -77,6 +77,25 @@ export const glossary: GlossaryEntry[] = [
       'The President’s proposed national budget submitted to Congress — the starting document for legislation.',
   },
   {
+    id: 'gab',
+    term: 'General Appropriations Bill',
+    acronym: 'GAB',
+    short:
+      'The proposed annual appropriations measure considered by Congress before it can become the General Appropriations Act.',
+  },
+  {
+    id: 'bicameral-conference',
+    term: 'Bicameral conference committee',
+    short:
+      'A panel of House and Senate members formed to reconcile differences between the versions of a bill approved by the two chambers.',
+  },
+  {
+    id: 'line-item-veto',
+    term: 'Line-item veto',
+    short:
+      'The President’s constitutional power to veto a particular item in an appropriations bill without rejecting the other items.',
+  },
+  {
     id: 'budget-call',
     term: 'Budget call',
     short:
