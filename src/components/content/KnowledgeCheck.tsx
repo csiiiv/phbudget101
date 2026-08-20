@@ -192,10 +192,44 @@ export function KnowledgeCheck({
                 setStates(initialStates(items.length));
                 setCurrent(0);
               }}
-              >
-                Try again
-              </Button>
+            >
+              Try again
+            </Button>
           </div>
+          <details className="rounded-md border bg-secondary/40 p-4" open>
+            <summary className="cursor-pointer text-sm font-medium">
+              Answers ({items.length})
+            </summary>
+            <ol className="mt-3 list-decimal space-y-3 pl-5">
+              {items.map((item, i) => {
+                const s = states[i];
+                return (
+                  <li key={i} className="space-y-1 text-sm">
+                    <p className="font-medium">{item.prompt}</p>
+                    <p>
+                      <span className="text-muted-foreground">Correct answer:</span>{' '}
+                      {item.options[item.correct]}
+                    </p>
+                    <p
+                      className={cn(
+                        s.solved === 'first-try'
+                          ? 'text-muted-foreground'
+                          : 'text-foreground'
+                      )}
+                    >
+                      <span className="text-muted-foreground">You:</span>{' '}
+                      {s.solved === 'first-try'
+                        ? `correct on the first try — ${item.options[item.correct]}`
+                        : s.solved === 'retry'
+                          ? `correct after retries — ${item.options[item.correct]}`
+                          : `revealed after two misses — ${item.options[item.correct]}`}
+                    </p>
+                    <p className="text-muted-foreground">{item.explanation}</p>
+                  </li>
+                );
+              })}
+            </ol>
+          </details>
           {misses.length > 0 && (
             <details className="rounded-md border bg-secondary/40 p-4" open>
               <summary className="cursor-pointer text-sm font-medium">
