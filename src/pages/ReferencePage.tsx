@@ -1,12 +1,31 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { acronyms, glossary } from '@/data/glossary';
+import {
+  BudgetCalendarPage,
+  ClassificationReferencePage,
+  DataSourcesPage,
+  DocumentLibraryPage,
+  FaqPage,
+  InstitutionalMapPage,
+  LegalReferencesPage,
+  LocalBudgetStructuresPage,
+} from '@/pages/reference/PendingReferencePages';
 
 export function ReferencePage() {
   const { refId } = useParams();
 
   if (refId === 'glossary') return <GlossaryPage />;
   if (refId === 'acronyms') return <AcronymsPage />;
+  if (refId === 'sources') return <SourcesPage />;
+  if (refId === 'document-library') return <DocumentLibraryPage />;
+  if (refId === 'institutional-map') return <InstitutionalMapPage />;
+  if (refId === 'budget-calendar') return <BudgetCalendarPage />;
+  if (refId === 'classification-reference') return <ClassificationReferencePage />;
+  if (refId === 'local-budget-structures') return <LocalBudgetStructuresPage />;
+  if (refId === 'legal-references') return <LegalReferencesPage />;
+  if (refId === 'data-sources') return <DataSourcesPage />;
+  if (refId === 'faq') return <FaqPage />;
 
   return (
     <article className="space-y-6">
@@ -21,9 +40,11 @@ export function ReferencePage() {
         </h1>
       </header>
       <div className="rounded-lg border border-dashed bg-card p-6 text-sm text-muted-foreground">
-        Reference content will be authored here. Spec: docs/reference-section.md
-        (this page maps to one ref-NN component). Content status: outline —
-        pending authoring.
+        No reference page is registered for this path. Return to the{' '}
+        <Link to="/reference" className="text-primary underline">
+          reference index
+        </Link>
+        .
       </div>
     </article>
   );
@@ -104,6 +125,125 @@ function AcronymsPage() {
           </li>
         ))}
       </ul>
+    </article>
+  );
+}
+
+function SourcesPage() {
+  const linkClass = 'text-primary underline underline-offset-2';
+  return (
+    <article className="space-y-8">
+      <header className="space-y-2">
+        <div className="text-sm text-muted-foreground">
+          <Link to="/reference" className="hover:underline">
+            Reference
+          </Link>
+        </div>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Sources and attribution
+        </h1>
+        <p className="text-muted-foreground leading-relaxed">
+          Named source credits for the course. Lesson text itself stays focused
+          on the PFM system; fuller bibliographic expansion of the guidebook’s
+          reference list is planned for a later pass.
+        </p>
+      </header>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">Primary source</h2>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          <a
+            href="https://www.wesolve.ph/budget-natin-guidebook"
+            className={linkClass}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Budget Natin: A Guidebook for Engaging the Philippine Budget Cycle
+          </a>{' '}
+          (2023). Published by{' '}
+          <a
+            href="https://www.wesolve.ph/"
+            className={linkClass}
+            target="_blank"
+            rel="noreferrer"
+          >
+            WeSolve Foundation
+          </a>
+          ; funded by the{' '}
+          <a
+            href="https://www.ndi.org/"
+            className={linkClass}
+            target="_blank"
+            rel="noreferrer"
+          >
+            National Democratic Institute
+          </a>
+          . Also on{' '}
+          <a
+            href="https://doi.org/10.13140/RG.2.2.18173.74726"
+            className={linkClass}
+            target="_blank"
+            rel="noreferrer"
+          >
+            ResearchGate
+          </a>{' '}
+          (DOI: 10.13140/RG.2.2.18173.74726).
+        </p>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          PH Budget 101 redesigns that material for a general audience. It is
+          not a page-by-page conversion. See also the{' '}
+          <Link to="/about" className={linkClass}>
+            About
+          </Link>{' '}
+          page.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">Official data and primers</h2>
+        <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+          <li>
+            <a
+              href="https://www.dbm.gov.ph/"
+              className={linkClass}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Department of Budget and Management (DBM)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.coa.gov.ph/"
+              className={linkClass}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Commission on Audit (COA)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.dof.gov.ph/"
+              className={linkClass}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Department of Finance (DOF)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://psa.gov.ph/"
+              className={linkClass}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Philippine Statistics Authority (PSA)
+            </a>
+          </li>
+        </ul>
+      </section>
     </article>
   );
 }
