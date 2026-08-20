@@ -10,7 +10,7 @@ const LOCAL_SOURCES = [
   },
   {
     title: 'Local business taxes',
-    body: 'Taxes authorized for businesses operating within the LGU?s jurisdiction.',
+    body: 'Taxes authorized for businesses operating within the LGU’s jurisdiction.',
   },
   {
     title: 'Fees and charges',
@@ -191,14 +191,14 @@ export default defineLesson({
               explanation:
                 'The municipality earns the receipt through an LGU-operated public market, so it is own-source revenue from an economic enterprise.',
               wrong: {
-                1: 'The NTA comes from the LGU?s share in national taxes, not market operations.',
+                1: 'The NTA comes from the LGU’s share in national taxes, not market operations.',
                 2: 'National income tax is collected under national law.',
                 3: 'A rental receipt does not create a borrowing obligation.',
               },
             },
             {
               prompt:
-                'DBM releases a municipality?s lawful share in national taxes. Which source is this?',
+                'DBM releases a municipality’s lawful share in national taxes. Which source is this?',
               options: [
                 'A local business tax',
                 'The National Tax Allotment',
@@ -207,7 +207,7 @@ export default defineLesson({
               ],
               correct: 1,
               explanation:
-                'The NTA is the LGU?s automatically released share in national taxes.',
+                'The NTA is the LGU’s automatically released share in national taxes.',
               wrong: {
                 0: 'A local business tax is imposed locally rather than transferred from national collections.',
                 2: 'A permit fee is paid for a local permission or regulatory action.',
@@ -225,8 +225,8 @@ export default defineLesson({
       type: 'takeaway',
       content: (
         <KeyTakeaway>
-          An LGU purse combines own-source revenue?local taxes, fees, charges,
-          and enterprise receipts?with external resources, especially the
+          An LGU purse combines own-source revenue—local taxes, fees, charges,
+          and enterprise receipts—with external resources, especially the
           National Tax Allotment. Always identify who raised the money and
           whether any law or program limits its use.
         </KeyTakeaway>
