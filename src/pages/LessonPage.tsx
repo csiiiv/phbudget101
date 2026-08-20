@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SubwayMap, type StationState } from '@/components/lesson/SubwayMap';
 import { findLessonContent, hasLessonContent } from '@/content/registry';
@@ -101,6 +101,29 @@ export function LessonPage() {
   const sectionIds = useMemo(() => sections.map((s) => s.id), [sections]);
   const activeFull = useActiveSection(sectionIds, mode === 'full' && sections.length > 0);
 
+  // Deep-linkable stations: /modules/<m>/lessons/<l>#<sectionId> in guided
+  // mode. Unknown or missing hashes fall back to the first station. The hash
+  // is kept in sync as the learner moves so the URL can be shared/bookmarked.
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (mode !== 'guided' || sections.length === 0) return;
+    const sectionId = decodeURIComponent(hash.replace(/^#/, ''));
+    if (!sectionId) return;
+    const index = sections.findIndex((s) => s.id === sectionId);
+    if (index >= 0 && index !== guidedIndex) setGuidedIndex(index);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hash, mode, sections.length]);
+
+  const goTo = (index: number) => {
+    if (mode === 'guided') {
+      setGuidedIndex(index);
+      topRef.current?.scrollIntoView({ behavior: 'smooth' });
+      navigate(`#${sections[index].id}`, { replace: true });
+    } else {
+      document.getElementById(`section-${sections[index].id}`)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (!mod || !lesson) {
     return (
       <div className="space-y-4">
@@ -125,15 +148,6 @@ export function LessonPage() {
     if (i === guidedIndex) return 'current';
     return 'not-visited';
   });
-
-  const goTo = (index: number) => {
-    if (mode === 'guided') {
-      setGuidedIndex(index);
-      topRef.current?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      document.getElementById(`section-${sections[index].id}`)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <article className="space-y-6">
@@ -220,70 +234,72 @@ export function LessonPage() {
         </>
       )}
 
-      <footer className="mt-10 space-y-4 border-t pt-6 no-print">
-        <div className="flex justify-center">
-          <Button
-            variant={isCompleted ? 'secondary' : 'default'}
-            onClick={() => markCompleted(mod.id, lesson.id)}
-            disabled={isCompleted}
+      {isLastSection && (
+        <footer className="mt-10 space-y-4 border-t pt-6 no-print">
+          <div className="flex justify-center">
+            <Button
+              variant={isCompleted ? 'secondary' : 'default'}
+              onClick={() => markCompleted(mod.id, lesson.id)}
+              disabled={isCompleted}
+            >
+              {isCompleted ? '✓ Lesson completed' : 'Mark lesson complete'}
+            </Button>
+          </div>
+          <nav
+            aria-label="Lesson navigation"
+            className="grid gap-3 sm:grid-cols-2"
           >
-            {isCompleted ? '✓ Lesson completed' : 'Mark lesson complete'}
-          </Button>
-        </div>
-        <nav
-          aria-label="Lesson navigation"
-          className="grid gap-3 sm:grid-cols-2"
-        >
-          {prev ? (
-            <button
-              type="button"
-              onClick={() =>
-                navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(prev.id)}`)
-              }
-              className="group rounded-lg border bg-card p-4 text-left transition-colors hover:bg-secondary/60"
-            >
-              <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                ← Previous
-              </span>
-              <span className="mt-1 block text-sm font-medium leading-snug">
-                {prev.id} {prev.title}
-              </span>
-            </button>
-          ) : (
-            <span aria-hidden className="hidden sm:block" />
-          )}
-          {next ? (
-            <button
-              type="button"
-              onClick={() =>
-                navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(next.id)}`)
-              }
-              className="group rounded-lg border bg-card p-4 text-right transition-colors hover:bg-secondary/60 sm:col-start-2"
-            >
-              <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                Next →
-              </span>
-              <span className="mt-1 block text-sm font-medium leading-snug">
-                {next.id} {next.title}
-              </span>
-            </button>
-          ) : showCourseHome ? (
-            <Link
-              to="/"
-              className="group rounded-lg border border-primary/40 bg-accent/40 p-4 text-right transition-colors hover:bg-accent/70 sm:col-start-2"
-            >
-              <span className="block text-xs font-medium uppercase tracking-wide text-primary">
-                Course home →
-              </span>
-              <span className="mt-1 block text-sm font-medium leading-snug">
-                You reached the end of this module — return to the course
-              </span>
-            </Link>
-          ) : (
-            <span aria-hidden className="hidden sm:block" />
-          )}
-        </nav>
-      </footer>
+            {prev ? (
+              <button
+                type="button"
+                onClick={() =>
+                  navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(prev.id)}`)
+                }
+                className="group rounded-lg border bg-card p-4 text-left transition-colors hover:bg-secondary/60"
+              >
+                <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  ← Previous
+                </span>
+                <span className="mt-1 block text-sm font-medium leading-snug">
+                  {prev.id} {prev.title}
+                </span>
+              </button>
+            ) : (
+              <span aria-hidden className="hidden sm:block" />
+            )}
+            {next ? (
+              <button
+                type="button"
+                onClick={() =>
+                  navigate(`/modules/${mod.slug}/lessons/${encodeURIComponent(next.id)}`)
+                }
+                className="group rounded-lg border bg-card p-4 text-right transition-colors hover:bg-secondary/60 sm:col-start-2"
+              >
+                <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Next →
+                </span>
+                <span className="mt-1 block text-sm font-medium leading-snug">
+                  {next.id} {next.title}
+                </span>
+              </button>
+            ) : showCourseHome ? (
+              <Link
+                to="/"
+                className="group rounded-lg border border-primary/40 bg-accent/40 p-4 text-right transition-colors hover:bg-accent/70 sm:col-start-2"
+              >
+                <span className="block text-xs font-medium uppercase tracking-wide text-primary">
+                  Course home →
+                </span>
+                <span className="mt-1 block text-sm font-medium leading-snug">
+                  You reached the end of this module — return to the course
+                </span>
+              </Link>
+            ) : (
+              <span aria-hidden className="hidden sm:block" />
+            )}
+          </nav>
+        </footer>
+      )}
     </article>
   );
 }
