@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-
 import { KeyTakeaway } from "@/components/content/KeyTakeaway";
+import { CourseworkChooser } from "@/components/content/CourseworkChooser";
 import { defineLesson } from "@/lib/sections";
 
 export default defineLesson({
@@ -149,33 +148,31 @@ export default defineLesson({
       content: (
         <>
           <p>
-            Mark this lesson complete, then pick the route that fits you today.
-            All three lead out of Start Here — you can return or switch at any
-            time.
+            When you are ready, mark this lesson complete below. Your way out
+            of Start Here unlocks with it — pick the route that fits you today.
+            You can return or switch at any time.
           </p>
-          <nav
-            aria-label="Choose a learning path"
-            className="not-prose grid gap-3 sm:grid-cols-3"
-          >
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Start the quick overview
-            </Link>
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Continue the full course
-            </Link>
-            <Link
-              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
-              to="/reference"
-            >
-              Browse by topic
-            </Link>
-          </nav>
+          <CourseworkChooser
+            moduleId="mod-00"
+            lessonId="00.3"
+            options={[
+              {
+                to: "/modules/01-why-pfm-matters/lessons/01.1",
+                label: "Start the quick overview",
+                description: "Modules 1, 3, 4, and 5 · about 2–3 hours",
+              },
+              {
+                to: "/modules/01-why-pfm-matters/lessons/01.1",
+                label: "Continue the full course",
+                description: "Modules 0–10 · about 10–12 hours",
+              },
+              {
+                to: "/reference",
+                label: "Browse by topic",
+                description: "Reference pages and every lesson",
+              },
+            ]}
+          />
         </>
       ),
     },
