@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useProgress } from '@/lib/useProgress';
+import { useT } from '@/lib/LocaleProvider';
 
 export interface CourseworkOption {
   to: string;
@@ -26,6 +27,7 @@ export function CourseworkChooser({
   options,
 }: CourseworkChooserProps) {
   const { progress } = useProgress();
+  const t = useT();
   const completed =
     progress?.modules[moduleId]?.lessons[lessonId] === 'completed';
 
@@ -33,14 +35,11 @@ export function CourseworkChooser({
     <div className="not-prose my-6">
       {!completed && (
         <p className="mb-4 rounded-lg border border-dashed p-4 text-sm text-muted-foreground">
-          One step left: mark this lesson complete below. Your routes unlock
-          the moment you do.
+          {t.coursework.lockedPrompt}
         </p>
       )}
       <p className="mb-3 text-sm font-medium">
-        {completed
-          ? 'Lesson complete — choose the route that fits you today:'
-          : 'Choose the route that fits you today:'}
+        {completed ? t.coursework.chooseUnlocked : t.coursework.chooseLocked}
       </p>
       <nav
         aria-label="Choose a learning path"

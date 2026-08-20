@@ -12,7 +12,7 @@
     "test:watch": "vitest",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "validate:data": "tsx scripts/validate-data.ts && tsx scripts/validate-figures.ts && tsx scripts/validate-term-spacing.ts",
+    "validate:data": "tsx scripts/validate-data.ts && tsx scripts/validate-figures.ts && tsx scripts/validate-term-spacing.ts && tsx scripts/validate-locale.ts",
     "build:check": "npm run validate:data && npm run build && npm run test"
   },
   "dependencies": {

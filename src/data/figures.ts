@@ -1,4 +1,5 @@
 import { moduleDataSchema, type Figure } from './schemas/figure';
+import { intlTag, type Locale } from '@/lib/locale';
 
 const modulesJson = import.meta.glob('./modules/*.json', {
   eager: true,
@@ -17,15 +18,15 @@ export function getFigure(moduleId: string, figureId: string): Figure | null {
 }
 
 /** Locale-aware display value for a figure (₱ symbol from system fonts). */
-export function formatFigureValue(fig: Figure): string {
-  const num = new Intl.NumberFormat('en-PH', { maximumFractionDigits: 2 }).format(
-    fig.value
-  );
+export function formatFigureValue(fig: Figure, locale: Locale = 'en'): string {
+  const num = new Intl.NumberFormat(intlTag(locale), {
+    maximumFractionDigits: 2,
+  }).format(fig.value);
   switch (fig.unit) {
     case 'PHP-billion':
-      return `₱${num} billion`;
+      return locale === 'fil' ? `₱${num} bilyon` : `₱${num} billion`;
     case 'PHP-million':
-      return `₱${num} million`;
+      return locale === 'fil' ? `₱${num} milyon` : `₱${num} million`;
     case 'PHP':
       return `₱${num}`;
     case 'percent':

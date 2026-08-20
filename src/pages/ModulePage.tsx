@@ -1,19 +1,22 @@
 import { Link, useParams } from 'react-router-dom';
 import { CircleCheck } from 'lucide-react';
-import { courseModules } from '@/data/course';
+import { useCourseModules } from '@/data/localizedCourse';
+import { useT } from '@/lib/LocaleProvider';
 import { useProgress } from '@/lib/useProgress';
 
 export function ModulePage() {
   const { moduleId } = useParams();
+  const courseModules = useCourseModules();
   const mod = courseModules.find((m) => m.slug === moduleId);
   const { progress } = useProgress();
+  const t = useT();
 
   if (!mod) {
     return (
       <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Module not found</h1>
+        <h1 className="text-2xl font-bold">{t.module.notFound}</h1>
         <Link to="/" className="text-primary underline">
-          Back to home
+          {t.module.backHome}
         </Link>
       </div>
     );
@@ -23,17 +26,14 @@ export function ModulePage() {
   const done = Object.values(lessons).filter((s) => s === 'completed').length;
   const total = mod.lessons.length;
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const modNum = mod.id.replace('mod-', '');
   const nextModule =
-    courseModules[
-      courseModules.findIndex((m) => m.id === mod.id) + 1
-    ] ?? null;
+    courseModules[courseModules.findIndex((m) => m.id === mod.id) + 1] ?? null;
 
   return (
     <article className="space-y-8">
       <header className="space-y-3">
-        <div className="text-sm text-muted-foreground">
-          Module {mod.id.replace('mod-', '')}
-        </div>
+        <div className="text-sm text-muted-foreground">{t.module.label(modNum)}</div>
         <h1 className="text-3xl font-bold tracking-tight leading-tight">
           {mod.title}
         </h1>
@@ -41,7 +41,7 @@ export function ModulePage() {
         {done > 0 && (
           <div className="space-y-1.5">
             <div className="text-xs text-muted-foreground tabular-nums">
-              {done} of {total} lessons complete
+              {t.module.lessonsComplete(done, total)}
             </div>
             <div
               className="h-1.5 w-full max-w-xs rounded-full bg-secondary overflow-hidden"
@@ -59,7 +59,7 @@ export function ModulePage() {
         )}
       </header>
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">Lessons</h2>
+        <h2 className="text-xl font-semibold">{t.module.lessonsHeading}</h2>
         <ol className="space-y-2">
           {mod.lessons.map((lesson) => {
             const status = lessons[lesson.id];
@@ -87,7 +87,7 @@ export function ModulePage() {
                   </span>
                   {status === 'visited' && (
                     <span className="shrink-0 text-xs text-muted-foreground">
-                      In progress
+                      {t.module.inProgress}
                     </span>
                   )}
                 </Link>
@@ -99,16 +99,19 @@ export function ModulePage() {
       {nextModule && done === total && (
         <section className="rounded-lg border border-primary/40 bg-accent/40 p-5">
           <p className="text-xs font-medium uppercase tracking-wide text-primary">
-            Module complete
+            {t.module.moduleComplete}
           </p>
           <p className="mt-1 font-semibold leading-snug">
-            You finished all {total} lessons of Module {mod.id.replace('mod-', '')}.
+            {t.module.moduleCompleteBody(total, modNum)}
           </p>
           <Link
             to={`/modules/${nextModule.slug}`}
             className="mt-3 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
-            Next module: {nextModule.id.replace('mod-', '')} — {nextModule.title} →
+            {t.module.nextModule(
+              nextModule.id.replace('mod-', ''),
+              nextModule.title
+            )}
           </Link>
         </section>
       )}

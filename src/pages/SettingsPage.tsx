@@ -9,8 +9,12 @@ import {
   saveProgress,
   newProgress,
 } from '@/lib/progress';
+import { useLocale, useT } from '@/lib/LocaleProvider';
+import { LOCALE_LABELS, SUPPORTED_LOCALES } from '@/lib/locale';
 
 export function SettingsPage() {
+  const { locale, setLocale } = useLocale();
+  const t = useT();
   const [message, setMessage] = useState<{ kind: 'ok' | 'error'; text: string } | null>(
     null
   );
@@ -20,7 +24,7 @@ export function SettingsPage() {
   function handleExport() {
     const state = loadProgress();
     if (!state) {
-      setMessage({ kind: 'error', text: 'No progress to export yet.' });
+      setMessage({ kind: 'error', text: t.settings.noProgressExport });
       return;
     }
     const blob = new Blob([exportProgress(state)], { type: 'application/json' });
@@ -30,7 +34,7 @@ export function SettingsPage() {
     a.download = progressFileName();
     a.click();
     URL.revokeObjectURL(url);
-    setMessage({ kind: 'ok', text: 'Progress downloaded.' });
+    setMessage({ kind: 'ok', text: t.settings.exported });
   }
 
   function handleImportFile(file: File) {
@@ -40,7 +44,7 @@ export function SettingsPage() {
         saveProgress(imported);
         setMessage({
           kind: 'ok',
-          text: 'Progress imported. Your previous progress on this device was replaced.',
+          text: t.settings.imported,
         });
       } catch (err) {
         setMessage({
@@ -53,48 +57,67 @@ export function SettingsPage() {
 
   function handleReset() {
     clearProgress();
-    setMessage({ kind: 'ok', text: 'Progress cleared on this device.' });
+    setMessage({ kind: 'ok', text: t.settings.cleared });
   }
 
   return (
     <div className="space-y-6">
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-        <p className="text-muted-foreground">
-          Your progress is stored only on this device. Export it to move to
-          another device or keep a backup.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight">{t.settings.title}</h1>
+        <p className="text-muted-foreground">{t.settings.intro}</p>
       </header>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-semibold">Progress</h2>
+        <h2 className="text-lg font-semibold">{t.settings.language}</h2>
+        <p className="text-sm text-muted-foreground">{t.settings.languageHelp}</p>
+        <div className="flex flex-wrap gap-2">
+          {SUPPORTED_LOCALES.map((loc) => (
+            <Button
+              key={loc}
+              variant={locale === loc ? 'default' : 'outline'}
+              onClick={() => setLocale(loc)}
+              aria-pressed={locale === loc}
+            >
+              {LOCALE_LABELS[loc]}
+            </Button>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-semibold">{t.settings.progress}</h2>
         <div className="rounded-lg border bg-card p-4 text-sm space-y-1">
           <div>
-            Status: {current ? 'In progress' : 'Not started'}{' '}
-            {current?.path && <span className="text-muted-foreground">({current.path} path)</span>}
+            {current ? t.settings.statusInProgress : t.settings.statusNotStarted}{' '}
+            {current?.path && (
+              <span className="text-muted-foreground">
+                {t.settings.pathLabel(current.path)}
+              </span>
+            )}
           </div>
           <div className="text-muted-foreground">
-            Modules with activity:{' '}
-            {current ? Object.keys(current.modules).length : 0}
+            {t.settings.modulesWithActivity(
+              current ? Object.keys(current.modules).length : 0
+            )}
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button onClick={handleExport}>Export progress</Button>
+          <Button onClick={handleExport}>{t.settings.export}</Button>
           <Button variant="outline" onClick={() => fileInputRef.current?.click()}>
-            Import progress
+            {t.settings.import}
           </Button>
           <Button variant="outline" className="text-destructive" onClick={handleReset}>
-            Clear progress
+            {t.settings.clear}
           </Button>
           {!current && (
             <Button
               variant="outline"
               onClick={() => {
                 saveProgress(newProgress());
-                setMessage({ kind: 'ok', text: 'Progress initialized.' });
+                setMessage({ kind: 'ok', text: t.settings.initialized });
               }}
             >
-              Initialize progress
+              {t.settings.initialize}
             </Button>
           )}
         </div>

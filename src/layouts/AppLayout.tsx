@@ -1,26 +1,34 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import { TooltipProvider } from '@/components/ui/tooltip';
-
-const navItems = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/modules/00-start-here', label: 'Course' },
-  { to: '/reference', label: 'Reference' },
-  { to: '/settings', label: 'Settings' },
-];
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { WelcomeDialog } from "@/components/WelcomeDialog";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { useT } from "@/lib/LocaleProvider";
 
 export function AppLayout() {
+  const t = useT();
+  const navItems = [
+    { to: "/", label: t.nav.home, end: true },
+    { to: "/modules/00-start-here", label: t.nav.course },
+    { to: "/reference", label: t.nav.reference },
+    { to: "/settings", label: t.nav.settings },
+  ];
+
   return (
     <TooltipProvider delayDuration={300}>
       <div className="min-h-screen flex flex-col">
+        <WelcomeDialog />
         <header className="app-header sticky top-0 z-40">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 py-3 flex items-center justify-between">
-            <NavLink to="/" className="flex items-center gap-2 font-semibold text-primary">
+            <NavLink
+              to="/"
+              className="flex items-center gap-2 font-semibold text-primary"
+            >
               <span className="grid size-7 place-items-center rounded-md bg-primary text-sm text-primary-foreground">
                 ₱
               </span>
-              PH Budget 101
+              {t.app.title}
             </NavLink>
-            <nav className="flex gap-1 text-sm">
+            <nav className="flex items-center gap-1 text-sm">
               {navItems.map((item) => (
                 <NavLink
                   key={item.to}
@@ -29,14 +37,15 @@ export function AppLayout() {
                   className={({ isActive }) =>
                     `px-3 py-1.5 rounded-md transition-colors ${
                       isActive
-                        ? 'bg-accent text-accent-foreground font-medium'
-                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                        ? "bg-accent text-accent-foreground font-medium"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     }`
                   }
                 >
                   {item.label}
                 </NavLink>
               ))}
+              <LanguageSwitcher />
             </nav>
           </div>
         </header>
@@ -45,12 +54,12 @@ export function AppLayout() {
         </main>
         <footer className="app-footer">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-            <p>
-              PH Budget 101 — Philippine Public Financial Management. Progress
-              is stored on this device; export it from Settings.
-            </p>
-            <Link to="/about" className="hover:text-foreground hover:underline">
-              About
+            <p className="min-w-[min(100%,16rem)] flex-1">{t.app.footer}</p>
+            <Link
+              to="/about"
+              className="shrink-0 px-2 py-1 hover:text-foreground hover:underline"
+            >
+              {t.nav.about}
             </Link>
           </div>
         </footer>

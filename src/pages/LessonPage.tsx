@@ -4,7 +4,8 @@ import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SubwayMap, type StationState } from '@/components/lesson/SubwayMap';
 import { findLessonContent, hasLessonContent } from '@/content/registry';
-import { courseModules } from '@/data/course';
+import { useCourseModules } from '@/data/localizedCourse';
+import { useLocale, useT } from '@/lib/LocaleProvider';
 import { useProgress } from '@/lib/useProgress';
 import type { LessonDefinition } from '@/lib/sections';
 import { cn } from '@/lib/utils';
@@ -16,10 +17,14 @@ interface LoadedLesson {
   legacy: ComponentType<Record<string, unknown>> | null;
 }
 
-function useLessonDefinition(moduleSlug: string, lessonId: string): LoadedLesson | 'loading' {
+function useLessonDefinition(
+  moduleSlug: string,
+  lessonId: string,
+  locale: ReturnType<typeof useLocale>['locale']
+): LoadedLesson | 'loading' {
   const [loaded, setLoaded] = useState<LoadedLesson | 'loading'>('loading');
   useEffect(() => {
-    const loader = findLessonContent(moduleSlug, lessonId);
+    const loader = findLessonContent(moduleSlug, lessonId, locale);
     if (!loader) {
       setLoaded({ def: null, legacy: null });
       return;
@@ -39,7 +44,7 @@ function useLessonDefinition(moduleSlug: string, lessonId: string): LoadedLesson
     return () => {
       active = false;
     };
-  }, [moduleSlug, lessonId]);
+  }, [moduleSlug, lessonId, locale]);
   return loaded;
 }
 
@@ -71,8 +76,11 @@ function useActiveSection(sectionIds: string[], enabled: boolean): number {
 export function LessonPage() {
   const { moduleId, lessonId } = useParams();
   const navigate = useNavigate();
+  const { locale } = useLocale();
+  const t = useT();
+  const courseModules = useCourseModules();
   const { progress, markVisited, markCompleted, setReadingMode } = useProgress();
-  const loaded = useLessonDefinition(moduleId ?? '', lessonId ?? '');
+  const loaded = useLessonDefinition(moduleId ?? '', lessonId ?? '', locale);
 
   const mod = courseModules.find((m) => m.slug === moduleId);
   const lesson = mod?.lessons.find((l) => l.id === lessonId);
@@ -128,16 +136,16 @@ export function LessonPage() {
   if (!mod || !lesson) {
     return (
       <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Lesson not found</h1>
+        <h1 className="text-2xl font-bold">{t.lesson.notFound}</h1>
         <Link to="/" className="text-primary underline">
-          Back to home
+          {t.module.backHome}
         </Link>
       </div>
     );
   }
 
   const isCompleted = progress?.modules[mod.id]?.lessons[lesson.id] === 'completed';
-  const hasContent = hasLessonContent(mod.slug, lesson.id);
+  const hasContent = hasLessonContent(mod.slug, lesson.id, locale);
   const isLastSection =
     mode === 'full' ||
     sections.length === 0 ||
@@ -187,7 +195,7 @@ export function LessonPage() {
                     )}
                     aria-pressed={mode === m}
                   >
-                    {m === 'guided' ? 'Guided' : 'Full lesson'}
+                    {m === 'guided' ? t.lesson.readingModeGuided : t.lesson.readingModeFull}
                   </button>
                 ))}
               </div>
@@ -215,6 +223,7 @@ export function LessonPage() {
                     onPrev={() => goTo(Math.max(0, guidedIndex - 1))}
                     onNext={() => goTo(Math.min(sections.length - 1, guidedIndex + 1))}
                     isLast={guidedIndex === sections.length - 1}
+                    labels={t.lesson}
                   />
                 ) : (
                   sections.map((s) => (
@@ -245,10 +254,10 @@ export function LessonPage() {
             >
               {isCompleted ? (
                 <>
-                  <Check className="size-4" aria-hidden /> Lesson completed
+                  <Check className="size-4" aria-hidden /> {t.lesson.lessonCompleted}
                 </>
               ) : (
-                'Mark lesson complete'
+                t.lesson.markComplete
               )}
             </Button>
           </div>
@@ -265,7 +274,7 @@ export function LessonPage() {
                 className="group rounded-lg border bg-card p-4 text-left transition-colors hover:bg-secondary/60"
               >
                 <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  ← Previous
+                  {t.lesson.previous}
                 </span>
                 <span className="mt-1 block text-sm font-medium leading-snug">
                   {prev.id} {prev.title}
@@ -283,7 +292,7 @@ export function LessonPage() {
                 className="group rounded-lg border bg-card p-4 text-right transition-colors hover:bg-secondary/60 sm:col-start-2"
               >
                 <span className="block text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                  Next →
+                  {t.lesson.next}
                 </span>
                 <span className="mt-1 block text-sm font-medium leading-snug">
                   {next.id} {next.title}
@@ -295,10 +304,10 @@ export function LessonPage() {
                 className="group rounded-lg border border-primary/40 bg-accent/40 p-4 text-right transition-colors hover:bg-accent/70 sm:col-start-2"
               >
                 <span className="block text-xs font-medium uppercase tracking-wide text-primary">
-                  Course home →
+                  {t.lesson.courseHome}
                 </span>
                 <span className="mt-1 block text-sm font-medium leading-snug">
-                  You reached the end of this module — return to the course
+                  {t.lesson.courseHomeBody}
                 </span>
               </Link>
             ) : (
@@ -318,6 +327,7 @@ function GuidedBody({
   onPrev,
   onNext,
   isLast,
+  labels,
 }: {
   sections: LessonDefinition['sections'];
   index: number;
@@ -325,6 +335,11 @@ function GuidedBody({
   onPrev: () => void;
   onNext: () => void;
   isLast: boolean;
+  labels: {
+    previous: string;
+    continue: string;
+    sectionOf: (index: number, total: number) => string;
+  };
 }) {
   const s = sections[index];
   return (
@@ -335,7 +350,7 @@ function GuidedBody({
       </section>
       <div className="not-prose my-8 space-y-3 border-t pt-4 no-print sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:space-y-0">
         <span className="block text-center text-xs text-muted-foreground tabular-nums sm:hidden">
-          Section {index + 1} of {total}
+          {labels.sectionOf(index + 1, total)}
         </span>
         <div className="flex sm:justify-start">
           <Button
@@ -344,15 +359,15 @@ function GuidedBody({
             onClick={onPrev}
             disabled={index === 0}
           >
-            ← Previous
+            {labels.previous}
           </Button>
         </div>
         <span className="hidden text-xs text-muted-foreground tabular-nums sm:block">
-          Section {index + 1} of {total}
+          {labels.sectionOf(index + 1, total)}
         </span>
         <div className="flex sm:justify-end">
           <Button className="w-full sm:w-auto" onClick={onNext} disabled={isLast}>
-            Continue →
+            {labels.continue}
           </Button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { getFigure, formatFigureValue } from '@/data/figures';
+import { useLocale, useT } from '@/lib/LocaleProvider';
 import { cn } from '@/lib/utils';
 
 interface FigureProps {
@@ -17,18 +18,20 @@ interface FigureProps {
  * is always visible (see build_spec swappable-data requirement).
  */
 export function Figure({ module, id, inline, className }: FigureProps) {
+  const { locale } = useLocale();
+  const t = useT();
   const fig = getFigure(module, id);
   if (!fig) {
     return (
       <span className="text-destructive" title={`Missing figure ${module}/${id}`}>
-        [missing figure: {module}/{id}]
+        {t.figure.missing(module, id)}
       </span>
     );
   }
   if (inline) {
     return (
       <span className={className} title={`As of ${fig.asOf}. Source: ${fig.source}`}>
-        {formatFigureValue(fig)}
+        {formatFigureValue(fig, locale)}
       </span>
     );
   }
@@ -39,9 +42,9 @@ export function Figure({ module, id, inline, className }: FigureProps) {
         className
       )}
     >
-      <span className="font-semibold tabular-nums">{formatFigureValue(fig)}</span>
+      <span className="font-semibold tabular-nums">{formatFigureValue(fig, locale)}</span>
       <span className="text-xs text-muted-foreground">
-        As of {fig.asOf} · {fig.source}
+        {t.figure.asOf(fig.asOf, fig.source)}
       </span>
       {fig.note && <span className="text-xs text-muted-foreground">{fig.note}</span>}
     </span>
