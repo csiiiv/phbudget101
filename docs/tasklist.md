@@ -69,6 +69,7 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 | 06 Local Government Budgets | outline | none | Author 06.1–06.4 |
 | 07 Reading Budget Documents | outline | 07.1 authored | Author 07.2–07.4 |
 | 07 Reading Budget Documents | outline | 07.2 authored | Author 07.1, 07.3–07.4 |
+| 07 Reading Budget Documents | outline | 07.3 authored | Author 07.1–07.2, 07.4 |
 | 08 Evaluating Decisions | outline | none | Author 08.1–08.5 |
 | 09 Participating | outline | none | Author 09.1–09.5 |
 | 10 Capstone | outline | none | Phase 2 — after Modules 1–9 exist |
