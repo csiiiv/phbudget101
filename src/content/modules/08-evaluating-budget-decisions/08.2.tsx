@@ -187,7 +187,7 @@ export default defineLesson({
             },
             {
               prompt:
-                'An agency publishes clear reports, but no responsible office must explain repeated failures or record corrective action. What is present, and what is weak?',
+                'An agency publishes clear reports, but no responsible office can explain repeated failures or record corrective action. What is present, and what is weak?',
               options: [
                 'Transparency is present; accountability is weak.',
                 'Adequacy is present; efficiency is weak.',

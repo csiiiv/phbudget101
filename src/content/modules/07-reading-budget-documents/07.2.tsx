@@ -149,7 +149,7 @@ export default defineLesson({
             </div>
           </div>
           <p>
-            In an actual <Term id="gaa" />, a <Term id="general-provision" />
+            In an actual <Term id="gaa" />, a <Term id="general-provision" />{' '}
             can govern broad parts of the law, while a{' '}
             <Term id="special-provision" /> can set conditions for a particular
             agency, fund, program, or item. Read the exact provision and its scope;
