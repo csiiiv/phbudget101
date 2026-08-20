@@ -14,7 +14,7 @@ Related docs: [`build_spec.md`](build_spec.md) (conventions, registries), [`tech
 
 1. **Accuracy pass** over the merged drafts (Modules 00–09) — verify terms, figures, and law references before any module moves past `content-draft`.
 2. **Module 10 Capstone** stays Phase 2 — do not start.
-3. Reference-section bodies (ref-02 … ref-09) once content is stable.
+3. Reference-section bodies (ref-02 … ref-09) — **seeded** on this branch; yearly accuracy pass still needed for calendar/legal links.
 
 Agents: **one lesson (or one accuracy pass per module) per PR**.
 
@@ -88,21 +88,21 @@ Phase 1 interactives must degrade to static content.
 
 ## Reference section
 
-All components are specced in [`reference-section.md`](reference-section.md). App routes exist; bodies are placeholders.
+All components are specced in [`reference-section.md`](reference-section.md). App routes exist; Phase 1 bodies are seeded below (search remains Phase 2).
 
 | ID      | Component                   | Phase | Status                                                    |
 | ------- | --------------------------- | ----- | --------------------------------------------------------- |
 | ref-01  | Glossary                    | 1     | seed (terms used in authored lessons; grows with modules) |
-| ref-02  | Document library            | 1     | not started                                               |
-| ref-03  | Institutional map           | 1     | not started                                               |
-| ref-04  | Budget calendar             | 1     | not started                                               |
-| ref-05  | Classification reference    | 1     | not started                                               |
-| ref-05b | Local budget structures     | 1     | not started                                               |
+| ref-02  | Document library            | 1     | seed                                                      |
+| ref-03  | Institutional map           | 1     | seed                                                      |
+| ref-04  | Budget calendar             | 1     | seed (typical timing; verify yearly)                      |
+| ref-05  | Classification reference    | 1     | seed                                                      |
+| ref-05b | Local budget structures     | 1     | seed                                                      |
 | ref-06  | Acronyms                    | 1     | seed (generated from glossary)                            |
-| ref-07  | Legal and policy references | 1     | not started                                               |
-| ref-07b | Sources and attribution     | 1     | not started                                               |
-| ref-08  | Data-source directory       | 1     | not started                                               |
-| ref-09  | FAQ                         | 1     | not started                                               |
+| ref-07  | Legal and policy references | 1     | seed                                                      |
+| ref-07b | Sources and attribution     | 1     | seed (guidebook + official portals; fuller biblio later)  |
+| ref-08  | Data-source directory       | 1     | seed                                                      |
+| ref-09  | FAQ                         | 1     | seed                                                      |
 | ref-10  | Search                      | 2     | later                                                     |
 
 ---
