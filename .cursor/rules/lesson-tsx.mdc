@@ -16,6 +16,12 @@ export default defineLesson({
 
 - About 4–6 sections; `id` kebab-case; `shortTitle` for the subway map.
 - First jargon use: `<Term id="nep" expand />`; later `<Term id="nep" />`.
+- **JSX strips newlines next to tags.** When prose and a `<Term />` are split across lines, add an explicit space or it renders glued (`...andexcise taxes...`):
+  ```tsx
+  customs duties, and{' '}
+  <Term id="excise-tax">excise taxes</Term> on selected products.
+  ```
+  `scripts/validate-term-spacing.ts` (runs in `validate:data`) fails the build on a missing space — fix by adding `{' '}`.
 - Add glossary rows **in your module's file** under `src/data/glossary/` (create if absent; course-wide terms in `core.ts`) before wrapping. Never edit another module's glossary file.
 - Real Unicode only: use `’ “ ” — –` directly in strings. Never emit `?` placeholders for quotes, apostrophes, or dashes.
 - Widget roots (`TraceConcern`, checks, cards): `not-prose`.
