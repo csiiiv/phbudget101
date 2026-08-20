@@ -108,12 +108,6 @@ export default defineLesson({
               and want a short map. It covers Modules 1, 3, 4, and 5, with the
               reference section available when you need more detail.
             </p>
-            <Link
-              className="mt-4 inline-block text-sm font-semibold text-primary hover:underline"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Begin the quick overview
-            </Link>
           </section>
           <section className="rounded-lg border bg-card p-5">
             <h3 className="font-semibold text-foreground">
@@ -124,12 +118,6 @@ export default defineLesson({
               or if you want a step-by-step foundation. The full route follows
               Modules 0–10 in order.
             </p>
-            <Link
-              className="mt-4 inline-block text-sm font-semibold text-primary hover:underline"
-              to="/modules/01-why-pfm-matters/lessons/01.1"
-            >
-              Follow the full course
-            </Link>
           </section>
           <p className="text-sm text-muted-foreground sm:col-span-2">
             Mixed answers are normal. If you are unsure, start with the full
@@ -151,6 +139,44 @@ export default defineLesson({
           when you want a foundation or found a gap. Neither choice is
           permanent.
         </KeyTakeaway>
+      ),
+    },
+    {
+      id: "choose-path",
+      title: "Choose your coursework",
+      shortTitle: "Choose",
+      type: "takeaway",
+      content: (
+        <>
+          <p>
+            Mark this lesson complete, then pick the route that fits you today.
+            All three lead out of Start Here — you can return or switch at any
+            time.
+          </p>
+          <nav
+            aria-label="Choose a learning path"
+            className="not-prose grid gap-3 sm:grid-cols-3"
+          >
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/modules/01-why-pfm-matters/lessons/01.1"
+            >
+              Start the quick overview
+            </Link>
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/modules/01-why-pfm-matters/lessons/01.1"
+            >
+              Continue the full course
+            </Link>
+            <Link
+              className="rounded-lg border border-primary bg-card p-4 text-sm font-semibold text-primary hover:bg-accent/40"
+              to="/reference"
+            >
+              Browse by topic
+            </Link>
+          </nav>
+        </>
       ),
     },
   ],

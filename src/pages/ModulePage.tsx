@@ -22,6 +22,10 @@ export function ModulePage() {
   const done = Object.values(lessons).filter((s) => s === 'completed').length;
   const total = mod.lessons.length;
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  const nextModule =
+    courseModules[
+      courseModules.findIndex((m) => m.id === mod.id) + 1
+    ] ?? null;
 
   return (
     <article className="space-y-8">
@@ -88,6 +92,22 @@ export function ModulePage() {
           })}
         </ol>
       </section>
+      {nextModule && done === total && (
+        <section className="rounded-lg border border-primary/40 bg-accent/40 p-5">
+          <p className="text-xs font-medium uppercase tracking-wide text-primary">
+            Module complete
+          </p>
+          <p className="mt-1 font-semibold leading-snug">
+            You finished all {total} lessons of Module {mod.id.replace('mod-', '')}.
+          </p>
+          <Link
+            to={`/modules/${nextModule.slug}`}
+            className="mt-3 inline-block rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+          >
+            Next module: {nextModule.id.replace('mod-', '')} — {nextModule.title} →
+          </Link>
+        </section>
+      )}
     </article>
   );
 }
