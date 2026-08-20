@@ -167,9 +167,11 @@ export default defineLesson({
       content: (
         <>
           <p>
-            During preparation for the 2022 national budget, civil society input
-            included a proposal for active-transport and public-transport
-            support. The documented proposal included this requested amount:
+            During preparation for the 2022 national budget, the{' '}
+            <strong>Move As One</strong> coalition — a transport coalition of
+            over a hundred organizations — submitted a documented proposal for
+            active-transport and public-transport support. The recorded request
+            included this amount:
           </p>
           <Figure module='mod-04' id='mao-ask' />
           <p>
@@ -179,10 +181,11 @@ export default defineLesson({
           <Figure module='mod-04' id='mao-service-contracting-outcome' />
           <p>
             The two figures are not a simple before-and-after score. They refer
-            to a proposal and an enacted item at different decision points. The
-            useful preparation lesson is narrower: input can enter while the
-            executive is building its proposal, but later review and legislation
-            still shape what is authorized.
+            to a proposal by a named, on-record proponent and an enacted item at
+            different decision points. The useful preparation lesson is
+            narrower: input can enter while the executive is building its
+            proposal, but later review and legislation still shape what is
+            authorized.
           </p>
         </>
       ),

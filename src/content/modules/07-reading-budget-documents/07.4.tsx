@@ -131,8 +131,9 @@ export default defineLesson({
       content: (
         <>
           <p>
-            The course&apos;s earlier transport example contains a proposal and an
-            enacted outcome for the same fiscal year:
+            The course&apos;s earlier transport example — the Move As One
+            coalition&apos;s 2022 proposal and its enacted outcome — contains a
+            proposal and an enacted amount for the same fiscal year:
           </p>
           <div className="not-prose my-6 grid gap-4 md:grid-cols-2">
             <Figure module="mod-04" id="mao-ask" />

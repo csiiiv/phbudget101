@@ -104,14 +104,18 @@ Status: `accepted` · `superseded` · `proposed`
 
 ## ADR-008 — PFM-first course; editorial neutrality in lessons
 
-* Status: accepted
+* Status: accepted (amended 2026-08-20)
 * Date: 2026-08
 
 **Context.** Source material is an advocacy guidebook. The product goal is a general Budget 101, later forkable for CSOs or officials.
 
-**Decision.** Teach the PFM system first; participation is later modules applying literacy. Learner-facing lessons name no advocacy orgs, coalitions, campaigns, or personalities. Guidebook cases become methods, public facts, or unlabeled composites. Attribution lives in ref-07b.
+**Decision.** Teach the PFM system first; participation is later modules applying literacy. Lessons name no advocacy organizations, coalitions, campaigns, or personalities *as subjects of endorsement or critique*. Named entities are limited to government institutions, laws, documents, and public programs — with one exception:
 
-**Consequences.** Worked examples must be rewritten, not copied. Accuracy review includes a neutrality check.
+> **Factual-event exception.** Where a civil-society actor is part of the verifiable public record of a budget event (a documented proposal, a published ask, a filed petition), lessons may name that actor **as a factual detail** — who did what, on the record — provided the lesson (a) describes the action neutrally, (b) draws no lesson about the actor's virtue or merit, and (c) does not imply endorsement. The rule against *advocacy framing* stands; what changed is that anonymizing on-record actors is no longer required.
+
+Guidebook cases otherwise become methods, public facts, or unlabeled composites. Attribution and full citations still live in ref-07b.
+
+**Consequences.** Worked examples must be rewritten, not copied. Accuracy review includes both a neutrality check and a factual-support check for any named non-government actor. The active-transport thread (04.1 → 07.4 → 09.1) may name its coalition as the documented proponent of the ₱33 billion ask.
 
 ---
 

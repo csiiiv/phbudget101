@@ -119,8 +119,10 @@ export default defineLesson({
         <>
           <p>
             Consider the active-transport example introduced in Module 04.
-            During preparation for the 2022 national budget, a civil-society
-            proposal asked for support for public-transport service contracting:
+            During preparation for the 2022 national budget, the{' '}
+            <strong>Move As One</strong> coalition — a transport coalition of
+            over a hundred organizations — submitted a documented proposal
+            asking for support for public-transport service contracting:
           </p>
           <Figure module="mod-04" id="mao-ask" />
           <p>The enacted budget contained a smaller amount for the program:</p>

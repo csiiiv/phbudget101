@@ -56,7 +56,7 @@ After this module, the learner can:
 * Guiding question: How do you find the story hiding in a thousand-line budget?
 * Concepts: the avalanche/increment method from the guidebook — scanning for unusually large increases, decreases, and items appearing/disappearing across years; building year-series; what each pattern suggests
 * Interactive or visual: avalanche-spotting exercise on a simplified two-year comparison table
-* Worked example: active-transport budget items again (from 04.1) — how a year-over-year comparison of transport lines reveals the items that grew, shrank, appeared, and disappeared; engagement described generically
+* Worked example: active-transport budget items again (from 04.1) — how a year-over-year comparison of transport lines reveals the items that grew, shrank, appeared, and disappeared; the Move As One coalition named per the factual-event exception (ADR-008 amended 2026-08)
 * Activity and knowledge check: mark the avalanches in a sample table; 2-item check
 
 ## Interactive element
