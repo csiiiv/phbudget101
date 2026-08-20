@@ -6,51 +6,51 @@ export default defineLesson({
   sections: [
     {
       id: "start",
-      title: "Ano ang magagawa mo pagkatapos?",
+      title: "Ano ang matututunan mo?",
       shortTitle: "Simula",
       type: "introduction",
       content: (
         <>
           <p className="text-lg text-muted-foreground">
-            Paano nagiging silid-aralan, serbisyong pangkalusugan, o kalsada
-            ang pera ng publiko — at paano mo masusuri ang nangyari sa bawat
-            hakbang?
+            Paano nagiging silid-aralan, serbisyong pangkalusugan, o kalsada ang
+            pera ng gobyerno — at paano mo malalaman kung ano ang nangyari sa
+            bawat hakbang?
           </p>
           <p>
-            Ang PH Budget 101 ay nagbibigay sa iyo ng praktikal na mapa ng
-            pampublikong badyet ng Pilipinas. Sa dulo, mas mahusay mo nang
-            mahahanap ang tamang impormasyon tungkol sa badyet, masusundan ang
-            pera mula sa desisyon ng pamahalaan hanggang sa serbisyo publiko,
-            at makakapagtanong nang mas tiyak tungkol sa resulta.
+            Ang PH Budget 101 ay practical na guide sa budget ng gobyerno sa
+            Pilipinas. Pagkatapos ng course, mas madali mong mahahanap ang
+            tamang impormasyon tungkol sa budget, masusundan ang pera mula sa
+            desisyon ng gobyerno hanggang sa serbisyong natatanggap ng mga tao,
+            at mas malinaw kang makakapagtanong tungkol sa mga resulta.
           </p>
         </>
       ),
     },
     {
       id: "pfm-first",
-      title: "Unawain muna ang sistema bago gamitin",
+      title: "Intindihin muna kung paano gumagana ang sistema",
       shortTitle: "PFM muna",
       type: "concept",
       content: (
         <>
           <p>
-            Nagsisimula ang kursong ito sa <Term id="pfm" expand />: ang
-            sistema na ginagamit ng pamahalaan upang planuhin, gabayan, at
-            kontrolin ang pera ng publiko upang maghatid ng serbisyo publiko.
-            Kasama rito ang paglikom ng kita, pagpili ng prayoridad, pagpapahintulot
-            sa paggastos, paglabas at paggamit ng pondo, at pagsusuri ng resulta.
+            Magsisimula tayo sa <Term id="pfm" expand />: ang sistema ng
+            gobyerno para planuhin at pamahalaan ang pera ng publiko, para
+            magamit ito sa mga serbisyo. Kasama rito ang pangongolekta ng kita,
+            pagpili ng mga prayoridad, pag-apruba ng gastos, pag-release at
+            paggamit ng pondo, at pagtingin sa mga resulta.
           </p>
           <p>
-            Layunin muna ang budget literacy. Kapag naintindihan mo kung paano
-            gumagana ang sistema, maaari mong gamitin ang kaalamang iyon sa
-            maraming papel: pamamahala ng programa, pagsusuri ng panukala,
-            pag-uulat tungkol sa pampublikong paggastos, paglahok sa konsultasyon,
-            o pagtatanong sa pamahalaan nang may direksyon.
+            Ang goal muna ay maintindihan mo ang budget. Kapag malinaw na sa iyo
+            kung paano gumagana ang sistema, magagamit mo ito sa pag-manage ng
+            program, pag-review ng proposal, pag-report tungkol sa paggastos ng
+            gobyerno, pagsali sa consultation, o pagtatanong nang mas diretso at
+            specific.
           </p>
           <p>
-            Sa buong kurso, panatilihing bukas ang dalawang tanong na gabay:{" "}
+            Sa buong course, balikan lang ang dalawang tanong na ito:{" "}
             <strong>
-              Saan nagmumula ang pera ng pamahalaan, at saan ito pupunta?
+              Saan galing ang pera ng gobyerno, at saan ito napupunta?
             </strong>
           </p>
         </>
@@ -58,46 +58,55 @@ export default defineLesson({
     },
     {
       id: "who-it-is-for",
-      title: "Para kanino ang kursong ito",
+      title: "Para kanino ang course na ito?",
       shortTitle: "Para sa iyo",
       type: "concept",
       content: (
         <>
           <p>
-            Hindi mo kailangan ng background sa ekonomiya, accounting, batas, o
-            pampublikong administrasyon. Idinisenyo ang kurso para sa sinumang
-            nangangailangan ng malinaw na panimula sa pampublikong badyet, kabilang ang:
+            Hindi mo kailangang maging expert sa economics, accounting, batas, o
+            public administration. Para ito sa sinumang gustong maintindihan ang
+            budget ng gobyerno, kabilang ang:
           </p>
           <ul>
-            <li>mga mamamayang nais unawain ang isang serbisyo o proyektong publiko;</li>
             <li>
-              mga estudyante, guro, at mamamahayag na nagtatayo ng budget literacy;
+              mga gustong maintindihan ang isang serbisyo o project ng gobyerno;
             </li>
             <li>
-              mga kawani ng gobyerno na ikinokonekta ang kanilang trabaho sa mas malawak na sistema ng badyet; at
+              mga estudyante, guro, at mamamahayag na nag-aaral tungkol sa
+              budget;
             </li>
-            <li>mga taong naghahanda na lumahok sa desisyon tungkol sa badyet.</li>
+            <li>
+              mga kawani ng gobyerno na gustong makita kung paano konektado ang
+              trabaho nila sa mas malaking budget system; at
+            </li>
+            <li>
+              mga naghahandang makilahok sa mga desisyon tungkol sa budget.
+            </li>
           </ul>
           <p>
-            Gumagamit ang mga aralin ng payak na wika at ipinapaliwanag ang mga
-            teknikal na termino kapag unang lumilitaw. Maaari kang magpatuloy nang
-            sunod-sunod o buksan ang araling sumasagot sa agarang tanong mo.
+            Simple ang wika sa bawat lesson, at ipinapaliwanag ang technical
+            terms sa unang gamit. Pwede mong sundan ang course nang sunod-sunod
+            o dumiretso sa lesson na may sagot sa tanong mo.
           </p>
         </>
       ),
     },
     {
       id: "three-paths",
-      title: "Tatlong paraan sa pagdaan sa kurso",
-      shortTitle: "Tatlong landas",
+      title: "Piliin kung paano mo gustong mag-aral",
+      shortTitle: "Mga option",
       type: "concept",
       content: (
         <div className="not-prose grid gap-4 sm:grid-cols-3">
           <section className="rounded-lg border bg-card p-4">
-            <h3 className="font-semibold text-foreground">Mabilis na overview</h3>
+            <h3 className="font-semibold text-foreground">
+              Mabilis na overview
+            </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Kunin ang Modules 1, 3, 4, at 5, pagkatapos gamitin ang sanggunian
-              kapag kailangan mo ng depinisyon o dokumento. Maglaan ng mga 2–3 oras.
+              Basahin ang Modules 1, 3, 4, at 5. Gamitin ang Reference kapag
+              kailangan mo ng definition o document. Aabutin ito ng mga 2–3
+              oras.
             </p>
           </section>
           <section className="rounded-lg border bg-card p-4">
@@ -105,17 +114,18 @@ export default defineLesson({
               Buong PH Budget 101
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Kumpletuhin ang Modules 0–10 nang sunod-sunod, mula sa orientasyon
-              hanggang sa follow-the-money capstone. Maglaan ng mga 10–12 oras.
+              Tapusin ang Modules 0–10 nang sunod-sunod, mula sa intro hanggang
+              sa follow-the-money capstone. Aabutin ito ng mga 10–12 oras.
             </p>
           </section>
           <section className="rounded-lg border bg-card p-4">
             <h3 className="font-semibold text-foreground">
-              Sanggunian ayon sa paksa
+              Browse ayon sa topic
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Malayang pumunta sa isang aralin o pahina ng sanggunian kapag
-              kailangan mo ng sagot. Idinisenyo ang bawat aralin upang makapag-iisa.
+              Pumunta diretso sa isang lesson o Reference page kapag may
+              kailangan kang sagot. Maiintindihan ang bawat lesson kahit hindi
+              mo muna basahin ang iba.
             </p>
           </section>
         </div>
@@ -123,15 +133,15 @@ export default defineLesson({
     },
     {
       id: "paths-ahead",
-      title: "Sa dulo mo pipiliin",
+      title: "Mamaya ka pipili ng ruta",
       shortTitle: "Susunod",
       type: "takeaway",
       content: (
         <KeyTakeaway>
-          Tandaan ang tatlong rutang ito habang nagpapatuloy ka. Pagkatapos ng
-          maikling self-check sa dulo ng module na ito, pipili ka ng isa na akma
-          sa iyo — at maaari mo itong palitan anumang oras. Magpatuloy sa susunod
-          na aralin upang makita ang buong kurso sa isang daloy.
+          Tandaan muna ang tatlong option na ito. Pagkatapos ng maikling
+          self-check sa dulo ng module, pipili ka ng rutang bagay sa iyo. Pwede
+          ka namang magpalit anumang oras. Sa susunod na lesson, makikita mo ang
+          daloy ng buong course.
         </KeyTakeaway>
       ),
     },

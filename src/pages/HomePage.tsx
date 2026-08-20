@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom';
-import { CircleCheck } from 'lucide-react';
-import { useCourseModules } from '@/data/localizedCourse';
-import { useT } from '@/lib/LocaleProvider';
-import { useProgress } from '@/lib/useProgress';
-import type { ProgressState } from '@/lib/progress';
+import { Link } from "react-router-dom";
+import { CircleCheck } from "lucide-react";
+import { useCourseModules } from "@/data/localizedCourse";
+import { useT } from "@/lib/LocaleProvider";
+import { useProgress } from "@/lib/useProgress";
+import type { ProgressState } from "@/lib/progress";
 
 /** First lesson the learner has not completed, in course order. */
 function nextUpcomingLesson(
   modules: ReturnType<typeof useCourseModules>,
-  progress: ProgressState | null
+  progress: ProgressState | null,
 ) {
   for (const mod of modules) {
     const lessons = progress?.modules[mod.id]?.lessons ?? {};
-    const lesson = mod.lessons.find((l) => lessons[l.id] !== 'completed');
+    const lesson = mod.lessons.find((l) => lessons[l.id] !== "completed");
     if (lesson) {
       return { mod, lesson };
     }
@@ -26,13 +26,13 @@ export function HomePage() {
   const t = useT();
   const completedTotal = Object.values(progress?.modules ?? {}).reduce(
     (sum, m) =>
-      sum + Object.values(m.lessons).filter((s) => s === 'completed').length,
-    0
+      sum + Object.values(m.lessons).filter((s) => s === "completed").length,
+    0,
   );
   const next = nextUpcomingLesson(courseModules, progress);
   const startHref =
     next === null
-      ? '/modules/00-start-here'
+      ? "/modules/00-start-here"
       : `/modules/${next.mod.slug}/lessons/${encodeURIComponent(next.lesson.id)}`;
 
   return (
@@ -83,7 +83,9 @@ export function HomePage() {
         <ol className="space-y-2">
           {courseModules.map((mod) => {
             const lessons = progress?.modules[mod.id]?.lessons ?? {};
-            const done = Object.values(lessons).filter((s) => s === 'completed').length;
+            const done = Object.values(lessons).filter(
+              (s) => s === "completed",
+            ).length;
             const total = mod.lessons.length;
             const moduleComplete = total > 0 && done === total;
             const completeLabel = t.home.moduleComplete(total);
@@ -94,11 +96,13 @@ export function HomePage() {
                   className="flex items-center gap-4 rounded-lg border bg-card p-4 hover:bg-secondary/60 transition-colors"
                 >
                   <span className="grid size-9 shrink-0 place-items-center rounded-md bg-secondary text-sm font-semibold tabular-nums text-muted-foreground">
-                    {mod.id.replace('mod-', '')}
+                    {mod.id.replace("mod-", "")}
                   </span>
                   <span className="flex-1 min-w-0">
-                    <span className="block font-medium leading-snug">{mod.title}</span>
-                    <span className="block text-sm text-muted-foreground truncate">
+                    <span className="block font-medium leading-snug">
+                      {mod.title}
+                    </span>
+                    <span className="block text-sm leading-relaxed text-muted-foreground">
                       {mod.purpose}
                     </span>
                   </span>

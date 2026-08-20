@@ -92,6 +92,16 @@ export interface UiStrings {
     showAnswer: string;
     nextQuestion: string;
   };
+  languageSwitcher: {
+    label: string;
+  };
+  welcome: {
+    title: string;
+    intro: string;
+    languageLabel: string;
+    dontShowAgain: string;
+    continue: string;
+  };
 }
 
 export type CourseLocaleStrings = {

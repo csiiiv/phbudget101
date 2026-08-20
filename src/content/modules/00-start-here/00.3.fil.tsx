@@ -6,47 +6,48 @@ export default defineLesson({
   sections: [
     {
       id: "start",
-      title: "Humanap ng kapaki-pakinabang na panimulang punto",
+      title: "Saan ka magsisimula?",
       shortTitle: "Simula",
       type: "introduction",
       content: (
         <>
           <p className="text-lg text-muted-foreground">
-            Ano na ang alam mo tungkol sa pampublikong badyet, at gaano karaming
-            detalye ang makakatulong sa iyo ngayon?
+            Ano na ang alam mo tungkol sa public budget, at gaano karaming
+            detalye ang kailangan mo ngayon?
           </p>
           <p>
-            Gamitin ang tatlong tanong sa araling ito upang pumili sa pagitan ng
-            mabilis na overview at buong kurso. Hindi ka mina-markahan, at walang
-            kinakailangang score. Ang mga tanong ay tumutulong lamang na mapansin
-            mo kung aling ruta ang mas kapaki-pakinabang ngayon.
+            Sagutin ang tatlong tanong sa lesson na ito para malaman kung mas
+            bagay sa iyo ang mabilis na overview o ang buong course. Hindi ito
+            graded at walang passing score. Guide lang ito para makapili ka ng
+            magandang starting point.
           </p>
         </>
       ),
     },
     {
       id: "how-to-use",
-      title: "Sumagot para sa sarili mo",
-      shortTitle: "Paano gamitin",
+      title: "Sagutin base sa alam mo ngayon",
+      shortTitle: "Paano ito gamitin",
       type: "concept",
       content: (
         <>
           <p>
             Basahin ang bawat tanong at piliin ang sagot na pinakamalapit sa
-            kasalukuyang karanasan mo. Huwag maghanap ng sagot. Ito ay self-check
-            ng kumpiyansa at layunin, hindi pagsusulit kung karapat-dapat ka sa kurso.
+            karanasan mo ngayon. Hindi mo kailangang mag-research. Self-check
+            ito ng confidence at goals mo, hindi test kung para sa iyo ang
+            course.
           </p>
           <p>
-            Tandaan kung mas nakikiling ka sa <strong>Oo</strong>,{" "}
-            <strong>Hindi pa</strong>, o <strong>Gusto ko ang pundasyon</strong>.
-            Gagamitin mo ang pattern na iyon sa susunod na istasyon.
+            Pansinin kung mas madalas ang sagot mong <strong>Oo</strong>,{" "}
+            <strong>Hindi pa</strong>, o kung mas gusto mong magsimula sa{" "}
+            <strong>basics</strong>. Gagamitin mo iyon sa susunod na section.
           </p>
         </>
       ),
     },
     {
       id: "self-check",
-      title: "Self-check na may tatlong tanong",
+      title: "Tatlong tanong na self-check",
       shortTitle: "Self-check",
       type: "knowledge-check",
       content: (
@@ -56,11 +57,11 @@ export default defineLesson({
               Tanong 1 sa 3
             </p>
             <h3 className="mt-1 font-semibold text-foreground">
-              Maipapaliwanag mo ba kung bakit ang naaprubahang item sa badyet ay
-              hindi pa patunay na naihatid ang serbisyo publiko?
+              Kaya mo bang ipaliwanag kung bakit hindi pa patunay ng service
+              delivery ang isang approved budget item?
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Piliin para sa sarili mo: Oo, halos / Hindi pa.
+              Piliin: Oo, mostly / Hindi pa.
             </p>
           </li>
           <li className="rounded-lg border bg-card p-5">
@@ -68,11 +69,11 @@ export default defineLesson({
               Tanong 2 sa 3
             </p>
             <h3 className="mt-1 font-semibold text-foreground">
-              Kung may tanong ka tungkol sa isang programang pangpamahalaan, alam
-              mo ba kung aling yugto o dokumento ng badyet ang unang susuriin?
+              Kung may tanong ka tungkol sa isang program ng gobyerno, alam mo
+              ba kung aling budget stage o document ang dapat tingnan muna?
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Piliin para sa sarili mo: Oo, kadalasan / Hindi pa.
+              Piliin: Oo, usually / Hindi pa.
             </p>
           </li>
           <li className="rounded-lg border bg-card p-5">
@@ -80,11 +81,11 @@ export default defineLesson({
               Tanong 3 sa 3
             </p>
             <h3 className="mt-1 font-semibold text-foreground">
-              Ano ang mas makakatulong: maikling mapa ng pangunahing sistema, o
-              hakbang-hakbang na pundasyon na sumasaklaw sa bawat paksa?
+              Ano ang mas kailangan mo ngayon: maikling overview ng system, o
+              step-by-step na discussion ng bawat topic?
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Piliin para sa sarili mo: Maikling mapa / Hakbang-hakbang na pundasyon.
+              Piliin: Maikling overview / Step-by-step na course.
             </p>
           </li>
         </ol>
@@ -92,8 +93,8 @@ export default defineLesson({
     },
     {
       id: "recommendation",
-      title: "Itugma ang mga sagot mo sa isang landas",
-      shortTitle: "Iyong landas",
+      title: "Piliin ang rutang bagay sa sagot mo",
+      shortTitle: "Iyong ruta",
       type: "concept",
       content: (
         <div className="not-prose grid gap-4 sm:grid-cols-2">
@@ -102,54 +103,56 @@ export default defineLesson({
               Subukan ang mabilis na overview
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Piliin ang landas na ito kung sumagot ka ng “Oo” sa unang dalawang
-              tanong at gusto mo ng maikling mapa. Saklaw nito ang Modules 1, 3,
-              4, at 5, na may sanggunian kapag kailangan mo ng mas maraming detalye.
+              Piliin ito kung “Oo” ang sagot mo sa unang dalawang tanong at
+              mabilis na refresher lang ang kailangan mo. Sakop nito ang Modules
+              1, 3, 4, at 5. Nandiyan din ang Reference kung kailangan mo ng mas
+              detalyadong paliwanag.
             </p>
           </section>
           <section className="rounded-lg border bg-card p-5">
             <h3 className="font-semibold text-foreground">
-              Kunin ang buong kurso
+              Kunin ang buong course
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Piliin ang landas na ito kung ang alinman sa unang dalawang sagot
-              ay “Hindi pa,” o kung gusto mo ng hakbang-hakbang na pundasyon.
-              Sumusunod ang buong ruta sa Modules 0–10 nang sunod-sunod.
+              Piliin ito kung “Hindi pa” ang sagot mo sa una o pangalawang
+              tanong, o kung gusto mong magsimula sa basics. Dadaan ang full
+              route sa Modules 0–10 nang sunod-sunod.
             </p>
           </section>
           <p className="text-sm text-muted-foreground sm:col-span-2">
-            Normal ang magkahalong sagot. Kung hindi ka sigurado, magsimula sa
-            buong landas at lumipat pagkatapos ng isang aralin, o kunin ang mabilis
-            na overview at bumalik sa anumang nilaktawang module kapag may tanong.
+            Okay lang kung halo-halo ang sagot mo. Kapag hindi ka sigurado,
+            pwede kang magsimula sa buong course at magpalit pagkatapos ng isang
+            lesson. Pwede mo ring kunin muna ang mabilis na overview at balikan
+            ang ibang module kapag kailangan.
           </p>
         </div>
       ),
     },
     {
       id: "takeaway",
-      title: "Maaaring magbago ang panimulang punto mo",
-      shortTitle: "Punto",
+      title: "Pwede kang magpalit anumang oras",
+      shortTitle: "Tandaan",
       type: "takeaway",
       content: (
         <KeyTakeaway>
           Piliin ang <strong>mabilis na overview</strong> kung alam mo na ang
-          mga batayan at kailangan mo ng pangunahing mapa. Piliin ang{" "}
-          <strong>buong kurso</strong> kung gusto mo ng pundasyon o may nakitang
-          puwang. Walang permanenteng pagpili.
+          basics at kailangan mo lang ng refresher. Piliin ang{" "}
+          <strong>buong course</strong> kung gusto mong magsimula sa basics.
+          Starting point lang ito, kaya pwede kang magpalit anumang oras.
         </KeyTakeaway>
       ),
     },
     {
       id: "choose-path",
-      title: "Piliin ang coursework mo",
+      title: "Piliin ang susunod mong ruta",
       shortTitle: "Pumili",
       type: "takeaway",
       content: (
         <>
           <p>
-            Kapag handa ka na, markahan ang araling ito bilang tapos sa ibaba.
-            Mabubuksan ang daan palabas ng Magsimula Rito kasabay nito — piliin
-            ang ruta na akma sa iyo ngayon. Maaari kang bumalik o lumipat anumang oras.
+            Kapag ready ka na, markahan ang lesson bilang tapos sa ibaba.
+            Pagkatapos, piliin ang rutang bagay sa iyo ngayon. Pwede kang
+            bumalik dito o magpalit anumang oras.
           </p>
           <CourseworkChooser
             moduleId="mod-00"
@@ -162,13 +165,13 @@ export default defineLesson({
               },
               {
                 to: "/modules/01-why-pfm-matters/lessons/01.1",
-                label: "Magpatuloy sa buong kurso",
+                label: "Ituloy ang buong course",
                 description: "Modules 0–10 · mga 10–12 oras",
               },
               {
                 to: "/reference",
-                label: "Mag-browse ayon sa paksa",
-                description: "Mga pahina ng sanggunian at bawat aralin",
+                label: "Mag-browse ayon sa topic",
+                description: "Reference pages at lahat ng lessons",
               },
             ]}
           />

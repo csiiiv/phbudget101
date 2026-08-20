@@ -8,42 +8,45 @@ export default defineLesson({
   sections: [
     {
       id: "start",
-      title: "Dalawang tanong ang nag-oorganisa sa kurso",
+      title: "Dalawang tanong ang gabay sa buong course",
       shortTitle: "Simula",
       type: "introduction",
       content: (
         <>
           <p className="text-lg text-muted-foreground">
-            Saan nagmumula ang pera ng pamahalaan, at saan ito pupunta?
+            Saan galing ang pera ng gobyerno, at saan ito napupunta?
           </p>
           <p>
-            Ang dalawang tanong na iyon ang nag-uugnay sa bawat module sa PH
-            Budget 101. Ang kumpletong sagot ay nagsasangkot ng maraming
-            institusyon, dokumento, at hakbang. Sa ngayon, gamitin ang isang
-            simpleng daloy bilang mapa mo: pumapasok ang kita, dinidirekta ito
-            ng mga desisyon sa badyet, at inaasahang lumalabas ang serbisyo publiko.
+            Ito ang dalawang tanong na nag-uugnay sa lahat ng module sa PH
+            Budget 101. Maraming ahensya, dokumento, at proseso ang kasama sa
+            buong sagot. Pero sa ngayon, tandaan lang ang simpleng flow na ito:
+            pumapasok ang kita, dinadaan ito sa mga desisyon sa budget, at
+            ginagamit ito para makapaghatid ng mga serbisyo.
           </p>
         </>
       ),
     },
     {
       id: "headline-flow",
-      title: "Ang buong kurso sa isang daloy",
-      shortTitle: "Ang daloy",
+      title: "Ang buong course sa isang tingin",
+      shortTitle: "Ang flow",
       type: "interactive",
       content: (
         <div
           className="not-prose my-6"
-          aria-label="Ang kita ay dumadaan sa mga desisyon sa badyet patungo sa serbisyo publiko"
+          aria-label="Dumadaan ang kita sa mga desisyon sa budget bago ito maging serbisyo"
         >
           <ol className="grid gap-3 sm:grid-cols-[1fr_auto_1fr_auto_1fr] sm:items-stretch">
             <li className="rounded-lg border bg-card p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Hakbang 1
+                Step 1
               </p>
-              <h3 className="mt-1 font-semibold text-foreground">Papasok ang kita</h3>
+              <h3 className="mt-1 font-semibold text-foreground">
+                Pumapasok ang kita
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Kinokolekta ng pamahalaan ang mga mapagkukunan at, kung kinakailangan, umuutang.
+                Nangongolekta ang gobyerno ng kita at, kung kailangan,
+                nangungutang para madagdagan ang available na pondo.
               </p>
               <Link
                 className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
@@ -60,13 +63,14 @@ export default defineLesson({
             </li>
             <li className="rounded-lg border bg-card p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Hakbang 2
+                Step 2
               </p>
               <h3 className="mt-1 font-semibold text-foreground">
-                Mga desisyon sa badyet
+                Gumagawa ng mga desisyon sa budget
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Inihahain, inaaprubahan, at isinasagawa ng pamahalaan ang mga pagpipilian sa paggastos.
+                Nagpo-propose, nag-aapruba, at nagpapatupad ang gobyerno ng mga
+                planong paggagamitan ng pera.
               </p>
               <Link
                 className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
@@ -83,13 +87,14 @@ export default defineLesson({
             </li>
             <li className="rounded-lg border bg-card p-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Hakbang 3
+                Step 3
               </p>
               <h3 className="mt-1 font-semibold text-foreground">
-                Lumalabas ang serbisyo
+                Nagiging serbisyo ang pondo
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Ginagawang trabaho, kalakal, at serbisyo ng mga ahensya ang awtorisadong pondo.
+                Ginagamit ng mga ahensya ang approved funds para sa trabaho,
+                supplies, projects, at mga serbisyo.
               </p>
               <Link
                 className="mt-3 inline-block text-sm font-semibold text-primary hover:underline"
@@ -100,98 +105,99 @@ export default defineLesson({
             </li>
           </ol>
           <p className="mt-3 text-xs text-muted-foreground">
-            Static na mapa ng kurso. Ang interactive na concept map ay nakaplano para sa susunod na yugto.
+            Static course map muna ito. Darating sa susunod na phase ang
+            interactive concept map.
           </p>
         </div>
       ),
     },
     {
       id: "money-in",
-      title: "Una mong tanungin: anong mapagkukunan ang available?",
-      shortTitle: "Papasok ang pera",
+      title: "Unang tanong: anong pera ang available?",
+      shortTitle: "Pera papasok",
       type: "concept",
       content: (
         <>
           <p>
-            Nagsisimula ang bahagi ng pera papasok sa kita. Isa ang buwis na
-            mapagkukunan, ngunit kasama rin ang bayad, iba pang kita ng
-            pamahalaan, grants, at pag-utang. Mahalaga ang mga pagtatantya dahil
-            hinuhubog ng inaasahang mapagkukunan ang maaaring planuhin nang
-            responsable na gastusin.
+            Nagsisimula ang flow sa kita. Malaking bahagi nito ang buwis, pero
+            may iba pang pinanggagalingan gaya ng fees, ibang kita ng gobyerno,
+            grants, at utang. Mahalaga ang estimates dahil dito ibinabase kung
+            magkano ang kayang planuhing gastusin nang responsable.
           </p>
           <p>
-            Tinitingnan ng Module 2 ang mga mapagkukunang iyon at ang mga limitasyon
-            na inilalagay nila sa pagpipilian sa badyet. Sa puntong ito, tandaan
-            lamang ang headline: nagsisimula ang mga desisyon sa paggastos sa
-            tanaw ng available na mapagkukunan.
+            Mas detalyadong tatalakayin ng Module 2 ang mga source na ito at ang
+            limitasyon nila sa budget. Sa ngayon, ito lang ang tandaan: bago
+            magdesisyon kung saan gagastusin ang pera, kailangang malaman muna
+            kung magkano ang posibleng maging available.
           </p>
         </>
       ),
     },
     {
       id: "money-out",
-      title: "Susunod na tanungin: ano ang nangyari pagkatapos ng pagpili?",
-      shortTitle: "Lumalabas ang pera",
+      title: "Sunod na tanong: ano ang nangyari pagkatapos maaprubahan?",
+      shortTitle: "Pera palabas",
       type: "concept",
       content: (
         <>
           <p>
-            Ang desisyon sa badyet ay hindi mismo ang naghahatid ng serbisyo.
-            Kailangang mairekord at maaprubahan ang pagpili, kailangang gumalaw
-            ang pondo, at kailangang gawin ng ahensya ang trabaho. Kaya mas malaki
-            ang pangalawang tanong kaysa sa “Ano ang nakalaan sa badyet?” Tinatanong
-            din nito kung ano ang naisagawa at naihatid.
+            Hindi ibig sabihin na may serbisyo na agad kapag may naaprubahang
+            budget. Kailangang ma-release ang pondo, gamitin ito ng ahensya, at
+            gawin ang mismong trabaho. Kaya hindi sapat na itanong lang,
+            “Magkano ang budget?” Kailangan ding tingnan kung ano ang aktwal na
+            naipatupad at na-deliver.
           </p>
           <p>
-            Ipinapakita ng Modules 3 at 4 kung paano inoorganisa at ginagawa ang
-            mga desisyon. Sinusundan ng Module 5 ang awtorisadong paggastos
-            patungo sa paghahatid ng serbisyo. Sa mga susunod na module, matutulungan
-            kang basahin ang mga rekord, suriin ang resulta, at lumahok.
+            Ipapakita ng Modules 3 at 4 kung paano inaayos at ginagawa ang mga
+            desisyon sa budget. Sa Module 5 naman, susundan mo ang approved
+            spending hanggang sa service delivery. Tutulungan ka ng mga susunod
+            na module na magbasa ng records, tumingin sa resulta, at makilahok
+            sa proseso.
           </p>
         </>
       ),
     },
     {
       id: "check",
-      title: "Suriin ang daloy",
-      shortTitle: "Suriin",
+      title: "Check ang flow",
+      shortTitle: "Self-check",
       type: "knowledge-check",
       content: (
         <KnowledgeCheck
-          title="Ilagay ang mga pangunahing ideya"
+          title="Balikan ang pangunahing flow"
           moduleId="mod-00"
           lessonId="00.2"
           items={[
             {
               prompt:
-                "Aling pagkakasunod-sunod ang mapa ng kurso na ipinakilala sa araling ito?",
+                "Alin ang tamang pagkakasunod-sunod sa course map na ipinakita sa lesson?",
               options: [
-                "Serbisyo → kita → mga desisyon sa badyet",
-                "Kita → mga desisyon sa badyet → serbisyo",
-                "Mga desisyon sa badyet → serbisyo → kita",
+                "Serbisyo → kita → mga desisyon sa budget",
+                "Kita → mga desisyon sa budget → serbisyo",
+                "Mga desisyon sa budget → serbisyo → kita",
               ],
               correct: 1,
               explanation:
-                "Nagsisimula ang daloy ng orientasyon sa papasok na mapagkukunan, dumadaan sa mga desisyon sa badyet, at tumuturo sa serbisyo publiko.",
+                "Nagsisimula ang flow sa perang pumapasok, dumadaan sa mga desisyon sa budget, at nauuwi sa mga serbisyong dapat maihatid sa publiko.",
               wrong: {
-                0: "Ang serbisyo ang inaasahang resulta ng daloy, hindi ang panimulang mapagkukunan.",
-                2: "Umaasa ang mga pagpipilian sa badyet sa pagtatantya ng available na mapagkukunan, kaya nauuna ang kita bago ang mga desisyon sa mapang ito.",
+                0: "Serbisyo ang inaasahang resulta ng flow, hindi ang pinanggagalingan ng pera.",
+                2: "Kailangang may estimate muna ng available na pera bago makagawa ng mga desisyon sa budget.",
               },
             },
             {
               prompt:
-                "May programang lumabas sa naaprubahang badyet. Ano ang masasabi mo mula sa katotohanang iyon lamang?",
+                "May program na nakalista sa approved budget. Ano lang ang masasabi mo mula rito?",
               options: [
-                "Naihatid na ang serbisyo publiko.",
-                "May desisyon sa badyet, ngunit kailangan pa ring suriin ang implementasyon at paghahatid.",
-                "Nakolekta ng pamahalaan ang eksaktong sapat na kita para sa programang iyon.",
+                "Naihatid na ang serbisyo.",
+                "Naaprubahan ang budget decision, pero kailangan pang tingnan kung naipatupad at na-deliver ang serbisyo.",
+                "Eksaktong sapat ang nakolektang kita para sa program na iyon.",
               ],
               correct: 1,
               explanation:
-                "Mahalaga ang awtorisasyon bilang punto ng desisyon, ngunit kailangan pa ring gamitin ng mga ahensya ang pondo at gawin ang trabaho bago makarating ang serbisyo sa mga tao.",
+                "Mahalagang step ang budget approval, pero kailangan pa ring gamitin ng ahensya ang pondo at gawin ang trabaho bago makarating ang serbisyo sa mga tao.",
               wrong: {
-                0: "Ang naaprubahang item ay hindi patunay ng implementasyon o paghahatid ng serbisyo.",
-                2: "Pinagsasama ng badyet ang maraming mapagkukunan at pagpipilian; ang isang programa ay hindi katumbas ng pantay at nakalaang halaga ng koleksyon.",
+                0: "Hindi pa patunay ng implementation o service delivery ang isang approved budget item.",
+                2: "Pinagsasama sa budget ang maraming source ng pera at maraming spending decision; hindi nakatapat ang isang program sa isang eksaktong collection amount.",
               },
             },
           ]}
@@ -200,16 +206,16 @@ export default defineLesson({
     },
     {
       id: "takeaway",
-      title: "Panatilihing magkasama ang dalawang tanong",
-      shortTitle: "Punto",
+      title: "Laging pagsamahin ang dalawang tanong",
+      shortTitle: "Tandaan",
       type: "takeaway",
       content: (
         <KeyTakeaway>
-          Sundin ang kumpletong headline flow:{" "}
-          <strong>kita papasok → mga desisyon sa badyet → serbisyo palabas</strong>.
-          Ang tanong kung saan nagmumula ang pera ay tungkol sa mapagkukunan;
-          ang tanong kung saan pupunta ay magdadala sa iyo mula sa pagpipilian
-          hanggang sa paghahatid.
+          Sundan ang buong flow:{" "}
+          <strong>kita → mga desisyon sa budget → serbisyo</strong>. Kapag
+          tinanong mo kung saan galing ang pera, makikita mo kung anong pera ang
+          available. Kapag tinanong mo kung saan ito napunta, masusundan mo ang
+          pera mula sa desisyon hanggang sa aktwal na serbisyo.
         </KeyTakeaway>
       ),
     },
