@@ -10,13 +10,13 @@ Related docs: [`build_spec.md`](build_spec.md) (conventions, registries), [`tech
 
 ## Now
 
-**in progress — content first:** Finish Module 00 as **static orientation** (no int-06 / int-07).
+**next — Module 03 completeness pass:** All lesson bodies for Modules 00–09 are on `main` (batch 1 via #37, batch 2 via #39). Remaining content work, in priority order:
 
-1. Complete [00.1](../src/content/modules/00-start-here/00.1.tsx) to spec (PFM-first framing, who it is for, three paths; path choice at the end).
-2. Author **00.2** as a headline-only flow (revenue → budget decisions → services) with a **static** diagram or linked list of modules (Phase 2 concept map later).
-3. Author **00.3** as a **three-question self-check list** recommending quick vs full path (Phase 2 diagnostic later).
+1. **Accuracy pass** over the merged drafts (Modules 00–09) — verify terms, figures, and law references before any module moves past `content-draft`.
+2. **Module 10 Capstone** stays Phase 2 — do not start.
+3. Reference-section bodies (ref-02 … ref-09) once content is stable.
 
-Then the next content slice is **Module 02** (02.1–02.3 prose + `src/data/modules/02.json`; no int-10). Agents: **one lesson per PR**.
+Agents: **one lesson (or one accuracy pass per module) per PR**.
 
 ---
 
@@ -49,40 +49,16 @@ Authoring status from the module registry. "Scaffolded" means a lesson file exis
 
 | Module | Spec status | Lessons authored | Next content work |
 | --- | --- | --- | --- |
-| 00 Start Here | outline | 00.1 scaffolded | 00.2, 00.3; diagnostic and concept map are Phase 2 interactives |
+| 00 Start Here | content-draft | 00.1, 00.2, 00.3 **done** | Static orientation complete; diagnostic and concept map remain Phase 2 |
 | 01 Why PFM Matters | content-draft | 01.1, 01.2, 01.3 **done** | Accuracy-gate review before `review` / `final` |
-| 02 The Government's Money | outline | none | Author 02.1–02.3; seed `src/data/modules/02.json` |
-| 03 Anatomy of the Budget | outline | 03.4 authored | Author 03.1–03.3 |
-| 04 The Budget Cycle | outline | 04.1 scaffolded | Finish 04.1; author 04.2–04.4; see notes on int-03 |
-| 05 Appropriation → Service | outline | 05.1 authored | Author 05.2–05.3 |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
-| 04 The Budget Cycle | outline | 04.1 **in progress** | Finish 04.1; author 04.2–04.4; see notes on int-03 |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
-| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.2 **in progress** | Finish 04.1; author 04.3–04.4; see notes on int-03 |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
-| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.3 **in progress** | Finish 04.1; author 04.2, 04.4; see notes on int-03 |
-| 03 Anatomy of the Budget | outline | none | Author 03.1–03.4 |
-| 04 The Budget Cycle | outline | 04.1 scaffolded; 04.4 **in progress** | Finish 04.1; author 04.2–04.3; see notes on int-03 |
-| 05 Appropriation → Service | outline | none | Author 05.1–05.3 |
-| 05 Appropriation → Service | outline | 05.2 authored | Author 05.1, 05.3 |
-| 05 Appropriation → Service | outline | 05.3 authored | Author 05.1–05.2 |
-| 06 Local Government Budgets | outline | none | Author 06.1–06.4 |
-| 07 Reading Budget Documents | outline | 07.1 authored | Author 07.2–07.4 |
-| 07 Reading Budget Documents | outline | 07.2 authored | Author 07.1, 07.3–07.4 |
-| 07 Reading Budget Documents | outline | 07.3 authored | Author 07.1–07.2, 07.4 |
-| 07 Reading Budget Documents | outline | 07.4 authored | Author 07.1–07.3 |
-| 08 Evaluating Decisions | outline | none | Author 08.1–08.5 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
-| 08 Evaluating Decisions | outline | 08.1 **in progress** | Author 08.2–08.5 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
-| 08 Evaluating Decisions | outline | 08.2 **in progress** | Author 08.1, 08.3–08.5 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
-| 08 Evaluating Decisions | outline | 08.3 **in progress** | Author 08.1–08.2, 08.4–08.5 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
-| 08 Evaluating Decisions | outline | 08.4 authored | Author 08.1–08.3, 08.5 |
-| 07 Reading Budget Documents | outline | none | Author 07.1–07.4 |
-| 08 Evaluating Decisions | outline | 08.5 authored | Author 08.1–08.4 |
-| 09 Participating | outline | none | Author 09.1–09.5 |
+| 02 The Government's Money | content-draft | 02.1, 02.2, 02.3 **done** | `src/data/modules/02.json` seeded |
+| 03 Anatomy of the Budget | content-draft | 03.1, 03.2, 03.3, 03.4 **done** | |
+| 04 The Budget Cycle | content-draft | 04.1, 04.2, 04.3, 04.4 **done** | int-03 options note still open |
+| 05 Appropriation → Service | content-draft | 05.1, 05.2, 05.3 **done** | |
+| 06 Local Government Budgets | content-draft | 06.1, 06.2, 06.3, 06.4 **done** | |
+| 07 Reading Budget Documents | content-draft | 07.1, 07.2, 07.3, 07.4 **done** | |
+| 08 Evaluating Decisions | content-draft | 08.1, 08.2, 08.3, 08.4, 08.5 **done** | |
+| 09 Participating | content-draft | 09.1, 09.2, 09.3, 09.4, 09.5 **done** | |
 | 10 Capstone | outline | none | Phase 2 — after Modules 1–9 exist |
 
 Lesson files live at `src/content/modules/<slug>/<lesson-id>.tsx` and must `export default defineLesson({ sections })`.
