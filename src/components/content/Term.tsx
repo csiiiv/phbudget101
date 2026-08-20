@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Tooltip,
@@ -39,11 +39,29 @@ function useCoarsePointer(): boolean {
 }
 
 /**
+ * Course-wide singleton for pinned term tooltips: at most one pinned
+ * definition open at a time. A Term registers itself as the holder when it
+ * pins; any other pinned Term un-pins in the same effect pass. Hover-only
+ * tooltips (not pinned) are unaffected — they close on mouse-leave anyway.
+ */
+type Holder = { unpin: () => void } | null;
+let pinnedHolder: Holder = null;
+function claimPinned(unpin: () => void) {
+  pinnedHolder?.unpin();
+  pinnedHolder = { unpin };
+}
+function releasePinned(unpin: () => void) {
+  if (pinnedHolder?.unpin === unpin) pinnedHolder = null;
+}
+
+/**
  * Inline glossary term: dotted underline, hover/focus definition. A plain
  * click or tap pins the definition open (tap again to close); the glossary
  * entry itself opens only via the "Open glossary" link inside the tooltip.
  * Modified clicks (Ctrl/Cmd-click, middle-click) keep native Link behavior,
- * so the entry can still be opened directly in a new tab.
+ * so the entry can still be opened directly in a new tab. Only one pinned
+ * tooltip can be open at a time — pinning another term (or hovering a
+ * different term) closes the previous one.
  */
 export function Term({ id, expand, children, className }: TermProps) {
   const entry = getTerm(id);
@@ -75,10 +93,17 @@ export function Term({ id, expand, children, className }: TermProps) {
     ));
 
   const href = `/reference/glossary#${entry.id}`;
-  const dismiss = () => {
+  const unpin = useCallback(() => {
     setPinned(false);
     setOpen(false);
-  };
+  }, []);
+  useEffect(() => {
+    if (pinned) claimPinned(unpin);
+    else releasePinned(unpin);
+  }, [pinned, unpin]);
+  // Cleanup on unmount (e.g. navigating away mid-pin).
+  useEffect(() => () => releasePinned(unpin), [unpin]);
+  const dismiss = unpin;
 
   return (
     <Tooltip open={coarse ? open : pinned ? true : undefined}>
@@ -90,6 +115,13 @@ export function Term({ id, expand, children, className }: TermProps) {
             'border-b border-dotted border-primary/50 text-inherit no-underline decoration-transparent hover:border-solid hover:text-primary',
             className
           )}
+          onMouseEnter={() => {
+            // Hovering another term replaces any pinned definition — only one
+            // tooltip instance should be visible at a time.
+            if (pinnedHolder && pinnedHolder.unpin !== unpin) {
+              pinnedHolder.unpin();
+            }
+          }}
           onClick={(event) => {
             // Let modified clicks open the glossary directly (new tab etc.).
             if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
