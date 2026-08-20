@@ -126,7 +126,7 @@ export default defineLesson({
             </p>
             <Link
               className="mt-4 inline-block text-sm font-semibold text-primary hover:underline"
-              to="/modules/00-start-here"
+              to="/modules/01-why-pfm-matters/lessons/01.1"
             >
               Follow the full course
             </Link>
