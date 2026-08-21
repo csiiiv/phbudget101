@@ -239,16 +239,18 @@ export const referenceFil: ReferenceFil = {
   },
 
   institutionGroups: {
-    executive: "Pambansang executive",
-    legislative: "Lehislatura",
+    // Group headings stay English by design: they label standing categories
+    // (branches/levels of government), not prose.
+    executive: "National executive",
+    legislative: "Legislative",
     oversight: "Oversight",
-    local: "Lokal na gobyerno",
-    other: "Mga kaugnay na body",
+    local: "Local government",
+    other: "Related bodies",
   },
 
   calendarRows: {
     "q4-prior": {
-      period: "Dulong bahagi ng nakaraang taon (kalimitang Nob–Dis)",
+      period: "Dulong bahagi ng nakaraang taon (kalimitang Nov–Dec)",
       national:
         "Nag-isyu ang DBM ng budget call at kaugnay na ceiling para makapaghanda ang mga ahensya ng proposal para sa susunod na fiscal year.",
       local:
@@ -256,30 +258,30 @@ export const referenceFil: ReferenceFil = {
       note: "Ang eksaktong timing ng budget call ay nakasaad sa DBM issuance ng taong iyon.",
     },
     q1: {
-      period: "Enero–Marso",
+      period: "January–March",
       national:
         "Pinagtitiyaga ng mga ahensya ang kanilang proposal; tuloy ang mga technical hearing at executive review patungo sa NEP.",
       local:
         "Tuloy ang execution ng kasalukuyang lokal na budget; mga update sa planning kung kinakailangan.",
     },
     q2: {
-      period: "Abril–Hunyo",
+      period: "April–June",
       national:
         "Pagsasama-sama ng executive ng proposed national budget package.",
       local:
-        "Naghahanda ang mga departamento at office ng budget proposal para isumite sa local chief executive (target ng LGC: Hulyo 15).",
+        "Naghahanda ang mga departamento at office ng budget proposal para isumite sa local chief executive (target ng LGC: July 15).",
     },
     july: {
       national:
         "Isinusumite ng Pangulo ang proposed national budget (NEP package) sa Kongreso sa loob ng constitutional window na nakatali sa pagbubukas ng regular session.",
       local:
-        "Isinusumite ng mga department at office head ang kanilang proposal sa LCE (statutory target: sa o bago ang Hulyo 15).",
+        "Isinusumite ng mga department at office head ang kanilang proposal sa LCE (statutory target: sa o bago ang July 15).",
     },
     "aug-nov": {
       national:
         "Deliberasyon ng House at Senate; mga committee hearing; pagkakataon ng bicameral reconciliation ng magkakaibang bersyon.",
       local:
-        "Isinusumite ng LCE ang executive budget sa sanggunian (statutory target: sa o bago ang Oktubre 16).",
+        "Isinusumite ng LCE ang executive budget sa sanggunian (statutory target: sa o bago ang October 16).",
     },
     dec: {
       national:
@@ -288,7 +290,7 @@ export const referenceFil: ReferenceFil = {
         "Layunin ng sanggunian na maipasa ang taunang appropriation ordinance bago magtapos ang taon; kasunod nito ang review.",
     },
     "execution-year": {
-      period: "Fiscal year (Ene–Dis)",
+      period: "Fiscal year (Jan–Dec)",
       national:
         "Mga allotment at cash release; obligation at disbursement; execution reporting ng ahensya at DBM.",
       local:
@@ -469,11 +471,11 @@ export const referenceFil: ReferenceFil = {
   localTiming: {
     "proposals-to-lce": {
       milestone: "Mga proposal ng office papunta sa LCE",
-      when: "Sa o bago ang Hulyo 15 (target ng Local Government Code)",
+      when: "Sa o bago ang July 15 (target ng Local Government Code)",
     },
     "budget-to-sanggunian": {
       milestone: "Executive budget papunta sa sanggunian",
-      when: "Sa o bago ang Oktubre 16 (target ng Local Government Code)",
+      when: "Sa o bago ang October 16 (target ng Local Government Code)",
     },
     enactment: {
       milestone: "Pagpasa ng taunang budget",
@@ -634,7 +636,7 @@ export const referenceFil: ReferenceFil = {
       question:
         "Bakit pinagtatalunan ngayong taon ang budget ng susunod na taon?",
       answer:
-        "May budget cycle ang Pilipinas. Ang preparation at legislation para sa susunod na fiscal year ay nangyayari sa nakaraang calendar year para handa na ang authority pagpasok ng Enero. Ang execution at accountability naman ay tumatakbo sa buong (at lampas pa sa) fiscal year na iyon.",
+        "May budget cycle ang Pilipinas. Ang preparation at legislation para sa susunod na fiscal year ay nangyayari sa nakaraang calendar year para handa na ang authority pagpasok ng January. Ang execution at accountability naman ay tumatakbo sa buong (at lampas pa sa) fiscal year na iyon.",
       linkLabels: {
         "Budget calendar": "Budget calendar",
         "Module 4 overview": "Overview ng Module 4",

@@ -281,7 +281,7 @@ export function ClassificationReferencePage() {
                   <p className="font-medium">{level.label}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {level.meaning}
-                    </p>
+                  </p>
                 </li>
               ))}
             </ul>
