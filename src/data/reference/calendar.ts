@@ -9,6 +9,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "q4-prior",
     period: "Late prior year (often Nov–Dec)",
+    months: [11, 12],
     national:
       "DBM issues the budget call and related ceilings so agencies can prepare proposals for the next fiscal year.",
     local:
@@ -18,6 +19,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "q1",
     period: "January–March",
+    months: [1, 3],
     national:
       "Agencies refine proposals; technical hearings and executive review continue toward the NEP.",
     local:
@@ -26,6 +28,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "q2",
     period: "April–June",
+    months: [4, 6],
     national:
       "Executive consolidation of the proposed national budget package.",
     local:
@@ -34,6 +37,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "july",
     period: "July",
+    months: [7, 7],
     national:
       "President submits the proposed national budget (NEP package) to Congress within the constitutional window tied to the opening of the regular session.",
     local:
@@ -42,6 +46,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "aug-nov",
     period: "August–November",
+    months: [8, 11],
     national:
       "House and Senate deliberation; committee hearings; eventual bicameral reconciliation of differing versions.",
     local:
@@ -50,6 +55,7 @@ export const calendarRows: CalendarRow[] = [
   {
     id: "dec",
     period: "December",
+    months: [12, 12],
     national:
       "Target enactment of the GAA before the fiscal year begins; veto message if items are vetoed.",
     local:

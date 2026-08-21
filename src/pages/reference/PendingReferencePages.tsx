@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   getCalendarRows,
   getClassifications,
@@ -217,16 +217,72 @@ export function InstitutionalMapPage() {
   );
 }
 
+/**
+ * Current point in the cycle, read from Philippine Standard Time (UTC+8) and
+ * refreshed every 30 s. Intl with an explicit timeZone gives Manila's
+ * wall clock regardless of the visitor's own timezone. Dates format via
+ * en-PH so month names stay English in both locales.
+ */
+function usePhNow(): PhNow {
+  const [now, setNow] = useState<PhNow>(readPhNow);
+  useEffect(() => {
+    const id = setInterval(() => setNow(readPhNow()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
+
+interface PhNow {
+  month: number;
+  time: string;
+}
+
+const phDisplayFormat = new Intl.DateTimeFormat("en-PH", {
+  timeZone: "Asia/Manila",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+});
+
+function readPhNow(): PhNow {
+  const actual = new Date();
+  const month = Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Manila",
+      month: "numeric",
+    }).format(actual),
+  );
+  return { month, time: phDisplayFormat.format(actual) };
+}
+
+/** True when `month` falls in the row's inclusive range (wraps over year end). */
+function isCurrentStage(row: { months?: [number, number] }, month: number): boolean {
+  if (!row.months) return false;
+  const [start, end] = row.months;
+  return start <= end ? month >= start && month <= end : month >= start || month <= end;
+}
+
 export function BudgetCalendarPage() {
   const { locale } = useLocale();
   const t = useT();
   const rows = getCalendarRows(locale);
+  const now = usePhNow();
   return (
     <RefShell
       title={t.reference.pages.budgetCalendar}
       intro={<p>{t.reference.intros.budgetCalendar}</p>}
     >
       <VerifiedNote />
+      <p className="flex items-center gap-2 text-sm text-muted-foreground">
+        <span aria-hidden className="relative flex h-2.5 w-2.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+        </span>
+        {t.reference.phClock(now.time)}
+      </p>
       <div className="overflow-x-auto rounded-lg border">
         <table className="w-full min-w-[40rem] text-left text-sm">
           <thead className="border-b bg-secondary/40">
@@ -237,18 +293,35 @@ export function BudgetCalendarPage() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row.id} className="border-b align-top last:border-b-0">
-                <td className="p-3 font-medium">{row.period}</td>
-                <td className="p-3 text-muted-foreground">
-                  {row.national}
-                  {row.note ? (
-                    <span className="mt-2 block text-xs">{row.note}</span>
-                  ) : null}
-                </td>
-                <td className="p-3 text-muted-foreground">{row.local}</td>
-              </tr>
-            ))}
+            {rows.map((row) => {
+              const active = isCurrentStage(row, now.month);
+              return (
+                <tr
+                  key={row.id}
+                  className={`border-b align-top last:border-b-0 ${
+                    active ? "bg-accent/40" : ""
+                  }`}
+                >
+                  <td className="p-3 font-medium">
+                    <span className="flex items-center gap-2">
+                      {row.period}
+                      {active ? (
+                        <span className="rounded-full bg-primary px-2 py-0.5 text-xs font-medium text-primary-foreground">
+                          {t.reference.nowMarker}
+                        </span>
+                      ) : null}
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    {row.national}
+                    {row.note ? (
+                      <span className="mt-2 block text-xs">{row.note}</span>
+                    ) : null}
+                  </td>
+                  <td className="p-3 text-muted-foreground">{row.local}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

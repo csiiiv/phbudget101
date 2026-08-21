@@ -33,6 +33,11 @@ export interface CalendarRow {
   national: string;
   local: string;
   note?: string;
+  /**
+   * Inclusive month range this stage covers (1–12), used to mark the current
+   * point in the cycle. Omitted for cross-cutting rows that run all year.
+   */
+  months?: [number, number];
 }
 
 export interface ClassificationBlock {
