@@ -159,12 +159,12 @@ export default defineLesson({
               {
                 to: "/modules/01-why-pfm-matters/lessons/01.1",
                 label: "Start the quick overview",
-                description: "Modules 1, 3, 4, and 5 · about 2–3 hours",
+                description: "Modules 1, 3, 4, and 5 · about 1–2 hours",
               },
               {
                 to: "/modules/01-why-pfm-matters/lessons/01.1",
                 label: "Continue the full course",
-                description: "Modules 0–10 · about 10–12 hours",
+                description: "Modules 0–9 · about 3–4 hours (capstone optional)",
               },
               {
                 to: "/reference",

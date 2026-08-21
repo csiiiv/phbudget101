@@ -105,7 +105,7 @@ export default defineLesson({
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Basahin ang Modules 1, 3, 4, at 5. Gamitin ang Reference kapag
-              kailangan mo ng definition o document. Aabutin ito ng mga 2–3
+              kailangan mo ng definition o document. Aabutin ito ng mga 1–2
               oras.
             </p>
           </section>
@@ -114,8 +114,9 @@ export default defineLesson({
               Buong PH Budget 101
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Tapusin ang Modules 0–10 nang sunod-sunod, mula sa intro hanggang
-              sa follow-the-money capstone. Aabutin ito ng mga 10–12 oras.
+              Tapusin ang Modules 0–9 nang sunod-sunod, mula sa intro hanggang
+              sa pakikilahok. Aabutin ito ng mga 3–4 oras. Opsyonal ang
+              follow-the-money capstone (Module 10).
             </p>
           </section>
           <section className="rounded-lg border bg-card p-4">

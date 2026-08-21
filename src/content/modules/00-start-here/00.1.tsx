@@ -96,7 +96,7 @@ export default defineLesson({
             <h3 className="font-semibold text-foreground">Quick overview</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Take Modules 1, 3, 4, and 5, then use the reference section when
-              you need a definition or document. Plan for about 2–3 hours.
+              you need a definition or document. Plan for about 1–2 hours.
             </p>
           </section>
           <section className="rounded-lg border bg-card p-4">
@@ -104,8 +104,9 @@ export default defineLesson({
               Full PH Budget 101
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Complete Modules 0–10 in order, from orientation through the
-              follow-the-money capstone. Plan for about 10–12 hours.
+              Complete Modules 0–9 in order, from orientation through
+              participation. Plan for about 3–4 hours. The follow-the-money
+              capstone (Module 10) is optional.
             </p>
           </section>
           <section className="rounded-lg border bg-card p-4">
