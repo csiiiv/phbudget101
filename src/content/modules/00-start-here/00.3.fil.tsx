@@ -161,12 +161,12 @@ export default defineLesson({
               {
                 to: "/modules/01-why-pfm-matters/lessons/01.1",
                 label: "Simulan ang mabilis na overview",
-                description: "Modules 1, 3, 4, at 5 · mga 2–3 oras",
+                description: "Modules 1, 3, 4, at 5 · mga 1–2 oras",
               },
               {
                 to: "/modules/01-why-pfm-matters/lessons/01.1",
                 label: "Ituloy ang buong course",
-                description: "Modules 0–10 · mga 10–12 oras",
+                description: "Modules 0–9 · mga 3–4 oras (opsyonal ang capstone)",
               },
               {
                 to: "/reference",

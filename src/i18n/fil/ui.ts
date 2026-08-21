@@ -151,7 +151,7 @@ export const ui: UiStrings = {
     period: "Panahon",
     national: "Pambansa",
     local: "Lokal",
-    nowMarker: "Now",
+    nowMarker: "Happening Now",
     phClock: (time) => `Kasalukuyang oras sa Pilipinas (PHT): ${time}`,
     example: "Halimbawa:",
     budgetSequence: "Sequence ng budget",
