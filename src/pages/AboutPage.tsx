@@ -142,6 +142,24 @@ export function AboutPage() {
         </p>
       </section>
 
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold">Comments, feedback, suggestions</h2>
+        <p className="text-muted-foreground leading-relaxed">
+          Spotted an error, or have an idea for improving the course? Send an
+          email to{" "}
+          <ExtLink href="mailto:csevilla@simple-systems.dev">
+            csevilla@simple-systems.dev
+          </ExtLink>
+          , or{" "}
+          <ExtLink href="https://github.com/csiiiv/phbudget101/pulls">
+            open a pull request
+          </ExtLink>{" "}
+          on GitHub. Corrections to figures, dates, and legal references are
+          especially welcome — include the source you are relying on so it can
+          be checked.
+        </p>
+      </section>
+
       <p>
         <Link
           to="/modules/00-start-here"
