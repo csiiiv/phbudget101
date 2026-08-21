@@ -102,6 +102,84 @@ export const ui: UiStrings = {
     showAnswer: "Show answer",
     nextQuestion: "Next question",
   },
+  reference: {
+    title: "Reference",
+    indexIntro:
+      "Detailed material outside the learning path: glossary, documents, institutions, calendar, and more.",
+    pages: {
+      glossary: "Glossary",
+      documentLibrary: "Budget document library",
+      institutionalMap: "Institutional map",
+      budgetCalendar: "Budget calendar",
+      classification: "Classification reference",
+      localBudgetStructures: "Local government budget structures",
+      acronyms: "Acronyms",
+      legalReferences: "Legal and policy references",
+      sources: "Sources and attribution",
+      dataSources: "Data-source directory",
+      faq: "FAQ",
+    },
+    verifiedNote: (date) =>
+      `Orientation content last reviewed ${date}. Confirm current-year circulars, calendars, and portal URLs before relying on timing or links for a live decision.`,
+    intros: {
+      documentLibrary:
+        "What each major document is for, when it appears in the cycle, and where to find the official version. Course replicas are simplified teaching aids, not official facsimiles.",
+      institutionalMap:
+        "Who does what across the budget cycle. Roles are summarized for orientation; enabling laws and current issuances control the details.",
+      budgetCalendar:
+        "Typical national and local timing across the cycle. Exact dates move with each year’s issuances — use this table to orient, then verify.",
+      classification:
+        "How budget tables are organized — expense classes, program hierarchy, and other lenses used in Modules 3 and 7.",
+      localBudgetStructures:
+        "Local documents, the prepare–authorize–review sequence, and statutory constraint themes for Module 6. Verify percentages and ceilings against the current Local Government Code and implementing guidance for your LGU type.",
+      legalReferences:
+        "Laws and issuances the course relies on. Entries state what each governs and point to an official or widely used public text — no advocacy commentary.",
+      dataSources:
+        "Public portals and datasets for looking up numbers the course cites — or for your own follow-the-money work.",
+      faq: "Short answers to common questions, with links into glossary entries, reference pages, and modules.",
+    },
+    cyclePhase: "Cycle phase:",
+    questionsItAnswers: "Questions it answers:",
+    whereToLook: "Where to look:",
+    glossaryEntry: "Glossary entry",
+    keyOutputs: "Key outputs:",
+    period: "Period",
+    national: "National",
+    local: "Local",
+    example: "Example:",
+    budgetSequence: "Budget sequence",
+    keyLocalDocuments: "Key local documents",
+    statutoryTiming: "Statutory timing targets",
+    constraintThemes: "Constraint themes",
+    constraintThemesNote:
+      "These are orientation notes, not a substitute for the Code text.",
+    basis: "Basis:",
+    lgcReferenceLink: "Local Government Code reference",
+    governs: "Governs:",
+    relevantToCourse: "Relevant to the course:",
+    updateCadence: "Update cadence:",
+    caution: "Caution:",
+    glossaryIntro:
+      "Short definitions used in the course. Lesson terms with a dotted underline open the matching entry here. This list grows as modules are authored.",
+    acronymsIntro:
+      "Expansions for every acronym in the glossary. Each row links to the full entry.",
+    notRegistered:
+      "No reference page is registered for this path. Return to the",
+    referenceIndex: "reference index",
+    sourcesIntro:
+      "Named source credits for the course. Lesson text itself stays focused on the PFM system; fuller bibliographic expansion of the guidebook’s reference list is planned for a later pass.",
+    sourcesPrimary: "Primary source",
+    sourcesPublishedBy: "Published by",
+    sourcesFundedBy: "funded by the",
+    sourcesAlsoOn: "Also on",
+    sourcesDoi: "(DOI: 10.13140/RG.2.2.18173.74726)",
+    sourcesRedesign:
+      "PH Budget 101 redesigns that material for a general audience. It is not a page-by-page conversion. See also the",
+    sourcesSeeAlso: "page.",
+    sourcesAbout: "About",
+    sourcesPageWord: "page",
+    sourcesOfficialData: "Official data and primers",
+  },
   languageSwitcher: {
     label: "Change language",
   },

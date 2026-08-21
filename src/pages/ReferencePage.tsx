@@ -1,6 +1,6 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { acronyms, glossary } from '@/data/glossary';
+import { acronyms, getGlossary } from '@/data/glossary';
 import {
   BudgetCalendarPage,
   ClassificationReferencePage,
@@ -11,6 +11,7 @@ import {
   LegalReferencesPage,
   LocalBudgetStructuresPage,
 } from '@/pages/reference/PendingReferencePages';
+import { useLocale, useT } from '@/lib/LocaleProvider';
 
 export function ReferencePage() {
   const { refId } = useParams();
@@ -27,22 +28,35 @@ export function ReferencePage() {
   if (refId === 'data-sources') return <DataSourcesPage />;
   if (refId === 'faq') return <FaqPage />;
 
+  return <UnregisteredReferencePage />;
+}
+
+function RefBreadcrumb() {
+  const t = useT();
+  return (
+    <div className="text-sm text-muted-foreground">
+      <Link to="/reference" className="hover:underline">
+        {t.reference.title}
+      </Link>
+    </div>
+  );
+}
+
+function UnregisteredReferencePage() {
+  const { refId } = useParams();
+  const t = useT();
   return (
     <article className="space-y-6">
       <header className="space-y-2">
-        <div className="text-sm text-muted-foreground">
-          <Link to="/reference" className="hover:underline">
-            Reference
-          </Link>
-        </div>
+        <RefBreadcrumb />
         <h1 className="text-3xl font-bold tracking-tight capitalize">
-          {(refId ?? 'reference').replaceAll('-', ' ')}
+          {(refId ?? t.reference.title).replaceAll('-', ' ')}
         </h1>
       </header>
       <div className="rounded-lg border border-dashed bg-card p-6 text-sm text-muted-foreground">
-        No reference page is registered for this path. Return to the{' '}
+        {t.reference.notRegistered}{' '}
         <Link to="/reference" className="text-primary underline">
-          reference index
+          {t.reference.referenceIndex}
         </Link>
         .
       </div>
@@ -52,26 +66,24 @@ export function ReferencePage() {
 
 function GlossaryPage() {
   const { hash } = useLocation();
+  const { locale } = useLocale();
+  const t = useT();
   useEffect(() => {
     const id = hash.replace(/^#/, '');
     if (id) document.getElementById(id)?.scrollIntoView();
   }, [hash]);
 
-  const sorted = [...glossary].sort((a, b) => a.term.localeCompare(b.term));
+  const sorted = [...getGlossary(locale)].sort((a, b) =>
+    a.term.localeCompare(b.term),
+  );
   return (
     <article className="space-y-8">
       <header className="space-y-2">
-        <div className="text-sm text-muted-foreground">
-          <Link to="/reference" className="hover:underline">
-            Reference
-          </Link>
-        </div>
-        <h1 className="text-3xl font-bold tracking-tight">Glossary</h1>
-        <p className="text-muted-foreground">
-          Short definitions used in the course. Lesson terms with a dotted
-          underline open the matching entry here. This list grows as modules are
-          authored.
-        </p>
+        <RefBreadcrumb />
+        <h1 className="text-3xl font-bold tracking-tight">
+          {t.reference.pages.glossary}
+        </h1>
+        <p className="text-muted-foreground">{t.reference.glossaryIntro}</p>
       </header>
       <dl className="space-y-6">
         {sorted.map((e) => (
@@ -97,20 +109,17 @@ function GlossaryPage() {
 }
 
 function AcronymsPage() {
-  const list = acronyms();
+  const { locale } = useLocale();
+  const t = useT();
+  const list = acronyms(locale);
   return (
     <article className="space-y-8">
       <header className="space-y-2">
-        <div className="text-sm text-muted-foreground">
-          <Link to="/reference" className="hover:underline">
-            Reference
-          </Link>
-        </div>
-        <h1 className="text-3xl font-bold tracking-tight">Acronyms</h1>
-        <p className="text-muted-foreground">
-          Expansions for every acronym in the glossary. Each row links to the
-          full entry.
-        </p>
+        <RefBreadcrumb />
+        <h1 className="text-3xl font-bold tracking-tight">
+          {t.reference.pages.acronyms}
+        </h1>
+        <p className="text-muted-foreground">{t.reference.acronymsIntro}</p>
       </header>
       <ul className="divide-y rounded-lg border bg-card">
         {list.map((e) => (
@@ -130,27 +139,22 @@ function AcronymsPage() {
 }
 
 function SourcesPage() {
+  const t = useT();
   const linkClass = 'text-primary underline underline-offset-2';
   return (
     <article className="space-y-8">
       <header className="space-y-2">
-        <div className="text-sm text-muted-foreground">
-          <Link to="/reference" className="hover:underline">
-            Reference
-          </Link>
-        </div>
+        <RefBreadcrumb />
         <h1 className="text-3xl font-bold tracking-tight">
-          Sources and attribution
+          {t.reference.pages.sources}
         </h1>
         <p className="text-muted-foreground leading-relaxed">
-          Named source credits for the course. Lesson text itself stays focused
-          on the PFM system; fuller bibliographic expansion of the guidebook’s
-          reference list is planned for a later pass.
+          {t.reference.sourcesIntro}
         </p>
       </header>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-semibold">Primary source</h2>
+        <h2 className="text-lg font-semibold">{t.reference.sourcesPrimary}</h2>
         <p className="text-sm leading-relaxed text-muted-foreground">
           <a
             href="https://www.wesolve.ph/budget-natin-guidebook"
@@ -160,7 +164,7 @@ function SourcesPage() {
           >
             Budget Natin: A Guidebook for Engaging the Philippine Budget Cycle
           </a>{' '}
-          (2023). Published by{' '}
+          (2023). {t.reference.sourcesPublishedBy}{' '}
           <a
             href="https://www.wesolve.ph/"
             className={linkClass}
@@ -169,7 +173,7 @@ function SourcesPage() {
           >
             WeSolve Foundation
           </a>
-          ; funded by the{' '}
+          ; {t.reference.sourcesFundedBy}{' '}
           <a
             href="https://www.ndi.org/"
             className={linkClass}
@@ -178,7 +182,7 @@ function SourcesPage() {
           >
             National Democratic Institute
           </a>
-          . Also on{' '}
+          . {t.reference.sourcesAlsoOn}{' '}
           <a
             href="https://doi.org/10.13140/RG.2.2.18173.74726"
             className={linkClass}
@@ -187,20 +191,21 @@ function SourcesPage() {
           >
             ResearchGate
           </a>{' '}
-          (DOI: 10.13140/RG.2.2.18173.74726).
+          {t.reference.sourcesDoi}.
         </p>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          PH Budget 101 redesigns that material for a general audience. It is
-          not a page-by-page conversion. See also the{' '}
+          {t.reference.sourcesRedesign}{' '}
           <Link to="/about" className={linkClass}>
-            About
+            {t.reference.sourcesAbout}
           </Link>{' '}
-          page.
+          {t.reference.sourcesPageWord}.
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-semibold">Official data and primers</h2>
+        <h2 className="text-lg font-semibold">
+          {t.reference.sourcesOfficialData}
+        </h2>
         <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
           <li>
             <a

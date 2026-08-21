@@ -1,20 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, type ReactNode } from "react";
 import {
-  REFERENCE_VERIFIED_AS_OF,
-  calendarRows,
-  classifications,
-  dataSources,
-  documents,
-  faqEntries,
-  institutionGroups,
-  institutions,
-  legalEntries,
-  localConstraints,
-  localDocuments,
-  localSequence,
-  localTiming,
-} from "@/data/reference";
+  getCalendarRows,
+  getClassifications,
+  getDataSources,
+  getDocuments,
+  getFaqEntries,
+  getInstitutionGroups,
+  getInstitutions,
+  getLegalEntries,
+  getLocalConstraints,
+  getLocalDocuments,
+  getLocalSequence,
+  getLocalTiming,
+} from "@/data/reference/localized";
+import { REFERENCE_VERIFIED_AS_OF } from "@/data/reference/types";
+import { useLocale, useT } from "@/lib/LocaleProvider";
 
 const linkClass = "text-primary underline underline-offset-2";
 
@@ -41,12 +42,13 @@ function RefShell({
   intro: ReactNode;
   children: ReactNode;
 }) {
+  const t = useT();
   return (
     <article className="space-y-8">
       <header className="space-y-2">
         <div className="text-sm text-muted-foreground">
           <Link to="/reference" className="hover:underline">
-            Reference
+            {t.reference.title}
           </Link>
         </div>
         <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
@@ -66,27 +68,23 @@ function useHashScroll() {
 }
 
 function VerifiedNote() {
+  const t = useT();
   return (
     <p className="text-xs text-muted-foreground">
-      Orientation content last reviewed {REFERENCE_VERIFIED_AS_OF}. Confirm
-      current-year circulars, calendars, and portal URLs before relying on
-      timing or links for a live decision.
+      {t.reference.verifiedNote(REFERENCE_VERIFIED_AS_OF)}
     </p>
   );
 }
 
 export function DocumentLibraryPage() {
   useHashScroll();
+  const { locale } = useLocale();
+  const t = useT();
+  const documents = getDocuments(locale);
   return (
     <RefShell
-      title="Budget document library"
-      intro={
-        <p>
-          What each major document is for, when it appears in the cycle, and
-          where to find the official version. Course replicas are simplified
-          teaching aids, not official facsimiles.
-        </p>
-      }
+      title={t.reference.pages.documentLibrary}
+      intro={<p>{t.reference.intros.documentLibrary}</p>}
     >
       <VerifiedNote />
       <div className="space-y-8">
@@ -105,18 +103,24 @@ export function DocumentLibraryPage() {
               ) : null}
             </h2>
             <p className="text-sm text-muted-foreground">
-              <span className="font-medium text-foreground">Cycle phase:</span>{" "}
+              <span className="font-medium text-foreground">
+                {t.reference.cyclePhase}
+              </span>{" "}
               {doc.phases.join(" · ")}
             </p>
             <p className="text-sm leading-relaxed">
-              <span className="font-medium">Questions it answers:</span>{" "}
+              <span className="font-medium">
+                {t.reference.questionsItAnswers}
+              </span>{" "}
               {doc.answers}
             </p>
             <p className="text-sm leading-relaxed text-muted-foreground">
               {doc.contents}
             </p>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              <span className="font-medium text-foreground">Where to look:</span>{" "}
+              <span className="font-medium text-foreground">
+                {t.reference.whereToLook}
+              </span>{" "}
               {doc.where}
               {doc.link ? (
                 <>
@@ -143,7 +147,7 @@ export function DocumentLibraryPage() {
                     to={`/reference/glossary#${glossaryId}`}
                     className={linkClass}
                   >
-                    Glossary entry
+                    {t.reference.glossaryEntry}
                   </Link>
                 </p>
               ) : null;
@@ -157,19 +161,18 @@ export function DocumentLibraryPage() {
 
 export function InstitutionalMapPage() {
   useHashScroll();
+  const { locale } = useLocale();
+  const t = useT();
+  const institutions = getInstitutions(locale);
+  const groups = getInstitutionGroups(locale);
   return (
     <RefShell
-      title="Institutional map"
-      intro={
-        <p>
-          Who does what across the budget cycle. Roles are summarized for
-          orientation; enabling laws and current issuances control the details.
-        </p>
-      }
+      title={t.reference.pages.institutionalMap}
+      intro={<p>{t.reference.intros.institutionalMap}</p>}
     >
       <VerifiedNote />
       <div className="space-y-10">
-        {institutionGroups.map((group) => {
+        {groups.map((group) => {
           const rows = institutions.filter((i) => i.group === group.id);
           return (
             <section key={group.id} className="space-y-4">
@@ -194,7 +197,7 @@ export function InstitutionalMapPage() {
                     </p>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       <span className="font-medium text-foreground">
-                        Key outputs:
+                        {t.reference.keyOutputs}
                       </span>{" "}
                       {inst.produces}
                     </p>
@@ -215,28 +218,26 @@ export function InstitutionalMapPage() {
 }
 
 export function BudgetCalendarPage() {
+  const { locale } = useLocale();
+  const t = useT();
+  const rows = getCalendarRows(locale);
   return (
     <RefShell
-      title="Budget calendar"
-      intro={
-        <p>
-          Typical national and local timing across the cycle. Exact dates move
-          with each year’s issuances — use this table to orient, then verify.
-        </p>
-      }
+      title={t.reference.pages.budgetCalendar}
+      intro={<p>{t.reference.intros.budgetCalendar}</p>}
     >
       <VerifiedNote />
       <div className="overflow-x-auto rounded-lg border">
         <table className="w-full min-w-[40rem] text-left text-sm">
           <thead className="border-b bg-secondary/40">
             <tr>
-              <th className="p-3 font-semibold">Period</th>
-              <th className="p-3 font-semibold">National</th>
-              <th className="p-3 font-semibold">Local</th>
+              <th className="p-3 font-semibold">{t.reference.period}</th>
+              <th className="p-3 font-semibold">{t.reference.national}</th>
+              <th className="p-3 font-semibold">{t.reference.local}</th>
             </tr>
           </thead>
           <tbody>
-            {calendarRows.map((row) => (
+            {rows.map((row) => (
               <tr key={row.id} className="border-b align-top last:border-b-0">
                 <td className="p-3 font-medium">{row.period}</td>
                 <td className="p-3 text-muted-foreground">
@@ -256,18 +257,16 @@ export function BudgetCalendarPage() {
 }
 
 export function ClassificationReferencePage() {
+  const { locale } = useLocale();
+  const t = useT();
+  const blocks = getClassifications(locale);
   return (
     <RefShell
-      title="Classification reference"
-      intro={
-        <p>
-          How budget tables are organized — expense classes, program hierarchy,
-          and other lenses used in Modules 3 and 7.
-        </p>
-      }
+      title={t.reference.pages.classification}
+      intro={<p>{t.reference.intros.classification}</p>}
     >
       <div className="space-y-10">
-        {classifications.map((block) => (
+        {blocks.map((block) => (
           <section key={block.id} id={block.id} className="space-y-4">
             <h2 className="text-xl font-semibold">{block.title}</h2>
             <p className="text-sm leading-relaxed text-muted-foreground">
@@ -276,19 +275,21 @@ export function ClassificationReferencePage() {
             <ul className="space-y-3">
               {block.levels.map((level) => (
                 <li
-                  key={level.label}
+                  key={level.id}
                   className="rounded-lg border bg-card p-4"
                 >
                   <p className="font-medium">{level.label}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {level.meaning}
-                  </p>
+                    </p>
                 </li>
               ))}
             </ul>
             {block.example ? (
               <p className="text-sm leading-relaxed text-muted-foreground">
-                <span className="font-medium text-foreground">Example:</span>{" "}
+                <span className="font-medium text-foreground">
+                  {t.reference.example}
+                </span>{" "}
                 {block.example}
               </p>
             ) : null}
@@ -300,25 +301,24 @@ export function ClassificationReferencePage() {
 }
 
 export function LocalBudgetStructuresPage() {
+  const { locale } = useLocale();
+  const t = useT();
+  const sequence = getLocalSequence(locale);
+  const docs = getLocalDocuments(locale);
+  const constraints = getLocalConstraints(locale);
+  const timing = getLocalTiming(locale);
   return (
     <RefShell
-      title="Local government budget structures"
-      intro={
-        <p>
-          Local documents, the prepare–authorize–review sequence, and statutory
-          constraint themes for Module 6. Verify percentages and ceilings against
-          the current Local Government Code and implementing guidance for your
-          LGU type.
-        </p>
-      }
+      title={t.reference.pages.localBudgetStructures}
+      intro={<p>{t.reference.intros.localBudgetStructures}</p>}
     >
       <VerifiedNote />
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Budget sequence</h2>
+        <h2 className="text-xl font-semibold">{t.reference.budgetSequence}</h2>
         <ol className="space-y-3">
-          {localSequence.map((item, index) => (
-            <li key={item.step} className="rounded-lg border bg-card p-4">
+          {sequence.map((item, index) => (
+            <li key={item.id} className="rounded-lg border bg-card p-4">
               <p className="font-medium">
                 {index + 1}. {item.step}
               </p>
@@ -331,10 +331,12 @@ export function LocalBudgetStructuresPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Key local documents</h2>
+        <h2 className="text-xl font-semibold">
+          {t.reference.keyLocalDocuments}
+        </h2>
         <ul className="space-y-3">
-          {localDocuments.map((doc) => (
-            <li key={doc.name} className="rounded-lg border bg-card p-4">
+          {docs.map((doc) => (
+            <li key={doc.id} className="rounded-lg border bg-card p-4">
               <p className="font-medium">{doc.name}</p>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                 {doc.role}
@@ -345,11 +347,11 @@ export function LocalBudgetStructuresPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Statutory timing targets</h2>
+        <h2 className="text-xl font-semibold">{t.reference.statutoryTiming}</h2>
         <ul className="divide-y rounded-lg border bg-card">
-          {localTiming.map((row) => (
+          {timing.map((row) => (
             <li
-              key={row.milestone}
+              key={row.id}
               className="flex flex-col gap-1 p-4 sm:flex-row sm:justify-between"
             >
               <span className="font-medium">{row.milestone}</span>
@@ -360,24 +362,28 @@ export function LocalBudgetStructuresPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Constraint themes</h2>
+        <h2 className="text-xl font-semibold">
+          {t.reference.constraintThemes}
+        </h2>
         <p className="text-sm text-muted-foreground">
-          These are orientation notes, not a substitute for the Code text.
+          {t.reference.constraintThemesNote}
         </p>
         <div className="space-y-4">
-          {localConstraints.map((c) => (
+          {constraints.map((c) => (
             <div key={c.id} className="space-y-1 border-b pb-4 last:border-b-0">
               <h3 className="font-semibold">{c.topic}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {c.rule}
               </p>
-              <p className="text-xs text-muted-foreground">Basis: {c.basis}</p>
+              <p className="text-xs text-muted-foreground">
+                {t.reference.basis} {c.basis}
+              </p>
             </div>
           ))}
         </div>
         <p className="text-sm">
           <Link to="/reference/legal-references#lgc" className={linkClass}>
-            Local Government Code reference
+            {t.reference.lgcReferenceLink}
           </Link>
         </p>
       </section>
@@ -387,20 +393,17 @@ export function LocalBudgetStructuresPage() {
 
 export function LegalReferencesPage() {
   useHashScroll();
+  const { locale } = useLocale();
+  const t = useT();
+  const entries = getLegalEntries(locale);
   return (
     <RefShell
-      title="Legal and policy references"
-      intro={
-        <p>
-          Laws and issuances the course relies on. Entries state what each
-          governs and point to an official or widely used public text — no
-          advocacy commentary.
-        </p>
-      }
+      title={t.reference.pages.legalReferences}
+      intro={<p>{t.reference.intros.legalReferences}</p>}
     >
       <VerifiedNote />
       <div className="space-y-8">
-        {legalEntries.map((entry) => (
+        {entries.map((entry) => (
           <section
             key={entry.id}
             id={entry.id}
@@ -408,12 +411,14 @@ export function LegalReferencesPage() {
           >
             <h2 className="text-lg font-semibold">{entry.name}</h2>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              <span className="font-medium text-foreground">Governs:</span>{" "}
+              <span className="font-medium text-foreground">
+                {t.reference.governs}
+              </span>{" "}
               {entry.governs}
             </p>
             <p className="text-sm leading-relaxed text-muted-foreground">
               <span className="font-medium text-foreground">
-                Relevant to the course:
+                {t.reference.relevantToCourse}
               </span>{" "}
               {entry.relevant}
             </p>
@@ -428,16 +433,14 @@ export function LegalReferencesPage() {
 }
 
 export function DataSourcesPage() {
-  const groups = [...new Set(dataSources.map((d) => d.group))];
+  const { locale } = useLocale();
+  const t = useT();
+  const sources = getDataSources(locale);
+  const groups = [...new Set(sources.map((d) => d.group))];
   return (
     <RefShell
-      title="Data-source directory"
-      intro={
-        <p>
-          Public portals and datasets for looking up numbers the course cites —
-          or for your own follow-the-money work.
-        </p>
-      }
+      title={t.reference.pages.dataSources}
+      intro={<p>{t.reference.intros.dataSources}</p>}
     >
       <VerifiedNote />
       <div className="space-y-10">
@@ -445,7 +448,7 @@ export function DataSourcesPage() {
           <section key={group} className="space-y-4">
             <h2 className="text-xl font-semibold">{group}</h2>
             <div className="space-y-6">
-              {dataSources
+              {sources
                 .filter((d) => d.group === group)
                 .map((source) => (
                   <div
@@ -459,13 +462,13 @@ export function DataSourcesPage() {
                     </p>
                     <p className="text-sm text-muted-foreground">
                       <span className="font-medium text-foreground">
-                        Update cadence:
+                        {t.reference.updateCadence}
                       </span>{" "}
                       {source.cadence}
                     </p>
                     {source.caution ? (
                       <p className="text-xs text-muted-foreground">
-                        Caution: {source.caution}
+                        {t.reference.caution} {source.caution}
                       </p>
                     ) : null}
                     <p className="text-sm">
@@ -484,18 +487,16 @@ export function DataSourcesPage() {
 }
 
 export function FaqPage() {
+  const { locale } = useLocale();
+  const t = useT();
+  const entries = getFaqEntries(locale);
   return (
     <RefShell
-      title="FAQ"
-      intro={
-        <p>
-          Short answers to common questions, with links into glossary entries,
-          reference pages, and modules.
-        </p>
-      }
+      title={t.reference.pages.faq}
+      intro={<p>{t.reference.intros.faq}</p>}
     >
       <div className="space-y-8">
-        {faqEntries.map((item) => (
+        {entries.map((item) => (
           <section
             key={item.id}
             id={item.id}

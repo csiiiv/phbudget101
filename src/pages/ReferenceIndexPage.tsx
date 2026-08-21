@@ -1,28 +1,32 @@
 import { Link } from 'react-router-dom';
-
-const referencePages = [
-  { id: 'glossary', title: 'Glossary' },
-  { id: 'document-library', title: 'Budget document library' },
-  { id: 'institutional-map', title: 'Institutional map' },
-  { id: 'budget-calendar', title: 'Budget calendar' },
-  { id: 'classification-reference', title: 'Classification reference' },
-  { id: 'local-budget-structures', title: 'Local government budget structures' },
-  { id: 'acronyms', title: 'Acronyms' },
-  { id: 'legal-references', title: 'Legal and policy references' },
-  { id: 'sources', title: 'Sources and attribution' },
-  { id: 'data-sources', title: 'Data-source directory' },
-  { id: 'faq', title: 'FAQ' },
-];
+import { useT } from '@/lib/LocaleProvider';
 
 export function ReferenceIndexPage() {
+  const t = useT();
+  const referencePages = [
+    { id: 'glossary', title: t.reference.pages.glossary },
+    { id: 'document-library', title: t.reference.pages.documentLibrary },
+    { id: 'institutional-map', title: t.reference.pages.institutionalMap },
+    { id: 'budget-calendar', title: t.reference.pages.budgetCalendar },
+    { id: 'classification-reference', title: t.reference.pages.classification },
+    {
+      id: 'local-budget-structures',
+      title: t.reference.pages.localBudgetStructures,
+    },
+    { id: 'acronyms', title: t.reference.pages.acronyms },
+    { id: 'legal-references', title: t.reference.pages.legalReferences },
+    { id: 'sources', title: t.reference.pages.sources },
+    { id: 'data-sources', title: t.reference.pages.dataSources },
+    { id: 'faq', title: t.reference.pages.faq },
+  ];
+
   return (
     <div className="space-y-6">
       <header className="space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Reference</h1>
-        <p className="text-muted-foreground">
-          Detailed material outside the learning path: glossary, documents,
-          institutions, calendar, and more.
-        </p>
+        <h1 className="text-3xl font-bold tracking-tight">
+          {t.reference.title}
+        </h1>
+        <p className="text-muted-foreground">{t.reference.indexIntro}</p>
       </header>
       <ul className="grid gap-2 sm:grid-cols-2">
         {referencePages.map((ref) => (

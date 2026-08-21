@@ -18,6 +18,17 @@ Tier A is usually done once. Each new translated module adds Tier B entries for 
 
 ---
 
+## Tier A-b: reference section
+
+Reference pages are not lessons — they do not use `.fil.tsx` peers. Two pieces instead:
+
+1. **Page chrome** (titles, intros, column headers, labels like “Cycle phase:”) lives in `src/i18n/en/ui.ts` / `src/i18n/fil/ui.ts` under the `reference` key, next to the other Tier A strings. Add the English string to `UiStrings` in `src/i18n/types.ts` first.
+2. **Data bodies** (the entries in `src/data/reference/*.ts`) are overlaid in `src/data/reference/locale/fil.ts`, keyed by the stable entry `id`. English files stay the source of truth; ids, URLs, and link `href`s never change — override `name`, `role`, `answers`, `contains`, and link **labels** only.
+
+`src/data/reference/localized.ts` exposes `get*()` helpers (e.g. `getDocuments(locale)`) that merge the overlay at render time; pages call them instead of importing the raw data. When you add a new reference entry or field, add the matching overlay key so Filipino does not silently fall back to English for whole entries.
+
+---
+
 ## Tier A: shared UI strings
 
 1. Add or edit the English string in `src/i18n/en/ui.ts`.

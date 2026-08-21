@@ -1,52 +1,66 @@
-import type { LocalConstraint } from "./types";
+import type {
+  LocalConstraint,
+  LocalDocumentEntry,
+  LocalSequenceStep,
+  LocalTimingRow,
+} from "./types";
 
 /** Local budget structures and statutory constraints (ref-05b). */
-export const localSequence = [
+export const localSequence: LocalSequenceStep[] = [
   {
+    id: "plan",
     step: "Plan",
     detail:
       "Local development planning and the investment program identify priorities before annual costing.",
   },
   {
+    id: "prepare",
     step: "Prepare",
     detail:
       "Department and office heads submit proposals; the local finance committee advises; the local chief executive assembles the executive budget.",
   },
   {
+    id: "authorize",
     step: "Authorize",
     detail:
       "The sanggunian enacts the annual (or supplemental) budget through an appropriation ordinance.",
   },
   {
+    id: "review",
     step: "Review",
     detail:
       "The reviewing authority specified by law checks the enacted budget for compliance.",
   },
   {
+    id: "execute-account",
     step: "Execute and account",
     detail:
       "Offices implement authorized spending; reporting and audit follow the applicable rules.",
   },
-] as const;
+];
 
-export const localDocuments = [
+export const localDocuments: LocalDocumentEntry[] = [
   {
+    id: "ldp",
     name: "Local development plan / investment program",
     role: "States medium-term priorities and the projects that implement them.",
   },
   {
+    id: "aip",
     name: "Annual Investment Program (AIP)",
     role: "Lists programs, projects, and activities proposed for the budget year.",
   },
   {
+    id: "executive-budget",
     name: "Local executive budget",
     role: "The LCE’s annual proposal submitted to the sanggunian.",
   },
   {
+    id: "appropriation-ordinance",
     name: "Appropriation ordinance",
     role: "The sanggunian’s authorization of the annual or supplemental budget.",
   },
-] as const;
+];
 
 /**
  * Constraint descriptions stay high-level and point readers to the LGC text.
@@ -86,17 +100,20 @@ export const localConstraints: LocalConstraint[] = [
   },
 ];
 
-export const localTiming = [
+export const localTiming: LocalTimingRow[] = [
   {
+    id: "proposals-to-lce",
     milestone: "Office proposals to LCE",
     when: "On or before 15 July (Local Government Code target)",
   },
   {
+    id: "budget-to-sanggunian",
     milestone: "Executive budget to sanggunian",
     when: "On or before 16 October (Local Government Code target)",
   },
   {
+    id: "enactment",
     milestone: "Enactment of annual budget",
     when: "Targeted before the start of the fiscal year",
   },
-] as const;
+];
