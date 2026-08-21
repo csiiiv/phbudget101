@@ -17,16 +17,27 @@ export const glossary: GlossaryEntry[] = Object.values(files)
 
 const byId = new Map(glossary.map((e) => [e.id, e]));
 
+function localized(entry: GlossaryEntry, locale: Locale): GlossaryEntry {
+  if (locale === 'fil') {
+    const override = glossaryFilOverrides[entry.id];
+    if (override) return { ...entry, ...override };
+  }
+  return entry;
+}
+
 export function getTerm(id: string, locale: Locale = 'en'): GlossaryEntry | null {
   const base = byId.get(id) ?? null;
   if (!base) return null;
-  if (locale === 'fil') {
-    const override = glossaryFilOverrides[id];
-    if (override) return { ...base, ...override };
-  }
-  return base;
+  return localized(base, locale);
 }
 
-export function acronyms(): GlossaryEntry[] {
-  return glossary.filter((e) => e.acronym).sort((a, b) => a.acronym!.localeCompare(b.acronym!));
+/** Full glossary listing with locale display overrides applied. */
+export function getGlossary(locale: Locale = 'en'): GlossaryEntry[] {
+  return glossary.map((entry) => localized(entry, locale));
+}
+
+export function acronyms(locale: Locale = 'en'): GlossaryEntry[] {
+  return getGlossary(locale)
+    .filter((e) => e.acronym)
+    .sort((a, b) => a.acronym!.localeCompare(b.acronym!));
 }

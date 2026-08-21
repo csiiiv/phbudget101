@@ -39,7 +39,7 @@ Agents: **one lesson (or one accuracy pass per module) per PR**.
 | Custom domain                                                                         | later       | Two config lines when decided                                                        |
 | Analytics                                                                             | later       | None by default; cookieless only if added                                            |
 | Playwright / visual regression                                                        | later       | Add if UI regressions justify it                                                     |
-| i18n (Filipino first)                                                                 | done        | Filipino UI + Modules 00–09 lesson bodies; Module 10 metadata only (capstone body Phase 2) |
+| i18n (Filipino first)                                                                 | done        | Filipino UI + Modules 00–09 lesson bodies + reference pages; Module 10 metadata only (capstone body Phase 2) |
 
 ---
 
@@ -88,21 +88,21 @@ Phase 1 interactives must degrade to static content.
 
 ## Reference section
 
-All components are specced in [`reference-section.md`](reference-section.md). App routes exist; Phase 1 bodies are seeded below (search remains Phase 2).
+All components are specced in [`reference-section.md`](reference-section.md). App routes exist; Phase 1 bodies are seeded below (search remains Phase 2). Page chrome and data bodies are localized via `src/i18n/*/ui.ts` (`reference` key) and `src/data/reference/locale/fil.ts` — see [`notes/translating_content.md`](notes/translating_content.md).
 
 | ID      | Component                   | Phase | Status                                                    |
 | ------- | --------------------------- | ----- | --------------------------------------------------------- |
-| ref-01  | Glossary                    | 1     | seed (terms used in authored lessons; grows with modules) |
-| ref-02  | Document library            | 1     | seed                                                      |
-| ref-03  | Institutional map           | 1     | seed                                                      |
-| ref-04  | Budget calendar             | 1     | seed (typical timing; verify yearly)                      |
-| ref-05  | Classification reference    | 1     | seed                                                      |
-| ref-05b | Local budget structures     | 1     | seed                                                      |
-| ref-06  | Acronyms                    | 1     | seed (generated from glossary)                            |
-| ref-07  | Legal and policy references | 1     | seed                                                      |
-| ref-07b | Sources and attribution     | 1     | seed (guidebook + official portals; fuller biblio later)  |
-| ref-08  | Data-source directory       | 1     | seed                                                      |
-| ref-09  | FAQ                         | 1     | seed                                                      |
+| ref-01  | Glossary                    | 1     | seed (terms used in authored lessons; grows with modules; locale-aware listing) |
+| ref-02  | Document library            | 1     | seed (en + fil)                                           |
+| ref-03  | Institutional map           | 1     | seed (en + fil)                                           |
+| ref-04  | Budget calendar             | 1     | seed (typical timing; verify yearly; en + fil)            |
+| ref-05  | Classification reference    | 1     | seed (en + fil)                                           |
+| ref-05b | Local budget structures     | 1     | seed (en + fil)                                           |
+| ref-06  | Acronyms                    | 1     | seed (generated from glossary; locale-aware listing)      |
+| ref-07  | Legal and policy references | 1     | seed (en + fil)                                           |
+| ref-07b | Sources and attribution     | 1     | seed (guidebook + official portals; fuller biblio later; en + fil) |
+| ref-08  | Data-source directory       | 1     | seed (en + fil)                                           |
+| ref-09  | FAQ                         | 1     | seed (en + fil)                                           |
 | ref-10  | Search                      | 2     | later                                                     |
 
 ---

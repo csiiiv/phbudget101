@@ -39,7 +39,7 @@ export interface ClassificationBlock {
   id: string;
   title: string;
   summary: string;
-  levels: { label: string; meaning: string }[];
+  levels: { id: string; label: string; meaning: string }[];
   example?: string;
 }
 
@@ -48,6 +48,24 @@ export interface LocalConstraint {
   topic: string;
   rule: string;
   basis: string;
+}
+
+export interface LocalSequenceStep {
+  id: string;
+  step: string;
+  detail: string;
+}
+
+export interface LocalDocumentEntry {
+  id: string;
+  name: string;
+  role: string;
+}
+
+export interface LocalTimingRow {
+  id: string;
+  milestone: string;
+  when: string;
 }
 
 export interface LegalEntry {

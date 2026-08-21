@@ -116,7 +116,7 @@ export function Term({ id, expand, children, className }: TermProps) {
           ref={triggerRef}
           to={href}
           className={cn(
-            'border-b border-dotted border-primary/50 text-inherit no-underline decoration-transparent hover:border-solid hover:text-primary',
+            'rounded-sm font-medium text-primary underline decoration-dotted decoration-primary/60 underline-offset-4 hover:decoration-2 hover:decoration-primary',
             className
           )}
           onMouseEnter={() => {
