@@ -95,7 +95,7 @@ All components are specced in [`reference-section.md`](reference-section.md). Ap
 | ref-01  | Glossary                    | 1     | seed (terms used in authored lessons; grows with modules; locale-aware listing) |
 | ref-02  | Document library            | 1     | seed (en + fil)                                           |
 | ref-03  | Institutional map           | 1     | seed (en + fil)                                           |
-| ref-04  | Budget calendar             | 1     | seed (typical timing; verify yearly; en + fil)            |
+| ref-04  | Budget calendar             | 1     | seed (typical timing; verify yearly; en + fil; live PHT "now" marker) |
 | ref-05  | Classification reference    | 1     | seed (en + fil)                                           |
 | ref-05b | Local budget structures     | 1     | seed (en + fil)                                           |
 | ref-06  | Acronyms                    | 1     | seed (generated from glossary; locale-aware listing)      |

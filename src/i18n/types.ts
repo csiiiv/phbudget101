@@ -127,6 +127,8 @@ export interface UiStrings {
     period: string;
     national: string;
     local: string;
+    nowMarker: string;
+    phClock: (time: string) => string;
     example: string;
     budgetSequence: string;
     keyLocalDocuments: string;

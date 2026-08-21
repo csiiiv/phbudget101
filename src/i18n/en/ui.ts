@@ -146,6 +146,8 @@ export const ui: UiStrings = {
     period: "Period",
     national: "National",
     local: "Local",
+    nowMarker: "Now",
+    phClock: (time) => `Current time in the Philippines (PHT): ${time}`,
     example: "Example:",
     budgetSequence: "Budget sequence",
     keyLocalDocuments: "Key local documents",
