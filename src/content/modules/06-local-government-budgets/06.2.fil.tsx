@@ -9,11 +9,11 @@ const CALENDAR = [
     step: "Tinutukoy ng mga plano at investment priority ang balak gawin ng LGU.",
   },
   {
-    when: "Hanggang Hulyo 15",
+    when: "Hanggang July 15",
     step: "Isinusumite ng mga head ng departamento at opisina ang kanilang mga budget proposal sa local chief executive.",
   },
   {
-    when: "Hanggang Oktubre 16",
+    when: "Hanggang October 16",
     step: "Isinusumite ng local chief executive ang executive budget sa sanggunian.",
   },
   {
@@ -99,7 +99,7 @@ export default defineLesson({
             ng finance committee sa{" "}
             <Term id="local-executive-budget" expand />. Ayon sa Local
             Government Code, isinusumite ang executive budget sa sanggunian
-            hindi lalampas sa Oktubre 16 para sa susunod na fiscal year.
+            hindi lalampas sa October 16 para sa susunod na fiscal year.
           </p>
           <p>
             Sa puntong ito, proposal pa rin ang dokumento. Binibigyan ng

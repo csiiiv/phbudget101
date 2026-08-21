@@ -167,6 +167,8 @@ Same editorial rules as English — see [`build_spec.md`](../build_spec.md) and 
 
 Filipino lessons may use **Filipino** or **English terms** where that is normal for budget literacy in the Philippines (for example, “budget,” “module,” and “appropriation”). Translate based on context, not word by word. Keep an English term when its Filipino translation would sound forced, uncommon, or change the intended meaning. For example, use **“Reference”** for the app's reference section; **“sanggunian”** can mean a government council and is not interchangeable in that context. Stay consistent within a module.
 
+**Dates stay English.** Write months and calendar ranges as *July 15*, *January–March*, *Nov–Dec* — never *Hulyo 15*, *Enero–Marso*, *Nob–Dis* — including inside Filipino prose (e.g. “hindi lalampas sa October 16”). Reference-page category headings that label standing categories (institution groups such as *National executive*, *Legislative*, *Oversight*, *Local government*, *Related bodies*; expense-class and similar taxonomy labels) also stay English.
+
 ---
 
 ## Suggested rollout per module
